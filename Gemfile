@@ -13,6 +13,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 #foreign key support by foreigner
 gem 'foreigner'
 
+#jquery gem
+gem 'jquery-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
