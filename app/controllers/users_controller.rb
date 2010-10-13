@@ -19,6 +19,11 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
+    if @user.save
+      logger.info "saved!"
+    else
+      logger.info "failed"
+    end
 
     respond_to do |format|
       if @user.save
@@ -26,9 +31,34 @@ class UsersController < ApplicationController
         format.html { redirect_to(:action => 'index') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
+        flash[:notice] = 'failed to add new!'
         format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+       
       end
     end
+  end
+
+
+  def log_in
+    e_mail = params[:e_mail]
+    logger.info("e_mail in  paramters -->" +params[:e_mail])
+    logger.info("password in  paramters -->" +params[:password])
+    password = params[:password]
+    user = User.find_by_e_mail(e_mail)
+     if user 
+        user = User.authenticate(e_mail,password)
+        if user
+          session[:user_id] = user.id
+          flash[:notice] = "susscusslly log-in!"
+        else
+          flash[:notice] = "password wrong, please try again!"
+        end 
+          
+    else
+        flash[:notice] = 'user does not exist!'
+   end 
+      respond_to do |format|
+        format.html {render :nothing => true}
+     end
   end
 end
