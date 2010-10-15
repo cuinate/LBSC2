@@ -129,6 +129,13 @@ content body
  margin: 0 auto; overflow:auto; width: 520px; 
 }
 
+.form_content{
+position:relative; 
+background:#ffffff; 
+top:0px;
+width: 490px; 
+height:300px
+}
 #content #sign-up-dialog{
 	top:68px;
 	left:235px;
@@ -175,9 +182,19 @@ left:30px;
 top:10px;
 position:relative;
 }
-.lb_form_submit {
+
+#container {
+  width: 520px;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+ 
+  margin-top: 20px;
+}
+
+.lb_form_submit input{
 	clear:both;
-	background-color:#de741d;
+	background-color:#008cb1;
 	border:none;
 	color:#eee;
 	cursor: pointer;
@@ -193,7 +210,7 @@ position:relative;
 	-webkit-border-bottom-left-radius: 4px;
 	-moz-border-radius: 4px 4px 4px 4px;	
 }
-.lb_field {
+.lb_field input{
     color:#666 ;
 	font-size: 16px;
 	height: 28px;

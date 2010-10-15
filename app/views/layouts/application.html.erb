@@ -19,11 +19,17 @@
 			<input id="search_input"  value="请输入地点名称提问：">
 			<span><a href="#" id="search_button" class="spy-dark"> 提问</a></span>
 			</div>
+			
+			<%if !current_user %>
 			<span><a href="login" id="log-in" > 登录</a></span>
+			<%end%>
+			<%if current_user%>
+			<span ><a href="logout" id="log-in" > 登出</a></span>
+			<%end%>
 			
 
 	</div><!-- header -->
-	<div id="container" style="display:none;">
+	<div id="container" >
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>

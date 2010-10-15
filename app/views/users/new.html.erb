@@ -1,9 +1,16 @@
-<% title "Sign up" %>
+<div id ="content">
+<div id ="color-header" style="background:#008cb1; width:490px; height:54px;">
+	<span style=" position:relative; display: block;font-size :20px; left:10px ;top:10px ; font-weight:bold; color: #ffffff;"> 登录</span>
+</div>
+
+
+<div id="log_in_form" class ="form_content">
 
 <p>Already have an account? <%= link_to "Log in", login_path %>.</p>
 
 <%= form_for @user do |f| %>
   <%= f.error_messages %>
+  
   <p>
     <%= f.label :username %><br />
     <%= f.text_field :name %>
@@ -22,3 +29,5 @@
   </p>
   <p><%= f.submit "Sign up" %></p>
 <% end %>
+</div><!-- form content end -->
+</div><!-- content end -->

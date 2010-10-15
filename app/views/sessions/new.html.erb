@@ -1,21 +1,37 @@
-<% title "Log in" %>
+<div id ="content">
+<div id ="color-header" style="background:#008cb1; width:490px; height:54px;">
+	<span style=" position:relative; display: block;font-size :20px; left:10px ;top:10px ; font-weight:bold; color: #ffffff;"> 登录</span>
+</div>
 
-<p>Don't have an account? <%= link_to "Sign up!", signup_path %></p>
 
+<div id="log_in_form" class ="form_content">
+<span class ="lb_field_tag"> 没有帐号？<%= link_to "现在注册", signup_path %></span>
 <%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :login, "Username or Email Address" %><br />
+ <div id="username" class="form_field" >
+  <span class="lb_field_tag">
+    <%= label_tag :login, "帐号：" %></span>
+  <span class = "lb_field">
     <%= text_field_tag :login, params[:login] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
+  </span>
+ </div>
+ <div id="password" class="form_field">
+  <span class="lb_field_tag">
+    <%= label_tag :密码： %></span>
+	 <span class="lb_field">
     <%= password_field_tag :password %>
-  </p>
-    <p>
+  </span>
+  </div>
+  <div id="checkme" class = "form_field">
+    <span
+	
 	<%= check_box_tag :remember_me,params[:remember_me] %>
-    <%= label_tag :remember_me? %>
+    <%= label_tag :记住我（两周内）? %>
     
-	</p>
-  
-  <p><%= submit_tag "Log in" %></p>
+	</span>
+  </div>
+   <div id="checkme" class = "form_field">
+  <span class = "lb_form_submit" style="top:50px;"><%= submit_tag "登录" %></p>
+	</div>
 <% end %>
+</div><!-- form content end -->
+</div><!-- content end -->
