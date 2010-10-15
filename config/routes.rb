@@ -5,14 +5,19 @@ Lbsc2::Application.routes.draw do
 
   match 'login' => 'sessions#new', :as => :login
 
+  match 'root' => 'home#index', :as => :root
+  
+  match '/' => 'home#index', :as => :/
   resources :sessions
 
   resources :users
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  resources :users 
-  match "/log_in/" => "users#log_in"
+  
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

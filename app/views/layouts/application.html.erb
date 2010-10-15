@@ -3,17 +3,34 @@
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "home" %>
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container">
+   
+    <div id="home">
+	<div id="header">
+
+
+			<img src="images/logo.png" alt="Logbook" style="margin-left: 14px; margin-right: 0px; margin-top:33px; margin-bottom:23px;">
+			<div id="search_box">
+			<input id="search_input"  value="请输入地点名称提问：">
+			<span><a href="#" id="search_button" class="spy-dark"> 提问</a></span>
+			</div>
+			<span><a href="login" id="log-in" > 登录</a></span>
+			
+
+	</div><!-- header -->
+	<div id="container" style="display:none;">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
       <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
+
     </div>
+	  <%= yield %>
+	</div><!-- content -->
   </body>
 </html>

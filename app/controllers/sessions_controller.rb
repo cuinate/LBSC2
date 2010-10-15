@@ -3,16 +3,26 @@ class SessionsController < ApplicationController
   end
 
   def create
+    
     user = User.authenticate(params[:login], params[:password])
     if user
-      session[:user_id] = user.id
-      flash[:notice] = "Logged in successfully."
-      #redirect_to_target_or_default("/")
-      redirect_to "/"
-    else
-      flash.now[:error] = "Invalid login or password."
-      render :action => 'new'
+        self.current_user = user
+
+        # Remember me functionality
+        new_cookie_flag = (params[:remember_me] == "1")
+
+        handle_remember_cookie! new_cookie_flag
+
+        flash[:notice] = "Logged in successfully."
+       # redirect_back_or_default(dashboard_url)
+        redirect_to "/"
+  else
+        logout_killing_session!
+        flash.now[:error] = "Invalid login or password."
+        render :action => 'new'
     end
+        
+    
   end
 
   def destroy

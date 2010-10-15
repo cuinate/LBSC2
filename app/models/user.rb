@@ -23,8 +23,60 @@ class User < ActiveRecord::Base
     self.hashed_password == encrypt_password(pass)
   end
 
-  private
 
+
+ # sp1-6.3.2 ----- start 
+    def remember_token?
+     (!remember_token.blank?) &&
+       remember_token_expires_at && (Time.now.utc < remember_token_expires_at.utc)
+   end
+
+   # These create and unset the fields required for remembering users between browser closes
+   def remember_me
+     remember_me_for 2.weeks
+   end
+
+   def remember_me_for(time)
+     remember_me_until time.from_now.utc
+   end
+
+   def remember_me_until(time)
+     self.remember_token_expires_at = time
+     self.remember_token = self.class.make_token
+     save(false)
+   end
+
+   # refresh token (keeping same expires_at) if it exists
+   def refresh_token
+     if remember_token?
+       self.remember_token = self.class.make_token
+       save(false)
+     end
+   end
+
+   #
+   # Deletes the server-side record of the authentication token. The
+   # client-side (browser cookie) and server-side (this remember_token) must
+   # always be deleted together.
+   #
+   def forget_me
+     self.remember_token_expires_at = nil
+     self.remember_token = nil
+     save(false)
+   end
+
+   
+   private
+
+   def self.secure_digest(*args)
+     Digest::SHA1.hexdigest(args.flatten.join('--'))
+   end
+
+   def self.make_token
+     secure_digest(Time.now, (1..10).map{ rand.to_s })
+   end
+ # SP1-6.3.2 ------ end
+  
   def prepare_password
     unless password.blank?
       self.salt = Digest::SHA1.hexdigest([Time.now, rand].join)
