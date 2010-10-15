@@ -1,4 +1,14 @@
 Lbsc2::Application.routes.draw do
+  match 'signup' => 'users#new', :as => :signup
+
+  match 'logout' => 'sessions#destroy', :as => :logout
+
+  match 'login' => 'sessions#new', :as => :login
+
+  resources :sessions
+
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   resources :users 
