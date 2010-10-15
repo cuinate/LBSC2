@@ -10,24 +10,40 @@
 
 <%= form_for @user do |f| %>
   <%= f.error_messages %>
-  
-  <p>
-    <%= f.label :username %><br />
+  <div id="username" class="form_field" >
+  <span class="lb_field_tag">
+    <%= f.label :姓名 %>
+  </span>
+  <span class = "lb_field">
     <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :e_mail, "Email Address" %><br />
+  </span>
+  </div>
+   <div id="username" class="form_field" >
+  <span class="lb_field_tag">
+    <%= f.label :e_mail, "邮件" %>
+  </span>
+  <span class = "lb_field">   
     <%= f.text_field :e_mail %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
+  </span>
+  </div>
+   <div id="username" class="form_field" >
+  <span class="lb_field_tag">
+    <%= f.label :密码 %>
+  </span>
+	<span class = "lb_field">   
     <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, "Confirm Password" %><br />
+    </span>
+  </div>
+     <div id="username" class="form_field" >
+	  <span class="lb_field_tag">
+    <%= f.label :password_confirmation, "确认" %></span>
+     <span class="lb_field">
     <%= f.password_field :password_confirmation %>
-  </p>
-  <p><%= f.submit "Sign up" %></p>
+    </span>
+   </div>
+  <div id="checkme" class = "form_field">
+  <span class = "lb_form_submit" style="top:50px;">
+  <%= f.submit "Sign up" %></span>
 <% end %>
 </div><!-- form content end -->
 </div><!-- content end -->
