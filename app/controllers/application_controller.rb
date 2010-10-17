@@ -110,9 +110,6 @@ class ApplicationController < ActionController::Base
   # Cookies shouldn't be allowed to persist past their freshness date,
   # and they should be changed at each login
 
-  # Cookies shouldn't be allowed to persist past their freshness date,
-  # and they should be changed at each login
-
   def valid_remember_cookie?
     return nil unless @current_user
     (@current_user.remember_token?) &&

@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   # new columns need to be added here to be writable through mass assignment
-  attr_accessible :name, :e_mail, :password, :password_confirmation
+  attr_accessible :name, :e_mail, :password, :password_confirmation, :salt
 
-  attr_accessor :password
+
+  attr_accessor :password, :password_confirmation
   before_save :prepare_password
 
   validates_presence_of :name
@@ -43,14 +44,23 @@ class User < ActiveRecord::Base
    def remember_me_until(time)
      self.remember_token_expires_at = time
      self.remember_token = self.class.make_token
-     save(false)
+     save(:validate => false) 
    end
-
+   # SP1-6.4 make mobile token 
+   def check_m_token
+     span = 40.weeks
+     self.m_token_expires_at = span.from_now.utc
+     self.m_token = self.class.make_token
+     save(:validate => false) 
+   end 
+   
+   
+   # SP1-6.4 end 
    # refresh token (keeping same expires_at) if it exists
    def refresh_token
      if remember_token?
        self.remember_token = self.class.make_token
-       save(false)
+       save(:validate => false) 
      end
    end
 
@@ -62,11 +72,11 @@ class User < ActiveRecord::Base
    def forget_me
      self.remember_token_expires_at = nil
      self.remember_token = nil
-     save(false)
+      save(:validate => false) 
    end
 
    
-   private
+  private
 
    def self.secure_digest(*args)
      Digest::SHA1.hexdigest(args.flatten.join('--'))
@@ -79,12 +89,13 @@ class User < ActiveRecord::Base
   
   def prepare_password
     unless password.blank?
-      self.salt = Digest::SHA1.hexdigest([Time.now, rand].join)
+      self.salt =self.class.secure_digest([Time.now, rand])
       self.hashed_password = encrypt_password(password)
     end
   end
 
   def encrypt_password(pass)
-    Digest::SHA1.hexdigest([pass, salt].join)
+    self.class.secure_digest([pass, salt])
+#    Digest::SHA1.hexdigest([pass,salt].join)
   end
 end

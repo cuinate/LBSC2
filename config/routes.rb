@@ -8,6 +8,8 @@ Lbsc2::Application.routes.draw do
   match 'root' => 'home#index', :as => :root
   
   match '/' => 'home#index', :as => :/
+  
+  match 'mlogin' =>'sessions#m_create', :as => :mlogin
   resources :sessions
 
   resources :users
