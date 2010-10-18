@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  helper_method :current_user, :current_user=, :logged_in?, :authorized?
+  helper_method :require_user, :current_user, :current_user=, :logged_in?, :authorized?
   
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
-    @current_user ||= (login_from_session || login_from_basic_auth || login_from_cookie) unless @current_user == false
+    @current_user ||= (login_from_session || login_from_client || login_from_basic_auth || login_from_cookie) unless @current_user == false
   end
   
   # Store the given user id in the session.
@@ -70,6 +70,13 @@ class ApplicationController < ActionController::Base
     authenticate_with_http_basic do |login, password|
       self.current_user = User.authenticate(login, password)
     end
+  end
+  
+  #SP1-6.4.4 authorize request from mobile client
+  def login_from_client
+    uid = params[:uid]
+    m_token = params[:m_token]
+    self.current_user = User.m_authenticate(uid,m_token)
   end
 
    # Called from #current_user. Finaly, attempt to login by an expiring token in the cookie.

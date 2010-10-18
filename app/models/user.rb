@@ -20,6 +20,17 @@ class User < ActiveRecord::Base
     return user if user && user.matching_password?(pass)
   end
 
+  # SP1-6.4.4 start 
+  # mobile authorization based on uid and m_token
+  def self.m_authenticate(uid,m_token)
+    user = find_by_id(uid)
+    return user if user && user.matching_mtoken?(m_token)
+  end
+  
+  def matching_mtoken?(m_token)
+    self.m_token == m_token
+  end
+  #SP1-6.4.4 END 
   def matching_password?(pass)
     self.hashed_password == encrypt_password(pass)
   end
