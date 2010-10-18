@@ -1,3 +1,14 @@
 <div id="temp_intro">
 
 </div>
+<script>
+ $(document).ready(function(){
+	$("#search_input").focus(function(){
+		this.value = '';
+	});
+	$("#search_input").focusout(function(){
+		this.value = '输入地点名称进行查询：';
+	});
+	
+ });
+</script>

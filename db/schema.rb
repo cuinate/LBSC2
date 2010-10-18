@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017114239) do
+ActiveRecord::Schema.define(:version => 20101018042902) do
+
+  create_table "places", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.decimal  "latitude",   :precision => 9, :scale => 6
+    t.decimal  "longtitude", :precision => 9, :scale => 6
+    t.integer  "postalcode"
+    t.string   "city"
+    t.string   "pic_url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

@@ -17,6 +17,7 @@
 			<img src="images/logo.png" alt="Logbook" style="margin-left: 14px; margin-right: 0px; margin-top:33px; margin-bottom:23px;">
 			<div id="search_box">
 			<input id="search_input"  value="请输入地点名称提问：">
+			<ul id="search_result"> </ul>
 			<span><a href="#" id="search_button" class="spy-dark"> 提问</a></span>
 			</div>
 			
@@ -38,5 +39,11 @@
     </div>
 	  <%= yield %>
 	</div><!-- content -->
+<script>
+$(document).ready(function(){
+	lbsc.initializeAdmin();
+	
+ });
+</script>
   </body>
 </html>

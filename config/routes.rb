@@ -1,4 +1,6 @@
 Lbsc2::Application.routes.draw do
+  
+# login--- signup
   match 'signup' => 'users#new', :as => :signup
 
   match 'logout' => 'sessions#destroy', :as => :logout
@@ -10,9 +12,13 @@ Lbsc2::Application.routes.draw do
   match '/' => 'home#index', :as => :/
   
   match 'mlogin' =>'sessions#m_create', :as => :mlogin
+#places 
+  match 'showplace' => 'places#show', :as => :showplace
   resources :sessions
 
   resources :users
+  
+  resources :places
   
   
 
