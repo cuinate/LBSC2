@@ -14,6 +14,7 @@ Lbsc2::Application.routes.draw do
   match 'mlogin' =>'sessions#m_create', :as => :mlogin
 #places 
   match 'showplace' => 'places#show', :as => :showplace
+  match 'addplace'  => 'places#create', :as => :addplace
   resources :sessions
 
   resources :users

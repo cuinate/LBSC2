@@ -234,6 +234,11 @@ position:relative;
 	width: 150px;
 
 }
+.place_search_result{
+color: #666;
+font-size: 18px;
+margin: 2px 0px 2px 0px;
+}
 input:focus, textarea:focus{
 	background-color: #d5e9ed;
 	color: #333;

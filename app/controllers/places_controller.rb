@@ -28,5 +28,24 @@ def show
     render :json => m_result.to_json
   end
 end 
+#SP3-3.1
+def create
+ 
+    @place = Place.new
+    @place.name = params[:name]
+    @place.address = params[:address]
+    @place.latitude = params[:latitude]  
+    @place.longtitude = params[:longtitude]
+    @place.city = params[:city]  
+    @place.user_id = session[:user_id]
+    
+     if @place.save!
+        flash[:notice] = 'Challenge was successfully created.'
+         redirect_to "/"
+     else
+        flash[:notice] = 'Challenge was failed to be created.'
+        redirect_to "/"
+    end
+end
 
 end

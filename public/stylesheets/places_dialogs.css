@@ -1,0 +1,186 @@
+/* @group Select a Place LV */
+
+.s_result {
+  background-color: #fffced; 
+  border: 1px solid #fceebc;
+  font-size: 77%;
+  margin-top: 10px;
+  text-shadow: 1px 1px 0 #FFF;
+  width: 662px;
+}
+
+.s_result p {
+  margin: .9em;
+}
+
+.s_result.searching p {
+  background: url(../img/ajax-loader.gif) center left no-repeat;
+  padding-left: 26px;
+}
+
+.s_result.error { 
+  background-color: #FBF2EF;
+  border: 1px solid #F0D3CA;
+  color: #A5281A;
+  display: none;
+}
+
+.s_result.success {
+  background-color: #f2ffed;
+  border: 1px solid #bde0b6;
+  color: #537944;
+  display: none;
+}
+
+.s_result strong {
+  font-family: Arial, Hevletica, sans-serif;
+}
+
+#select_place_dialog, #save_place_dialog {
+  padding-top: 15px;
+  margin: 0 10px 10px 10px;
+  text-align: left !important;
+}
+
+  #select_place_dialog .form_item, #save_place_dialog .block {
+    display: block;
+    width: 259px;
+    float: left;
+    padding: 7px 0;
+  }
+
+  #select_place_dialog input[type=text], #save_place_dialog .block input[type=text] {
+    float: left; 
+    font-size: 123.1%; 
+    padding: 6px 0 6px 8px; 
+    width: 90%; 
+  }
+
+#save_place_dialog .callout_wrap div,
+#select_place_dialog .callout_wrap div { 
+  padding: 0 !important; 
+}
+.callout_wrap div {
+  font-size:93%;
+  margin:0px;
+  color:#666666;
+}
+.callout_wrap {
+  display: block;
+  float: left;
+  border:8px solid #d5e9ed;
+  border-radius: 4px;
+  top:10px;
+  margin: 0 0 10px 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+.place_list{ 
+top:10px;
+float:left;
+display: block;
+width: 180px;
+height: 350px	;
+border:8px solid #d5e9ed;
+border-radius: 4px;
+margin: 0 0 10px 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+} 
+
+.search_btn, .centermap_btn {
+  width: 145px;
+  height: 38px;
+  margin-top: 27px;
+}
+
+#place_zip { width: 140px !important; }
+#place_zip input { width: 98% !important; }
+
+.search_btn {
+  height: 37px;
+  background: url(../img/hb_challenges_sprites.png) no-repeat -128px -112px;
+}
+  .search_btn:hover, .search_btn:focus { background: url(../images/hb_challenges_sprites.png) -128px -149px; }
+  .search_btn:active { background: url(../images/hb_challenges_sprites.png) -128px -186px; }
+
+.centermap_btn {
+  background: url(../img/hb_challenges_center_sprite.png) no-repeat;
+}
+  .centermap_btn:hover, .centermap_btn:focus { background: url(../imag/hb_challenges_center_sprite.png) 0 -38px; }
+  .centermap_btn:active { background: url(../img/hb_challenges_center_sprite.png) 0 -75px; }
+
+html #gmap_wrap { height: 350px; margin-top: 0px; width: 450px; }
+
+#save_map, #search-map { height: 350px !important; }
+
+.save_place {
+  padding: 15px 0px 0px 86px;
+}
+.add_place_open {
+  background: url(../img/hb_challenges_lv_bk.png) no-repeat;
+  display: block;
+  height: 28px;
+  width: 100%;
+}
+
+.add_place_open:hover {
+  background-position: 0 -29px;
+}
+
+.lv_contentBottom { top: -10px; width: 683px !important; padding: 10px; overflow: hidden !important; }
+
+#add_challenge {
+  background: url(../imag/hb_challenges_sprites.png) 0 0;
+  display: block;
+  width: 239px;
+  height: 38px;
+}
+
+#add_challenge:hover,
+#add_challenge:focus { 
+  background-position: 0 -37px;
+  border-bottom: 0px !important;
+}
+
+#add_challenge:active {
+  background-position: 0 -74px;
+}
+
+#lv_desc { width: 100% !important; }
+
+#lv_desc textarea { width: 655px !important; }
+
+
+
+#save_place_dialog .callout_wrap {margin: 0 0 8px 10px !important; width: 450px !important;}
+
+#save_place_dialog em { color: #999; margin-bottom: 5px; }
+
+.options { width: 412px; }
+
+#save_place_dialog .options { width: 222px; }
+
+.loc_content {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100% !important;
+  height: 70px;
+}
+.loc_content a:link,
+.loc_content span {
+  display: block;
+  font-size: 160%;
+}
+.loc_content h2 {
+  color: #5f7bb5;
+  cursor: pointer !important;
+  display: inline-block;
+  font-size: 250%;
+  letter-spacing: -1px;
+  margin: 0 0 3px 0;
+}
+.loc_content a:link {
+  color: #5f7bb5;
+  float: left;
+  margin: 0.3em 0.8em 0 0;
+}
