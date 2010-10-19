@@ -236,7 +236,8 @@ position:relative;
 }
 .place_search_result{
 color: #666;
-font-size: 18px;
+font-size: 20px;
+height:80px;
 margin: 2px 0px 2px 0px;
 }
 input:focus, textarea:focus{
@@ -265,6 +266,41 @@ color:#fff ;
 font-size: 16px;
 padding :5px;
 cursor: pointer;
+}
+.infowindow_text{
+text-decoration: none;
+font-weight: bold;
+line-height: 1;
+font-size:20px;
+color:#000;
+}
+.add_place_button {
+/* styles for button */
+	margin:10px auto 0 auto;
+	text-align:center;
+	background-color: #008cb1;
+	display: block;
+	width:50px;
+	padding: 5px 10px 6px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	font-size:16px;
+	/* css3 implementation :) */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	
+}
+
+.add_place_button:hover {
+	background-color: #008c34;	
 }
 
 

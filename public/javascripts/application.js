@@ -104,18 +104,17 @@ var lbsc = function(){
 	  // 3. generate dynamic content 
 	        var place_index = p + 1;
 	        var text_result = "结果" + place_index  + ":" + place_list["name"];
-	 		var content = $('<div/>', {
-	           'class': 'place_search_result'
-	         })
+	 		var content = $('<div/>')
 	         .append($('<span/>', {
+			  'class':'infowindow_text',
 	           text: text_result
 	         }))
-			 .append($('<span/>'))
-			 .append($('<a/>',{
+			 .append($('<a/>', {
+			 'class':'add_place_button',
 	           click: function() {
 	             save_new_add_place(place_lists[p]);
 	           },
-	           text: "添加"
+			   text: "添加"
 	         }));
 	
 	      
