@@ -114,7 +114,7 @@ var lbsc = function(){
 	           click: function() {
 	             save_new_add_place(place_lists[p]);
 	           },
-			   text: "添加"
+			   text: "添加地点"
 	         }));
 	
 	      
@@ -127,8 +127,17 @@ var lbsc = function(){
 		
 	//	open_marker_info_window(place_list, marker));
 	// 4. --- append the result to search place list 
-	     
-	 //  $("#place_result").append(content);
+	     var place_content = $('<li/>',
+			  {'class': 'search_place_list'})
+			 .append($('<a/>', {
+	           click: function() {
+				google.maps.event.trigger(markers[p],"click");
+	           },
+			   text: text_result
+	         }))
+			.append('<br>');
+			
+	   $("#place_result").append(place_content);
 	    
       });
 
@@ -210,7 +219,11 @@ var lbsc = function(){
 		 $("#select_place_dialog").dialog("open");
 		return false;
 	}
-	
+    function clear_dialog() {
+		infoWindow.close();
+ 		markers = [];
+		$("#place_list").empty().show();
+     }
 
 	
 	var initializeAdmin = function(){
@@ -236,6 +249,11 @@ var lbsc = function(){
 	$('#select_place_dialog').dialog({
       autoOpen: false,
       modal: true,
+	  beforeclose: function(event, ui) {
+       		infoWindow.close();
+	 		markers = [];
+			$("#place_list").empty();
+      },
 	  open: function(event, ui) {
        // $('#search_places_name').val('');
         // $('#search_places_address').val('');

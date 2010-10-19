@@ -260,10 +260,18 @@ display: none;
 
 }
 .search_result_new_place{
-background-color: #393939;
+background-color: #535758;
 font-weight:bold;
+color:#fff;
+font-size: 12px;
+padding :5px;
+cursor: pointer;
+}
+.search_place_list{
+background-color: #008cb1;
+width:130px;
 color:#fff ;
-font-size: 16px;
+font-size: 12px;
 padding :5px;
 cursor: pointer;
 }
@@ -271,7 +279,7 @@ cursor: pointer;
 text-decoration: none;
 font-weight: bold;
 line-height: 1;
-font-size:20px;
+font-size:16px;
 color:#000;
 }
 .add_place_button {
@@ -286,7 +294,7 @@ color:#000;
 	text-decoration: none;
 	font-weight: bold;
 	line-height: 1;
-	font-size:16px;
+	font-size:12px;
 	/* css3 implementation :) */
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
