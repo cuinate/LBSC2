@@ -15,6 +15,7 @@ Lbsc2::Application.routes.draw do
 #places 
   match 'showplace' => 'places#show', :as => :showplace
   match 'addplace'  => 'places#create', :as => :addplace
+  match 'addquestion' => 'questions#create', :as => :addquestion
   resources :sessions
 
   resources :users

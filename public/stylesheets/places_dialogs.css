@@ -36,7 +36,7 @@
   font-family: Arial, Hevletica, sans-serif;
 }
 
-#select_place_dialog, #save_place_dialog {
+#select_place_dialog, #save_place_dialog ,#ask_question_dialog{
   padding-top: 15px;
   margin: 0 10px 10px 10px;
   text-align: left !important;
@@ -184,3 +184,26 @@ html #gmap_wrap { height: 350px; margin-top: 0px; width: 450px; }
   float: left;
   margin: 0.3em 0.8em 0 0;
 }
+/* ------ ask question dialog sepcial -----*/
+.place_name_question_dialog{
+background-color: #008cb1;
+width: 280px;
+height:40px;
+color:#fff ;
+font-size: 18px;
+}
+.question_box_dialog{
+background-color: #fff;
+width: 280px;
+color:#000 ;
+font-size: 18px;
+}
+.question_inputbox_dialog{
+background-color: #fff;
+width: 80%;
+color:#000 ;
+border: 1px solid #fceebc;
+font-size: 18px;
+padding :5px;
+}
+

@@ -253,7 +253,7 @@ border :1px solid gray;
 border-top :0;
 list-style-type: none;
 margin: 0;
-right:106px;
+right:0px;
 left:14px;
 top:45px;
 display: none;
@@ -263,9 +263,21 @@ display: none;
 background-color: #535758;
 font-weight:bold;
 color:#fff;
-font-size: 12px;
+font-size: 16px;
 padding :5px;
 cursor: pointer;
+}
+.search_place_have_result{
+background-color: #fff;
+font-weight:bold;
+color:#535758;
+font-size: 16px;
+padding :5px;
+cursor: pointer;
+}
+.search_place_have_result:hover {
+	background-color: #535758;	
+	color:#fff;
 }
 .search_place_list{
 background-color: #008cb1;

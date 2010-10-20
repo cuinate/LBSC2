@@ -197,17 +197,32 @@ var lbsc = function(){
 	function hide_search_result(){
 		$("#search_result").css("display","none");
 	}
-	
+// search box callback function 
 	function search_place_callback(data){
 		var timer;
 		var search_result = $("#search_result").empty().show();
 		if (data.length > 0){
-			
+			$.each(data, function(p, place) {
+			var place_name = place.place["address"];
+			place_name = "地点：" + place_name ;
+			 search_result.append($('<li/>', {
+				 'class':'search_place_have_result',
+				// 'id': place.place["id"],
+		           click: function() {
+		           //  alert("got you!" + place.place["id"] + place_name);
+		 			$("#ask_question_place_name").append(place.place["name"]);
+					$("#ask_question_place_id").attr("value",place.place["id"]);
+					$("#ask_question_dialog").dialog("open");
+		           },
+				   text: place_name
+		         }));
+			});
+	//	setTimeout(hide_search_result,5000);
 		}
 		else{
 		// showing no place found and tell user to add the place
 		search_result.append('<li class = "search_result_new_place" id="search_add_new_place"> 没有发现地点，新增一个吧！</li>')
-		setTimeout(hide_search_result,10000);
+		setTimeout(hide_search_result,5000);
 		$("#search_add_new_place").click(function(){
 			search_add_new_place();
 		});
@@ -229,8 +244,8 @@ var lbsc = function(){
 	var initializeAdmin = function(){
 		initializeDefaults();
 		
-//		$("#search_input").keyup(function(){
-		$("#search_input").live("change",function(){
+		$("#search_input").keyup(function(){
+//		$("#search_input").live("change",function(){
 			var query = $(this).val();
 			add_place_name = query;
 			if (query.length > 0){
@@ -270,6 +285,37 @@ var lbsc = function(){
       resizable: false
     });
 
+// ask quesiton dialog 
+	$('#ask_question_dialog').dialog({
+      autoOpen: false,
+      modal: true,
+	  buttons:{
+      "OK": function() {
+					// post "question" back to server and save it 
+					place_id = $("#ask_question_place_id").val();
+					description = $("question_input").val();
+					points = 15;
+					$.post(
+					'/addquestion', 
+				      {
+						place_id : place_id,
+						description: description,
+						points :points,
+						authenticity_token: authToken()
+					  },
+					  function(data){
+
+					   $(this).dialog("close");
+						}
+
+				    );
+
+        	      }
+	  },
+      width: 300,
+	  height: 300,
+      resizable: false
+    });
 		
 	}
 	
