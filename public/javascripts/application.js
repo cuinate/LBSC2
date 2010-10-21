@@ -293,8 +293,8 @@ var lbsc = function(){
       "OK": function() {
 					// post "question" back to server and save it 
 					place_id = $("#ask_question_place_id").val();
-					description = $("question_input").val();
-					points = 15;
+					description = $("#question_input").val();
+					points = $("#question_points option:selected").text();
 					$.post(
 					'/addquestion', 
 				      {
@@ -309,7 +309,7 @@ var lbsc = function(){
 						}
 
 				    );
-
+					$(this).dialog("close");
         	      }
 	  },
       width: 300,

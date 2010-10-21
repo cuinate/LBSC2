@@ -15,6 +15,7 @@ def show
        # find by id
   elsif show_type == "3"
        #find by hot 
+       
   else 4
         place = nil
   end

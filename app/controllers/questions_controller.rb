@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
       @question.description = params[:description]
       @question.points = params[:points]
       @question.user_id = session[:user_id]
-
+      
 
        if @question.save!
           flash[:notice] = 'quesitons was successfully created.'
