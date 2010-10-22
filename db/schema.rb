@@ -10,20 +10,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101021025115) do
+ActiveRecord::Schema.define(:version => 20101021115839) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.integer  "action_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "answers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.string   "description"
+    t.integer  "up_counts"
+    t.integer  "down_counts"
+    t.boolean  "is_choosen",  :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["question_id"], :name => "answers_question_id_fk"
 
   create_table "places", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.decimal  "latitude",        :precision => 9, :scale => 6
-    t.decimal  "longtitude",      :precision => 9, :scale => 6
+    t.decimal  "latitude",         :precision => 9, :scale => 6
+    t.decimal  "longtitude",       :precision => 9, :scale => 6
     t.integer  "postalcode"
     t.string   "city"
     t.string   "pic_url"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "questions_count",                               :default => 0
+    t.integer  "questions_count",                                :default => 0
+    t.integer  "activities_count",                               :default => 0
   end
 
   create_table "questions", :force => true do |t|
@@ -33,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20101021025115) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "answers_count", :default => 0
   end
 
   add_index "questions", ["place_id"], :name => "questions_place_id_fk"
@@ -61,6 +86,8 @@ ActiveRecord::Schema.define(:version => 20101021025115) do
     t.string   "m_token"
     t.time     "m_token_expires_at"
   end
+
+  add_foreign_key "answers", "questions", :name => "answers_question_id_fk"
 
   add_foreign_key "questions", "places", :name => "questions_place_id_fk"
 

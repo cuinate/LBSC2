@@ -15,7 +15,8 @@ def show
        # find by id
   elsif show_type == "3"
        #find by hot 
-       
+       item_limit = 20
+       @place = Place.find(:all, :limit => item_limit, :order =>"questions_count DESC")
   else 4
         place = nil
   end
