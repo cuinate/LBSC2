@@ -13,11 +13,13 @@ Lbsc2::Application.routes.draw do
   
   match 'mlogin' =>'sessions#m_create', :as => :mlogin
 #places 
-  match 'showplace' => 'places#show', :as => :showplace
+ 
   match 'addplace'  => 'places#create', :as => :addplace
   match 'addquestion' => 'questions#create', :as => :addquestion
   match 'place/hot' =>'places#hot'
   match 'place/nearby' =>'places#nearby'
+  match 'place/like'   =>'places#like'
+  match 'place/tagged' =>'places#tagged'
   resources :sessions
 
   resources :users

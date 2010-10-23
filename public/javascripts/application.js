@@ -250,8 +250,8 @@ var lbsc = function(){
 			add_place_name = query;
 			if (query.length > 0){
 				$.getJSON(
-					'showplace.json',
-					{	type:    1,
+					'place/like.json',
+					{
 						paras:  query
 					},
 					search_place_callback
