@@ -51,6 +51,43 @@ def show
     render :json => m_result.to_json
   end
 end 
+#SP10-2.1 hot place action
+def hot
+      items_limit = 20
+      place_hot =  Place.order('places.questions_count DESC').limit(items_limit)
+      hot_place = Array.new
+      place_to_hash(hot_place,place_hot)
+      render :json => hot_place.to_json
+      
+end
+
+#SP10-2.1 convert place result into hash array
+def place_to_hash(hash_array,place)
+     i = 0 
+     place.each do |p|
+         place_hash = Hash.new
+         place_hash["place_id"] = p.id
+         place_hash["place_name"] = p.name
+         place_hash["latitude"] = p.latitude
+         place_hash["longtitude"]= p.longtitude
+         place_hash["questions_count"] = p.questions_count
+         place_hash["activities_count"] = p.activities_count
+         place_hash["unanswered_count"] = p.questions.unanswered.size()
+         hash_array[i] = place_hash
+     i = i + 1
+     end
+end
+
+#SP10-2.1 find nearby place 
+def nearby
+  items_limit = 10
+  current_lat = params[:lat].to_f
+  current_lng = params[:lng].to_f
+  place_nearby = Place.show_place(current_lat,current_lng,items_limit)
+  nearby_place = Array.new
+  place_to_hash(nearby_place,place_nearby)
+  render :json => nearby_place.to_json
+end
 #SP3-3.1
 def create
  

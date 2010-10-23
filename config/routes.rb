@@ -16,6 +16,8 @@ Lbsc2::Application.routes.draw do
   match 'showplace' => 'places#show', :as => :showplace
   match 'addplace'  => 'places#create', :as => :addplace
   match 'addquestion' => 'questions#create', :as => :addquestion
+  match 'place/hot' =>'places#hot'
+  match 'place/nearby' =>'places#nearby'
   resources :sessions
 
   resources :users
