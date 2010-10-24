@@ -43,6 +43,7 @@ GEM
       treetop (>= 1.4.5)
     mime-types (1.16)
     mysql (2.8.1)
+    mysql (2.8.1-x86-mingw32)
     nifty-generators (0.4.1)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -71,6 +72,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   foreigner
