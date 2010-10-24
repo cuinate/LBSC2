@@ -1,0 +1,331 @@
+/* Kill Defaults */
+
+html, body, p, ul, ol, dl, li, h1, h2, h3, h4, img	{
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+img	{
+	border: 0;
+}
+
+
+font-family:arial,sans-serif;
+
+.input_style {  
+  box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+  -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+  -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+} 
+
+a { color: #005481; margin: 0; padding: 0; text-decoration: none; }  
+	a:hover { text-decoration: underline; } 
+/*
+============================================
+Layout
+============================================
+*/
+
+
+body	{
+	background: url(../images/background_solid.png);
+}
+
+/*
+============================================
+Header
+============================================
+*/
+#header{
+	width: 1020px;
+	height: 92px;
+	background: url(../images/header_back.png) no-repeat;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+#header #logo{
+	margin-left: 14px;
+	margin-right: 0px;
+	margin-top:33px;
+	margin-bottom:23px;
+	
+	
+}
+
+
+#header #search_box{
+	position: absolute;
+	height:50px;
+	width:426px;
+	background:#008cb1;
+	left:176px;
+	top:23px;
+	bottom:25px;
+}
+#header #search_input{
+	border-style: none;
+	position: absolute;
+	height:30px;
+	width:300px;
+	background: url(../images/input_back.png) repeat-x;
+	font-size :14px;
+	font-weight:bold;
+	color: #535050;
+	right:106px;
+	left:14px;
+	top:8px;
+	bottom:11px;
+	font-family:arial,sans-serif;	
+}
+#header #search_button{
+	position: absolute;
+	font-size :20px;
+	font-weight:bold;
+	color: #ffffff;
+	right:30px;
+	left:340px;
+	top:8px;
+	bottom:11px;
+}
+#header #log-in{
+position: absolute;
+	font-size :20px;
+	font-weight:bold;
+	color:#008cb1;
+	left:880px;
+	top:55px;
+	bottom:40px;
+}
+#header #sign-up{
+	position: absolute;
+	font-size :20px;
+	font-weight:bold;
+	color: #de741d;
+	left:945px;
+	top:55px;
+	bottom:20px;
+}
+/*
+============================================
+content body
+============================================
+*/
+#temp_intro{
+	width: 1020px;
+	height: 550px;
+	top: 50px;
+	background: url(../images/home_intro_temp.png) no-repeat;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+#content {
+ margin: 0 auto; overflow:auto; width: 520px; 
+}
+
+.form_content{
+position:relative; 
+background:#ffffff; 
+top:0px;
+width: 490px; 
+height:300px
+}
+#content #sign-up-dialog{
+	top:68px;
+	left:235px;
+	right:254px;
+	bottom:132px;
+	width:515px;
+	height:422px;
+	position: absolute;
+}
+
+#sign-up-dialog #dialog-header{
+	background: url(../images/dialog_header.png) no-repeat;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	position: absolute;
+	width:515px;
+	height:15px;
+}
+#sign-up-dialog #dialog-body{
+	background: url(../images/dialog_body.png) repeat-y;
+	width:515px;
+	height:394px;
+	top:12px;
+	left:0px;
+	right:0px;
+	bottom:15px;
+	position: absolute;
+}
+#sign-up-dialog #dialog-bottom{
+	background: url(../images/dialog_bottom.png) no-repeat;
+	width:515px;
+	height:15px;
+	top:406px;
+	left:0px;
+	right:0px;
+	bottom:15px;
+	position: absolute;
+}
+.form_field{
+width:400px;
+left:30px;
+top:10px;
+position:relative;
+}
+
+#container {
+  width: 520px;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+ 
+  margin-top: 20px;
+}
+
+.lb_form_submit input{
+	clear:both;
+	background-color:#008cb1;
+	border:none;
+	color:#eee;
+	cursor: pointer;
+	font-weight: normal;
+	font-size: 16px;
+	overflow: visible;
+	padding: 6px 20px;
+	text-align: center;
+	margin:0,auto;
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius: 4px 4px 4px 4px;	
+}
+.lb_field input{
+    color:#666 ;
+	font-size: 16px;
+	height: 28px;
+	line-height: 22px;
+	margin: 10px 0px 10px 10px;
+
+	position: relative;
+	width: 260px;
+
+}
+
+.lb_field_tag {
+    color: #666;
+	font-size: 18px;
+	font-weight:bold;
+	height: 20px;
+	line-height: 22px;
+	margin: 10px 0px 10px 0px;
+
+	position: relative;
+	width: 150px;
+
+}
+.place_search_result{
+color: #666;
+font-size: 20px;
+height:80px;
+margin: 2px 0px 2px 0px;
+}
+input:focus, textarea:focus{
+	background-color: #d5e9ed;
+	color: #333;
+}
+
+
+
+#search_result{
+position: absolute;
+border :1px solid gray;
+border-top :0;
+list-style-type: none;
+margin: 0;
+right:0px;
+left:14px;
+top:45px;
+display: none;
+
+}
+.search_result_new_place{
+background-color: #535758;
+font-weight:bold;
+color:#fff;
+font-size: 16px;
+padding :5px;
+cursor: pointer;
+}
+.search_place_have_result{
+background-color: #fff;
+font-weight:bold;
+color:#535758;
+font-size: 16px;
+padding :5px;
+cursor: pointer;
+}
+.search_place_have_result:hover {
+	background-color: #535758;	
+	color:#fff;
+}
+.search_place_list{
+background-color: #008cb1;
+width:130px;
+color:#fff ;
+font-size: 12px;
+padding :5px;
+cursor: pointer;
+}
+.infowindow_text{
+text-decoration: none;
+font-weight: bold;
+line-height: 1;
+font-size:16px;
+color:#000;
+}
+.add_place_button {
+/* styles for button */
+	margin:10px auto 0 auto;
+	text-align:center;
+	background-color: #008cb1;
+	display: block;
+	width:50px;
+	padding: 5px 10px 6px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	font-size:12px;
+	/* css3 implementation :) */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	
+}
+
+.add_place_button:hover {
+	background-color: #008c34;	
+}
+
+
+
+
+
+
+

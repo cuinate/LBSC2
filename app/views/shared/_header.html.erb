@@ -1,0 +1,25 @@
+<div id="header">
+		<%= image_tag "logo.png", :alt => "logo",
+		                          :id => "logo" %>
+		<div id="search_box">
+		<input id="search_input"  value=""><div id="search_str">搜索</div>
+		<ul id="search_result"> </ul>
+		</div>
+		<%if !current_user %>
+		<div id="login_str">登录</div>
+		<%else%>
+		<div id="login_str">登出</div>
+		<%end%>
+</div><!-- header -->
+
+<!---java script initialization -->
+	
+		<script>
+		$(document).ready(function(){
+			lbsc.initializeAdmin();
+	
+		 });
+		 function authToken(){
+		    return '<%= form_authenticity_token if protect_against_forgery? -%>';
+		  }
+		</script>

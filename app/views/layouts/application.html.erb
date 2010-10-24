@@ -1,40 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-    <%= stylesheet_link_tag "application" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "home" %>
+<!--
     <%= stylesheet_link_tag "places_dialogs" %>
     <%= stylesheet_link_tag "jquery-ui" %>
+-->
     <%= javascript_include_tag :defaults %>
     <%= javascript_include_tag "jquery-ui" %>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
 	<script type="text/javascript" src=http://fw.qq.com/ipaddress charset=gb2312></script> 
     <%= csrf_meta_tag %>
-    <%= yield(:head) %>
   </head>
   <body>
+	<%= render "shared/header" %>
    
-    <div id="home">
-	<div id="header">
-
-
-			<img src="images/logo.png" alt="Logbook" style="margin-left: 14px; margin-right: 0px; margin-top:33px; margin-bottom:23px;">
-			<div id="search_box">
-			<input id="search_input"  value="请输入地点名称提问：">
-			<ul id="search_result"> </ul>
-			<span><a href="#" id="search_button" class="spy-dark"> 提问</a></span>
-			</div>
-			
-			<%if !current_user %>
-			<span><a href="login" id="log-in" > 登录</a></span>
-			<%end%>
-			<%if current_user%>
-			<span ><a href="logout" id="log-in" > 登出</a></span>
-			<%end%>
-			
-
-	</div><!-- header -->
+    <!---
 	<div id="container" >
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
@@ -42,103 +25,9 @@
       <%= content_tag :h1, yield(:title) if show_title? %>
 
     </div>
-	  <%= yield %>
-	</div><!-- content -->
-		<script>
-		$(document).ready(function(){
-			lbsc.initializeAdmin();
+   -->
+	<%= yield %>
 	
-		 });
-		 function authToken(){
-		    return '<%= form_authenticity_token if protect_against_forgery? -%>';
-		  }
-		</script>
-		
-		<!--- place dialog form -->
-		 <div aria-labelledby="ui-dialog-title-select_place_dialog" role="dialog" tabindex="-1" class="ui-dialog 
-		  ui-widget ui-widget-content ui-corner-all  ui-draggable" style="display: none; z-index: 1000; outline: 0px none;">
-		  <div style="-moz-user-select: none;" unselectable="on" class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-		  	<span style="-moz-user-select: none;" unselectable="on" id="ui-dialog-title-select_place_dialog" class="ui-dialog-title">
-		  		Select a Place</span>
-		  	<a style="-moz-user-select: none;" unselectable="on" role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#">
-		  	<span style="-moz-user-select: none;" unselectable="on" class="ui-icon ui-icon-closethick">
-		  	close</span></a>
-		  	</div>
-		  	<div class="ui-dialog-content ui-widget-content" id="select_place_dialog" Title = "select a place for challenge" style="">
-		<form action="javascript:void(0)" id="search_places" method="post">
-			<div style="margin: 0pt; padding: 0pt; display: inline;">
-				<input name="authenticity_token" value="te9hH9D7s/FYAvGqVCjU+hmyVlGa8+JckBL+lQiRDeM=" type="hidden">
 
-			</div>    
-			<div class="form_item">
-		      <label for="search_places_name">Name</label>
-		      <input id="search_places_name" name="search_places_name" type="text">
-		    </div>
-		    <div class="form_item">
-		      <label for="search_places_address">Address</label>
-		      <input id="search_places_address" name="search_places_address" type="text">
-		    </div>
-		    <input class="search_btn" name="commit" value="" type="submit">
-		</form>
-		  <div class="s_result">
-		    <p>Enter a name and an address above. Hit search. Then select a result from the map below.</p>
-		  </div>
-
-		  <div class="s_result searching">
-		    <p>Searching...</p>
-		  </div>
-
-		  <div class="s_result error">
-		    <p><strong>No places found.</strong> Perhaps add a new place?</p>
-		  </div>
-
-		  <div class="s_result success" >
-		    <p><strong><span>&nbsp;</span> places found.</strong> Select the correct one from below.</p>
-		  </div>
-		<div id="search_erea" style="float:left">
-		 
-		  <div id="gmap_wrap" class="callout_wrap clear">
-		    <div class="gray">
-		      <div id="search-map"></div>
-		    </div>
-		  </div>
-		<div class="place_list">
-			<ul id = "place_result" style ="width:130px;">
-				
-			</ul>
-		 </div>
-		</div>
-		<div class="save_place clear"> 
-		    <a class="add_place_open" href="javascript:void(0)"></a> 
-		  </div>  
-
-		</div>
-<!--- ask question dialog -->
-<div aria-labelledby="ui-dialog-title-select_place_dialog" role="dialog" tabindex="-1" class="ui-dialog 
-	  ui-widget ui-widget-content ui-corner-all  ui-draggable" style="display: none; z-index: 1000; outline: 0px none;">
-	  <div style="-moz-user-select: none;" unselectable="on" class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-	  	<span style="-moz-user-select: none;" unselectable="on" id="ui-dialog-title-select_place_dialog" class="ui-dialog-title">
-	  		ask a question</span>
-	  	<a style="-moz-user-select: none;" unselectable="on" role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#">
-	  	<span style="-moz-user-select: none;" unselectable="on" class="ui-icon ui-icon-closethick">
-	  	close</span></a>
-	  	</div>
-       
-   <div class="ui-dialog-content ui-widget-content" id="ask_question_dialog" Title = "ask a question" style="">		
-
-        <div id="place_name_div" class="place_name_question_dialog">
-           <input id="ask_question_place_id" type="hidden"></input>
-           <span id="ask_question_place_name"></span>
-           <select id="question_points">
-			<option value="volvo">5</option>
-			<option value="saab">15</option>
-			<option value="fiat">20</option>
-		</select>
-         </div>
-        <div id="question_div" class="question_box_dialog">
-          <textarea id="question_input" class="question_inputbox_dialog"> </textarea>
-        </div>
-  </div>
-</div>
   </body>
 </html>
