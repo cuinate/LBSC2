@@ -55,7 +55,14 @@ class PlacesController < ApplicationController
             place_hot =  Place.order('places.questions_count DESC').limit(items_limit)
             hot_place = Array.new
             place_to_hash(hot_place,place_hot)
-            render :json => hot_place.to_json
+            
+            #SP11-2.1 Place hot
+            respond_to do |format|
+              format.html # hot.html.erb
+              format.xml  { render :xml => @challenge }
+              format.json { render :json => hot_place}
+            end
+
       
       end
 #SP10-2.1 Tagged places by user
@@ -96,6 +103,7 @@ class PlacesController < ApplicationController
                place_hash = Hash.new
                place_hash["place_id"] = p.id
                place_hash["place_name"] = p.name
+               place_hash["place_address"] = p.address
                place_hash["latitude"] = p.latitude
                place_hash["longtitude"]= p.longtitude
                place_hash["questions_count"] = p.questions_count

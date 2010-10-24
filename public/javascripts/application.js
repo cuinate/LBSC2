@@ -209,7 +209,7 @@ var lbsc = function(){
 				 'class':'search_place_have_result',
 				// 'id': place.place["id"],
 		           click: function() {
-		           //  alert("got you!" + place.place["id"] + place_name);
+		           // alert("got you!" + place.place["id"] + place_name);
 		 			$("#ask_question_place_name").append(place.place["name"]);
 					$("#ask_question_place_id").attr("value",place.place["id"]);
 					$("#ask_question_dialog").dialog("open");
@@ -224,6 +224,7 @@ var lbsc = function(){
 		search_result.append('<li class = "search_result_new_place" id="search_add_new_place"> 没有发现地点，新增一个吧！</li>')
 		setTimeout(hide_search_result,5000);
 		$("#search_add_new_place").click(function(){
+		  //	alert("got tyou");
 			search_add_new_place();
 		});
 		}
@@ -250,7 +251,7 @@ var lbsc = function(){
 			add_place_name = query;
 			if (query.length > 0){
 				$.getJSON(
-					'place/like.json',
+					'/place/like.json',
 					{
 						paras:  query
 					},

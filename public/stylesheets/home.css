@@ -410,13 +410,17 @@ div#selected_place{
 	//background-color: red;
 	
 }
-.quesstion_item_summary{
+.quesstion_item_summary, .place_item_summary{
 	width: 82px;
 	background-color: #5d1770;
 	color: #ffffff;
 	float: left;
 }
-.quesstion_item_summary td{
+.place_item_summary{
+	width: 98px;
+	float: right;
+}
+.quesstion_item_summary td , .place_item_summary td{
 	padding: 2px;
 	text-align: center;
 	font-weight: bold;
