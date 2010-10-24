@@ -9,3 +9,5 @@
   rake db:create
   rake db:migrate
 7. 玩了
+
+Hello!
