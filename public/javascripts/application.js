@@ -23,7 +23,7 @@ var lbsc = function(){
   }
 
 
- var initializeAdmin = function() {
+ var initializeAdmin1 = function() {
     initializeDefaults();
     initializeMap('gmap_wrap');
     centerMapOnAddress();
@@ -244,7 +244,12 @@ var lbsc = function(){
 	
 	var initializeAdmin = function(){
 		initializeDefaults();
-		
+		$("#search_input").focus(function(){
+			this.value = '';
+		});
+		$("#search_input").focusout(function(){
+			this.value = '输入地点名称进行查询：';
+		});
 		$("#search_input").keyup(function(){
 //		$("#search_input").live("change",function(){
 			var query = $(this).val();

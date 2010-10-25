@@ -1,16 +1,17 @@
 <div id="header">
-	    <a href="/">
+	    <a href="/" alt="回到主页">
 		<%= image_tag "logo.png", :alt => "logo",
 		                          :id => "logo" %>
 		</a>
 		<div id="search_box">
-		<input id="search_input"  value=""><div id="search_str">搜索</div>
+		<input id="search_input"  value="输入地点名称进行查询"><div id="search_str">搜索</div>
 		<ul id="search_result"> </ul>
 		</div>
 		<%if !current_user %>
 		<div id="login_str"><a href="/login"> 登录</a></div>
 		<%else%>
-		<div id="login_str"><a href="/logout"> 登出</a></div>
+		<div id="user_str"><a href="#"><%= current_user.name%></a> </div>
+		<div id="logout_str"><a href="/logout"> 登出</a></div>
 		<%end%>
 </div><!-- header -->
 
@@ -19,12 +20,7 @@
 		<script>
 		$(document).ready(function(){
 			lbsc.initializeAdmin();
-			$("#search_input").focus(function(){
-				this.value = '';
-			});
-			$("#search_input").focusout(function(){
-				this.value = '输入地点名称进行查询：';
-			});
+		
 		 });
 		 function authToken(){
 		    return '<%= form_authenticity_token if protect_against_forgery? -%>';

@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
 
   def create
     
-    user = User.authenticate(params[:login], params[:password])
-    if user
-        self.current_user = user
+    current_user = User.authenticate(params[:login], params[:password])
+    if current_user
+        self.current_user = current_user
 
         # Remember me functionality
         new_cookie_flag = (params[:remember_me] == "on")

@@ -14,7 +14,7 @@ img	{
 }
 
 a { color: #005481; margin: 0; padding: 0; text-decoration: none; }  
-	a:hover { text-decoration: underline; }
+a:hover {text-decoration: underline; color: #de741d;}
 	
 .input_style {  
   box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
@@ -127,14 +127,24 @@ Header
 	font-size: 1.4em;
 	font-weight: bold;
 }
-#header #login_str, #settings_str, #header_links{
+#header #login_str, #logout_str, #settings_str, #header_links{
 	color:#008cb1;
 	position: absolute;
 	height:30px;
 	width:50px;
 	right:20px;
 	bottom:5px;;
-	font-size: 1.4em;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+#user_str{
+	color:#008cb1;
+	position: absolute;
+	height:30px;
+	width:50px;
+	right:150px;
+	bottom:5px;;
+	font-size: 1.3em;
 	font-weight: bold;
 }
 #search_result{
