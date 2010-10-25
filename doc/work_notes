@@ -9,3 +9,5 @@ view : users_view :new_html.erb || sessions : new_html.erb
 notes : add all error message in and change the layout 
 
 ＝＝＝＝SP11-1.3 一些view 和link的优化
+
+==== SP11-1.4  my following ?

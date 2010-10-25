@@ -118,7 +118,7 @@ class PlacesController < ApplicationController
             items_limit = 10
             current_lat = params[:lat].to_f
             current_lng = params[:lng].to_f
-            place_nearby = Place.show_place(current_lat,current_lng,items_limit)
+            place_nearby = Place.show_place_nearby(current_lat,current_lng,items_limit)
             nearby_place = Array.new
             place_to_hash(nearby_place,place_nearby)
             render :json => nearby_place.to_json
