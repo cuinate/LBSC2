@@ -1,37 +1,23 @@
-<div id ="content">
-<div id ="color-header" style="background:#008cb1; width:490px; height:54px;">
-	<span style=" position:relative; display: block;font-size :20px; left:10px ;top:10px ; font-weight:bold; color: #ffffff;"> 登录</span>
-</div>
-
-
-<div id="log_in_form" class ="form_content">
-<span class ="lb_field_tag"> 没有帐号？<%= link_to "现在注册", signup_path %></span>
-<%= form_tag sessions_path do %>
- <div id="username" class="form_field" >
-  <span class="lb_field_tag">
-    <%= label_tag :login, "帐号：" %></span>
-  <span class = "lb_field">
-    <%= text_field_tag :login, params[:login] %>
-  </span>
- </div>
- <div id="password" class="form_field">
-  <span class="lb_field_tag">
-    <%= label_tag :密码： %></span>
-	 <span class="lb_field">
-    <%= password_field_tag :password %>
-  </span>
-  </div>
-  <div id="checkme" class = "form_field">
-    <span
+<div id="content">
+<div id="login" class="standard_form">
 	
-	<%= check_box_tag :remember_me,params[:remember_me] %>
-    <%= label_tag :记住我（两周内）? %>
-    
-	</span>
-  </div>
-   <div id="checkme" class = "form_field">
-  <span class = "lb_form_submit" style="top:50px;"><%= submit_tag "登录" %></span>
-	</div>
-<% end %>
-</div><!-- form content end -->
-</div><!-- content end -->
+	<%= form_tag sessions_path do %>
+	<h1>登录(没有帐号，现在<a href="/signup"> 注册 </a> 一个？)</h1>
+	 <label for="login">
+       用户名或者电子邮件地址<br>
+	   <%= text_field_tag :login, params[:login] ,:class=>"text"%>
+     </label>
+
+	 <label for="password">
+        密码
+        <br>
+		 <%= password_field_tag :password ,params[:password],:class=>"text"%>
+      </label>
+
+	  <label>
+	        <%= submit_tag "登录" ,:class =>"input submit"%>
+	  </label>
+	<% end %>
+ 
+</div>
+</div>

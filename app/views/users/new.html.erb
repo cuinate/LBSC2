@@ -1,49 +1,36 @@
-<div id ="content">
-<div id ="color-header" style="background:#008cb1; width:490px; height:54px;">
-	<span style=" position:relative; display: block;font-size :20px; left:10px ;top:10px ; font-weight:bold; color: #ffffff;"> 登录</span>
+<div id="content">
+<div id="signup" class="standard_form">
+	
+	<%= form_for @user do |f| %>
+	<h1>
+	<p>注册 ( 已经有帐号？ <%= link_to "登录", login_path %>)</p></h1>
+	 <label for="username">
+       用户名<br>
+		<%= f.text_field :name ,:class=>"text"%>
+     </label>
+
+	 <label for="email">
+        电子邮件
+        <br>
+		<%= f.text_field :e_mail ,:class=>"text"%>
+      </label>
+	 <label for="password">
+       密码
+        <br>
+		<%= f.password_field :password ,:class=>"text"%>
+      </label>
+	 <label for="password_confirm">
+       密码确认
+        <br>
+		<%= f.password_field :password_confirmation ,:class=>"text"%>
+      </label>
+
+ 
+	  <label>
+	        <%= submit_tag "注册" ,:class =>"input submit"%>
+	  </label>
+	<% end %>
+ 
+</div>
 </div>
 
-
-<div id="log_in_form" class ="form_content">
-
-<p>Already have an account? <%= link_to "Log in", login_path %>.</p>
-
-<%= form_for @user do |f| %>
-  <%= f.error_messages %>
-  <div id="username" class="form_field" >
-  <span class="lb_field_tag">
-    <%= f.label :姓名 %>
-  </span>
-  <span class = "lb_field">
-    <%= f.text_field :name %>
-  </span>
-  </div>
-   <div id="username" class="form_field" >
-  <span class="lb_field_tag">
-    <%= f.label :e_mail, "邮件" %>
-  </span>
-  <span class = "lb_field">   
-    <%= f.text_field :e_mail %>
-  </span>
-  </div>
-   <div id="username" class="form_field" >
-  <span class="lb_field_tag">
-    <%= f.label :密码 %>
-  </span>
-	<span class = "lb_field">   
-    <%= f.password_field :password %>
-    </span>
-  </div>
-     <div id="username" class="form_field" >
-	  <span class="lb_field_tag">
-    <%= f.label :password_confirmation, "确认" %></span>
-     <span class="lb_field">
-    <%= f.password_field :password_confirmation %>
-    </span>
-   </div>
-  <div id="checkme" class = "form_field">
-  <span class = "lb_form_submit" style="top:50px;">
-  <%= f.submit "Sign up" %></span>
-<% end %>
-</div><!-- form content end -->
-</div><!-- content end -->

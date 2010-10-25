@@ -13,10 +13,9 @@ img	{
 	border: 0;
 }
 
-a {
-	outline: none;
-}
-
+a { color: #005481; margin: 0; padding: 0; text-decoration: none; }  
+	a:hover { text-decoration: underline; }
+	
 .input_style {  
   box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
   -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
@@ -343,7 +342,7 @@ Place list page
 .list_item_title {
 	width: 400px;
 	height: 35px;
-	font-size: 1.4em;
+	font-size: 1.3em;
 	font-weight: bold;
 	//border: 1px dotted red;
 }	
@@ -442,4 +441,42 @@ div#selected_place{
 .avatar{
 	float: left;
 	border: 2px solid #ffffff;
+}
+/*
+==================================
+	common css
+==================================
+*/
+.standard_form{width:500px;margin:3em auto 0 auto;background-color:#eaf2f5;padding:2em 2em 1em 2em;border:20px solid #ddd;}
+.standard_form .nothing-to-see-here{font-size:18px;font-weight:bold;color:#222;margin-top:0;}
+.standard_form pre{font-size:13px;}
+.standard_form h1{font-size:160%;margin-bottom:1em;}
+.standard_form h1 a{font-size:70%;font-weight:normal;}
+.standard_form h2{margin:0;}
+.standard_form p{margin:.5em 0;}
+.standard_form p.note{color:#a00;}
+.standard_form form label,.standard_form form .label,label.standard{font-size:110%;color:#666;display:block;margin:0;margin-top:1em;}
+.standard_form form label a{font-size:110%;}
+.standard_form form label.error{color:#a00;}
+.standard_form form .label label{margin:0;color:black;font-size:95%;}
+.standard_form form .label span{font-size:90%;color:#888;}
+.standard_form form input.text,.standard_form form textarea{padding:5px;border:1px solid #888;}
+.standard_form form input.text{font-size:110%;width:25em;}
+.standard_form form input.submit{
+		clear:both;
+		background-color:#008cb1;
+		border:none;
+		color:#fff;
+		cursor: pointer;
+		font-weight: normal;
+		font-size: 16px;
+		overflow: visible;
+		padding: 6px 20px;
+		text-align: center;
+		margin:0,auto;
+		-webkit-border-top-right-radius: 4px;
+		-webkit-border-top-left-radius: 4px;
+		-webkit-border-bottom-right-radius: 4px;
+		-webkit-border-bottom-left-radius: 4px;
+		-moz-border-radius: 4px 4px 4px 4px;
 }

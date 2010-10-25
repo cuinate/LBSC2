@@ -2,43 +2,26 @@
 	<div id="content_sub_left">
 	<div id="pl_nav"><span id="place_list_active">热门地点</span><span class="inactive">热门问题</span><!--span>我的关注</span--></div>
 	<div id="pl_items">
+		<% @place_hot.each do |p|%>
 		<div class="list_item">
 			<div class="list_item_summary">
-			<div class="list_item_title">新中关购物中心</div>
-			<div class="list_item_desc">北京市海淀区中关村大街19号新中关大厦</div>
+			<div class="list_item_title"><%=p.name%></div>
+			<div class="list_item_desc"><%=p.address%></div>
 			</div>
 			<div class="place_item_summary">
-			 <table><tr><td>3</td><td>7</td></tr><tr><td>未回答</td><td>问题</td></tr></table>
+			 <table><tr>
+				<td><%=p.questions.unanswered.size()%></td>
+				<td><%= p.questions.size()%></td></tr><tr>
+				<td>未回答</td><td>问题</td></tr></table>
 			</div>
 		</div>
-		<div class="list_item">
-			<div class="list_item_summary">
-			<div class="list_item_title">新中关购物中心</div>
-			<div class="list_item_desc">北京市海淀区中关村大街19号新中关大厦</div>
-			</div><img class="mark" src="../images/mark.png" alt="关注" />
-		</div>
-		<div class="list_item">
-			<div class="list_item_summary">
-			<div class="list_item_title">新中关购物中心</div>
-			<div class="list_item_desc">北京市海淀区中关村大街19号新中关大厦</div>
-			</div><img class="mark" src="../images/mark.png" alt="关注" />
-		</div>
-		<div class="list_item">
-			<div class="list_item_summary">
-			<div class="list_item_title">新中关购物中心</div>
-			<div class="list_item_desc">北京市海淀区中关村大街19号新中关大厦</div>
-			</div><img class="mark" src="../images/mark.png" alt="关注" />
-		</div>
-		<div class="list_item">
-			<div class="list_item_summary">
-			<div class="list_item_title">新中关购物中心</div>
-			<div class="list_item_desc">北京市海淀区中关村大街19号新中关大厦</div>
-			</div><img class="mark" src="../images/mark.png" alt="关注" />
-		</div>
+		<% end %>
+	
 
-		</div>
+	</div><!-- place list items end -->
 	</div><!-- content_sub_left -->
 	<div id="content_sub_right">
+	<%if current_user %>
 	<h3 class="inactive">我的关注 -- 地点</h3>
 	<ul id="p">
 		<li>新中关购物中心</li>
@@ -48,7 +31,8 @@
 	<h3 id="q" class="inactive">我的关注 -- 问题</h3>
 	<ul>
 		<li>几点开门</li>
-	</ul>	
+	</ul>
+	<% end %>	
 	</div>
 	<div class="clear"> </div>
 </div>

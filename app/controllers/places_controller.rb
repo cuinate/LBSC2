@@ -52,14 +52,13 @@ class PlacesController < ApplicationController
 #SP10-2.1 hot place action
       def hot
             items_limit = 20
-            place_hot =  Place.order('places.questions_count DESC').limit(items_limit)
+            @place_hot =  Place.order('places.questions_count DESC').limit(items_limit)
             hot_place = Array.new
-            place_to_hash(hot_place,place_hot)
+            place_to_hash(hot_place,@place_hot)
             
             #SP11-2.1 Place hot
             respond_to do |format|
               format.html # hot.html.erb
-              format.xml  { render :xml => @challenge }
               format.json { render :json => hot_place}
             end
 
