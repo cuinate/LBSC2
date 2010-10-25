@@ -20,6 +20,9 @@ Lbsc2::Application.routes.draw do
   match 'place/nearby' =>'places#nearby'
   match 'place/like'   =>'places#like'
   match 'place/tagged' =>'places#tagged'
+  
+# Questions
+  match 'question/hot' =>'questions#hot'
   resources :sessions
 
   resources :users

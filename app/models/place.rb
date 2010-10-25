@@ -2,6 +2,9 @@ class Place < ActiveRecord::Base
   has_many :questions
   has_many :activities
   scope :name_address, select("name,address")
+  scope :place_id, select("id")
+  
+  
   def self.show_place_nearby(current_lat, current_lng,items_limit)
       
       # caculate the boundary of rectangle 
