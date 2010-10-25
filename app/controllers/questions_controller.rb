@@ -57,6 +57,7 @@ class QuestionsController < ApplicationController
            question_hash["place_name"] = q.place.name
            question_hash["description"] = q.description
            question_hash["answers_count"] = q.answers_count
+           question_hash["votes_sum"] = q.answers.votes_sum.first.votes_sum
           # question_hash["unanswered_count"] = p.questions.unanswered.size()
            hash_array[i] = question_hash
        end

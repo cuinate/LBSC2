@@ -1,9 +1,9 @@
 class Answer < ActiveRecord::Base
   belongs_to :question,  :counter_cache => true
+#  scope :votes_sum, select("sum(up_counts) + sum(down_counts) as votes_sum")
  
-  
-  def self.votes_sum(question_id)
-     where(:place_id => question_id).
+#SP12-1 votes sum for one associated questions
+  def self.votes_sum
      select("sum(up_counts) + sum(down_counts) as votes_sum")
    end
    
