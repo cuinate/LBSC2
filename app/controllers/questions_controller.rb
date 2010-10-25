@@ -26,10 +26,7 @@ class QuestionsController < ApplicationController
     if @questions_hot
       question_to_hash(hot_questions,@questions_hot)
     else
-       m_result ={
-         :result => "0"
-         }
-      hot_questions[0] = m_result
+      hot_questions[0] = 0
     end
     
     
@@ -44,10 +41,7 @@ class QuestionsController < ApplicationController
 #SP10-2.1 convert place result into hash array
   def question_to_hash(hash_array,question)
         i = 0 
-        m_result ={
-         :result => "1"
-         }
-       hash_array[i] = m_result
+       hash_array[i] = 1
        
        question.each do |q|
             i = i + 1
