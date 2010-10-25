@@ -3,6 +3,14 @@
 	
 	<%= form_tag sessions_path do %>
 	<h1>登录(没有帐号，现在<a href="/signup"> 注册 </a> 一个？)</h1>
+
+	<% flash.each do |key, msg|%>
+	<div class="error_box">	<%= content_tag :p, msg, :id =>key%></div>
+	<% end%>
+	<%if flash[:notice]%>
+	<div class="notice_box"><%= flash[:notice]%></div>
+	<% end%>
+	
 	 <label for="login">
        用户名或者电子邮件地址<br>
 	   <%= text_field_tag :login, params[:login] ,:class=>"text"%>

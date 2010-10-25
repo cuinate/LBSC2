@@ -2,4 +2,8 @@
 ＝＝＝ SP11-1	place list view	＝＝＝＝＝
 View :  place list view , log in view , sign-up view 
 CSS  :  add "github like" standard form 
-partial view : header view 
+partial view : header view
+
+=== SP11-1.2 singup login view ==== 
+view : users_view :new_html.erb || sessions : new_html.erb
+notes : add all error message in and change the layout 

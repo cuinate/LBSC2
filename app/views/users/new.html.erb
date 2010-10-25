@@ -4,6 +4,9 @@
 	<%= form_for @user do |f| %>
 	<h1>
 	<p>注册 ( 已经有帐号？ <%= link_to "登录", login_path %>)</p></h1>
+	<% @user.errors.full_messages.each do |msg|%>
+	<div class="error_box">	<%= msg %></div>
+	<% end%>
 	 <label for="username">
        用户名<br>
 		<%= f.text_field :name ,:class=>"text"%>

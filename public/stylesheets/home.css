@@ -447,6 +447,8 @@ div#selected_place{
 	common css
 ==================================
 */
+.error_box{background:#FFEBE8 none repeat scroll 0;border:1px solid #DD3C10;padding:1em;font-weight:bold;}
+.notice_box{background:#bfedc6 none repeat scroll 0;border:1px solid #539d31;padding:1em;font-weight:bold;}
 .standard_form{width:500px;margin:3em auto 0 auto;background-color:#eaf2f5;padding:2em 2em 1em 2em;border:20px solid #ddd;}
 .standard_form .nothing-to-see-here{font-size:18px;font-weight:bold;color:#222;margin-top:0;}
 .standard_form pre{font-size:13px;}
