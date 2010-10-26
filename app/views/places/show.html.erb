@@ -1,0 +1,41 @@
+<div id="content_sub">
+	<div id="content_sub_left">
+		
+		<div id="pl_header">
+			
+			
+			<div id = "place_icon">
+				<%= image_tag "pl_ico.png", :alt => "logo",
+				                            :id => "logo"%>
+			</div>
+			<div class="place_header_summary">
+				<div class="list_item_title"><%=@place.name%></div>
+				<div class="list_item_desc"><%=@place.address%></div>
+			</div>
+			<div id="follow_place"></div>
+		</div> <!--place/id header end -->
+		
+		<div id="pl_nav">
+		</div>
+		
+		<div id= "question_items">
+		</div>
+		
+    </div> <!--- sub left end -->
+	<div id="content_sub_right">
+	<%if current_user %>
+	<h3 class="inactive">我的关注 -- 地点</h3>
+	<ul id="p">
+		<li>新中关购物中心</li>
+		<li>新中关购物中心</li>
+		<li>新中关购物中心</li>
+	</ul>
+	<h3 id="q" class="inactive">我的关注 -- 问题</h3>
+	<ul>
+		<li>几点开门</li>
+	</ul>
+	<% end %>	
+	</div>
+	<div class="clear"> 
+	</div> <!--content right end -->
+</div><!-- content sub end -->

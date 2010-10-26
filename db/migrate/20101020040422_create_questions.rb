@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.integer :place_id
       t.string   :description
-      t.integer  :points
+      t.integer  :points, :default => 0
       t.integer  :user_id
 
       t.timestamps

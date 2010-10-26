@@ -4,35 +4,12 @@ class PlacesController < ApplicationController
 #SP3-2.1 
 # { Type: 1~4, paras: name or blank}
       def show
-        show_type = params[:type]
-        show_para = params[:paras]
-        logger.info(show_type)
-  
-        if show_type == "1"
-              # find by name 
-              @place = Place.find(:all, :conditions =>["name LIKE?", "%#{show_para}%"])
-        elsif show_type == "2"
-             # find by id
- 
-             # -- get the unanswered the questions number. 
-            # hot_place = place.select()
-            # @place = Place.find(:all, :limit => item_limit, :order =>"questions_count DESC")
-        else 4
-              place = nil
+        @place = Place.find(params[:id])
+        respond_to do |format|
+          format.html # show.html.erb
+          format.json { render :json => @place}
         end
-  
-        if @place
-          if show_type == "3"
-            render :json => hot_place.to_json
-          else
-          render :json => @place.to_json
-          end
-        else 
-           m_result ={
-            :result => "0"
-            }
-          render :json => m_result.to_json
-        end
+       
       end 
 #SP10-2.1 places like the name :
       def like 

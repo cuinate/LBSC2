@@ -4,8 +4,8 @@ class CreateAnswers < ActiveRecord::Migration
       t.integer :user_id
       t.integer :question_id
       t.string  :description
-      t.integer :up_counts
-      t.integer :down_counts 
+      t.integer :up_counts , :default => 0
+      t.integer :down_counts, :default => 0 
       t.boolean :is_choosen, :default => 0
 
       t.timestamps

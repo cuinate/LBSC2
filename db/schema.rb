@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(:version => 20101021115839) do
     t.integer  "user_id"
     t.integer  "question_id"
     t.string   "description"
-    t.integer  "up_counts"
-    t.integer  "down_counts"
+    t.integer  "up_counts",   :default => 0
+    t.integer  "down_counts", :default => 0
     t.boolean  "is_choosen",  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20101021115839) do
   create_table "questions", :force => true do |t|
     t.integer  "place_id"
     t.string   "description"
-    t.integer  "points"
+    t.integer  "points",        :default => 0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

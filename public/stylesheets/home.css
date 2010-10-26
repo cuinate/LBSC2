@@ -56,7 +56,12 @@ body	{
 	margin-top: 0px;
 	zoom: 1;
 	
-	//border: 1px solid red;
+	border: 1px solid #999;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 }
 #content_sub_left {
 	//border: 4px solid;
@@ -327,7 +332,56 @@ Place list page
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
-#pl_nav a:hover {text-decoration: none;}	
+#pl_nav a:hover {text-decoration: none;}
+/*---- place/id page ----- */
+#pl_header {
+	width: 700px;
+	height: 70px;
+	//border: 1px dotted red;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	float :left;
+}
+#pl_header_promo{
+
+	width: 60px;
+	height:70px;
+	background: url(../images/pl_header_promo.png) no-repeat center left;
+	padding-top: 0px;
+	padding-bottom: 15px;
+	float :left;
+}
+#pl_header #place_icon{
+	width: 50px;
+	height:70px;
+	//border: 1px dotted red;
+	padding-top: 0px;
+	padding-bottom: 15px;
+	float:left;
+}
+.place_header_summary {
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-left:10px;
+	padding-right :10px;
+	height: 70px;
+	width: 400px;
+	//border: 1px dotted red;	
+	float: left;
+	}
+
+#pl_header #follow_place {
+	width: 20px;
+	background: url(../images/follow_pl_icon.png) right no-repeat;
+	//border: 1px dotted red;
+	padding-left:20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	float:left;
+}
+
+
+
 #pl_items #question_items{
 	width: 700px;
 	//border: 1px dotted blue;
@@ -467,7 +521,14 @@ div#selected_place{
 */
 .error_box{background:#FFEBE8 none repeat scroll 0;border:1px solid #DD3C10;padding:1em;font-weight:bold;}
 .notice_box{background:#bfedc6 none repeat scroll 0;border:1px solid #539d31;padding:1em;font-weight:bold;}
-.standard_form{width:500px;margin:3em auto 0 auto;background-color:#eaf2f5;padding:2em 2em 1em 2em;border:20px solid #ddd;}
+.standard_form{width:500px;margin:3em auto 0 auto;background-color:#eaf2f5;padding:2em 2em 1em 2em;border:20px solid #ddd;
+-webkit-border-top-right-radius: 8px;
+-webkit-border-top-left-radius: 8px;
+-webkit-border-bottom-right-radius: 8px;
+-webkit-border-bottom-left-radius: 8px;
+-moz-border-radius: 8px 8px 8px 8px;
+
+}
 .standard_form .nothing-to-see-here{font-size:18px;font-weight:bold;color:#222;margin-top:0;}
 .standard_form pre{font-size:13px;}
 .standard_form h1{font-size:160%;margin-bottom:1em;}
