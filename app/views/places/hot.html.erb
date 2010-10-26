@@ -1,6 +1,10 @@
 <div id="content_sub">
 	<div id="content_sub_left">
-	<div id="pl_nav"><span id="place_list_active">热门地点</span><span class="inactive">热门问题</span><!--span>我的关注</span--></div>
+	<div id="pl_nav">
+	<a href="/place/hot"><span id="place_list_active">热门地点</span></a>
+	<a href="/question/hot"><span class="inactive">热门问题</span></a>
+	<!--span>我的关注</span--></div>
+
 	<div id="pl_items">
 		<% @place_hot.each do |p|%>
 		<div class="list_item">

@@ -21,11 +21,11 @@ class QuestionsController < ApplicationController
   def hot
     items_limit = 20
     @questions_hot =  Question.order('answers_count DESC , place_id').limit(items_limit)
-    hot_questions = Array.new
+    @hot_questions = Array.new
     
     if @questions_hot
-      question_to_hash(hot_questions,@questions_hot)
-        logger.info("hot_questions::value  ------>#{ hot_questions}")
+      question_to_hash(@hot_questions,@questions_hot)
+       
     else
        m_result ={
          :result => 0
@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
     #SP11-2.1 Place hot
     respond_to do |format|
       format.html # hot.html.erb
-      format.json { render :json => hot_questions}
+      format.json { render :json => @hot_questions}
     end
     
   end

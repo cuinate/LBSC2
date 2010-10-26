@@ -1,0 +1,57 @@
+<div id="content_sub">
+	<div id="content_sub_left">
+	<div id="pl_nav"><a href="/place/hot"><span class="inactive">热门地点</span></a>
+		<a href="/question/hot"><span id="place_list_active">热门问题</span></a>
+			<!--span>我的关注</span--></div>
+	<div id="question_items">
+		<% @hot_questions.each do |p|%>
+		<div class = "ques_place_header" id = "place_header">
+			<span class = "list_item_desc" style="font-size:120%;"> <%= p["place_name"]%> </span>
+		</div>
+		<% p["questions"].each do |q|%>
+		<div class="question-summary narrow" id="question-summary-8472">
+
+		    <div class="summary">
+		        <h3><a href="#" class="question-hyperlink" title="# "><%= q["description"]%></a></h3>
+
+		        <div class="started">
+		            <a href="#" class="started-link"><span title="2010-10-26 01:29:43Z" class="relativetime">9s ago</span></a>
+		            <a href="#">提问者</a> 
+		        </div>
+		    </div> <!--sumary end -->
+			<% if (q["answers_count"] == 0)%>
+			<div class="status unanswered" title="#">
+			<% else%>
+		    <div class="status answered-accepted" title="#">
+			<% end %>
+	            <div class="mini-counts"><%= q["answers_count"] %></div>
+	            <div>回答</div>
+	        </div>
+	        <div class="votes">
+	            <div class="mini-counts"><%= q["votes_sum"]%></div>
+	            <div>投票</div>
+	        </div>
+		</div>
+		<% end %>
+	
+		<% end %>
+	
+
+	</div><!-- place list items end -->
+	</div><!-- content_sub_left -->
+	<div id="content_sub_right">
+	<%if current_user %>
+	<h3 class="inactive">我的关注 -- 地点</h3>
+	<ul id="p">
+		<li>新中关购物中心</li>
+		<li>新中关购物中心</li>
+		<li>新中关购物中心</li>
+	</ul>
+	<h3 id="q" class="inactive">我的关注 -- 问题</h3>
+	<ul>
+		<li>几点开门</li>
+	</ul>
+	<% end %>	
+	</div>
+	<div class="clear"> </div>
+</div>

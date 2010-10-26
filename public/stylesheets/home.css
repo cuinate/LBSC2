@@ -327,7 +327,8 @@ Place list page
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
-#pl_items {
+#pl_nav a:hover {text-decoration: none;}	
+#pl_items #question_items{
 	width: 700px;
 	//border: 1px dotted blue;
 	padding-top: 15px;
@@ -391,8 +392,9 @@ span#place_list_active {
 	background: url(../images/place_list_active_bottom.png) bottom repeat-x;
 	padding-left: 8px;
 	padding-right: 8px;
-	padding-bottom: 15px;	
+	padding-bottom: 15px;
 }
+
 
 /*
 ============================================
@@ -498,3 +500,36 @@ div#selected_place{
 		-webkit-border-bottom-left-radius: 4px;
 		-moz-border-radius: 4px 4px 4px 4px;
 }
+/* 
+=========================================
+   question list 
+=========================================
+*/
+
+.ques_place_header{
+padding: 11px 0px 11px 20px;
+width:700px;
+float:left;
+border-bottom: 1px dotted #999;
+}
+.summary h3{font-size:120%;}
+.started-link,.started-link:visited{color:#999;}
+.summary{float:left;width:400px;}
+.narrow .summary{width:550px;}
+.narrow .started{width:auto;line-height:inherit;padding-top:4px;white-space:nowrap;}
+.started{width:185px;color:#999;float:left;line-height:18px;}
+.narrow .stats{background:none;margin:0 0 0 7px;padding:0;width:auto;height:48px;float:left;}
+.votes{color:#555;padding:0 0 7px 0;text-align:center;}
+.narrow .votes{background:#eee;float:left;margin:0 3px 0 0;padding:5px;width:38px;height:38px;}
+.status{margin-top:-3px;padding:4px 0 4px;text-align:center;}
+.narrow .status{float:left;margin:0 3px 0 0;padding:5px;width:48px;height:38px;}
+.status strong{color:#fff;display:block;font-size:100%;}
+.answered{background:#75845C;color:#fff;}
+.answered-accepted{background:#75845C;color:#E1E818;}
+.answered-accepted strong{color:#E1E818;}
+.unanswered {background: #9A4444;color: white;}
+.question-summary {border-bottom: 0px dotted #999;float: left;overflow: hidden;padding: 11px 0px 5px 50px;width: 680px;}
+.votes {color: #555;padding: 0px 0px 7px;text-align: center;}
+
+.mini-counts {font-size: 130%;font-weight: bold;height: 25px;}
+.answered-accepted {background: #75845C;color: #E1E818;}
