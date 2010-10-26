@@ -9,7 +9,7 @@
 		<% @place_hot.each do |p|%>
 		<div class="list_item">
 			<div class="list_item_summary">
-			<div class="list_item_title"><%=p.name%></div>
+			<div class="list_item_title"><a href="/places/<%=p.id%>"><%=p.name%></a></div>
 			<div class="list_item_desc"><%=p.address%></div>
 			</div>
 			<div class="place_item_summary">

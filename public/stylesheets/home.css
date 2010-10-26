@@ -318,6 +318,7 @@ Place list page
 #header #header_links, #pl_nav{
 	font-size: 1.4em;
 }
+
 #header #header_links{
 	width:150px;
 	right:130px;	
@@ -332,11 +333,20 @@ Place list page
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
-#pl_nav a:hover {text-decoration: none;}
+#ql_nav {
+	width: 700px;
+	//border: 1px dotted red;
+	padding-top: 20px;
+	padding-left:20px;
+	padding-bottom: 15px;
+	float:left;
+	font-size: 1.2em;
+}
+#pl_nav #ql_nav a:hover {text-decoration: none;}
 /*---- place/id page ----- */
 #pl_header {
 	width: 700px;
-	height: 70px;
+	height: 60px;
 	//border: 1px dotted red;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -357,6 +367,7 @@ Place list page
 	//border: 1px dotted red;
 	padding-top: 0px;
 	padding-bottom: 15px;
+	padding-left:50px;
 	float:left;
 }
 .place_header_summary {
@@ -383,7 +394,7 @@ Place list page
 
 
 #pl_items #question_items{
-	width: 700px;
+	width: 650px;
 	//border: 1px dotted blue;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -448,6 +459,14 @@ span#place_list_active {
 	padding-right: 8px;
 	padding-bottom: 15px;
 }
+span#question_list_active {
+	color: #592068;
+	background: url(../images/question_list_active_bottom.png) bottom repeat-x;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 15px;
+}
+
 
 
 /*
@@ -575,8 +594,8 @@ border-bottom: 1px dotted #999;
 }
 .summary h3{font-size:120%;}
 .started-link,.started-link:visited{color:#999;}
-.summary{float:left;width:400px;}
-.narrow .summary{width:550px;}
+.summary{float:left;width:350px;}
+.narrow .summary{width:500px;}
 .narrow .started{width:auto;line-height:inherit;padding-top:4px;white-space:nowrap;}
 .started{width:185px;color:#999;float:left;line-height:18px;}
 .narrow .stats{background:none;margin:0 0 0 7px;padding:0;width:auto;height:48px;float:left;}
@@ -594,3 +613,14 @@ border-bottom: 1px dotted #999;
 
 .mini-counts {font-size: 130%;font-weight: bold;height: 25px;}
 .answered-accepted {background: #75845C;color: #E1E818;}
+
+/* new added */
+.statscontainer {float: left;margin-right: 8px;width: 86px;}
+.stats {background: #EEE;margin: 0px 0px 0px 7px;padding: 4px 7px 6px;width: 58px;}
+.statsarrow {
+background-position: 0px -435px;
+float: right;
+height: 13px;
+margin-top: 12px;
+width: 7px;
+}

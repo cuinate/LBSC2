@@ -15,13 +15,47 @@
 			<div id="follow_place"></div>
 		</div> <!--place/id header end -->
 		
-		<div id="pl_nav">
+		<div id="ql_nav">
+			
+			<a href="/place/hot"><span id="question_list_active">最新更新</span></a>
+			<a href="/question/hot"><span class="inactive">open question </span></a>
+			<a href="/question/hot"><span class="inactive">动态</span></a>
+			
 		</div>
 		
 		<div id= "question_items">
-		</div>
+				<% @place.questions.each do |q|%>
+				<div class="question-summary narrow" id="question-summary">
+				    <div class="summary">
+				        <h3><a href="#" class="question-hyperlink" title="# "><%= q.description%></a></h3>
+
+				        <div class="started">
+				            <a href="#" class="started-link"><span title="2010-10-26 01:29:43Z" class="relativetime">9s ago</span></a>
+				            <a href="#">提问者</a> 
+				        </div>
+				    </div> <!--sumary end -->
+					<% if (q.answers_count == 0)%>
+					<div class="status unanswered" title="#">
+					<% else%>
+				    <div class="status answered-accepted" title="#">
+					<% end %>
+			            <div class="mini-counts"><%= q.answers_count%></div>
+			            <div>回答</div>
+			        </div>
+			        <div class="votes">
+			            <div class="mini-counts">0</div>
+			            <div>投票</div>
+			        </div>
+				</div>
+				<% end %>
+
+
+			
+		</div><!---question item end -->
 		
-    </div> <!--- sub left end -->
+</div> <!--- sub left end -->
+
+
 	<div id="content_sub_right">
 	<%if current_user %>
 	<h3 class="inactive">我的关注 -- 地点</h3>
