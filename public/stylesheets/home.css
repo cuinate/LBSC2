@@ -215,6 +215,12 @@ Home
 	float: left;
 	clear: right;
 	//border: 1px dotted;
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+
 }
 #content #promo_bottom{
 	height:9px;

@@ -25,6 +25,7 @@ class QuestionsController < ApplicationController
     
     if @questions_hot
       question_to_hash(hot_questions,@questions_hot)
+        logger.info("hot_questions::value  ------>#{ hot_questions}")
     else
        m_result ={
          :result => 0
@@ -43,24 +44,46 @@ class QuestionsController < ApplicationController
   
 #SP10-2.1 convert place result into hash array
   def question_to_hash(hash_array,question)
-        i = 0 
-        m_result ={
-         :result => 1
-         }
-       hash_array[i] = m_result
+        i = 0  # hash_arry index
+        j = 0  # questions hash arry index
+        place_id = question.first.place_id
+         
+        questions = Array.new
+        result_hash = Hash.new
        
        question.each do |q|
-            i = i + 1
-           question_hash = Hash.new
-           question_hash["place_id"] = q.place_id
-           question_hash["question_id"] = q.id
-           question_hash["place_name"] = q.place.name
-           question_hash["description"] = q.description
-           question_hash["answers_count"] = q.answers_count
-           question_hash["votes_sum"] = q.answers.votes_sum.first.votes_sum
-          # question_hash["unanswered_count"] = p.questions.unanswered.size()
-           hash_array[i] = question_hash
-       end
+          
+          if (place_id != q.place_id)
+            result_hash["place_id"] = place_id
+            place_id = q.place_id
+            
+            result_hash["questions"] = questions
+            hash_array[i] = result_hash       
+           
+            i = i + 1   
+            j = 0
+            result_hash = Hash.new
+            questions = Array.new
+          end
+          
+          result_hash["place_name"] = q.place.name
+          
+          question_hash = Hash.new
+          question_hash["description"] = q.description
+          question_hash["question_id"] = q.id
+          question_hash["answers_count"] = q.answers_count
+          question_hash["votes_sum"] = q.answers.votes_sum.first.votes_sum 
+          
+          questions[j] = question_hash
+          j = j + 1
+          
+          if (question.last)
+            result_hash["place_id"] = place_id
+            result_hash["questions"] = questions
+            hash_array[i] = result_hash
+          end
+         
+     end
   end
 
 end
