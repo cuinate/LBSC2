@@ -1,0 +1,25 @@
+
+<h3 class="inactive">我的关注 -- 地点</h3>
+<ul id="p">
+	<% place_id = user.activities.tagged_place.place_id %>
+	<% if place_id %>
+	<% place_id.each do |p|%>
+	<% f_place = Place.find(p.place_id)%>
+	<li class ="followed_place">> &nbsp<a href="/places/<%=f_place.id%>"><%=f_place.name%></a></li>
+	<%end%>
+	<%else%>
+	<div class="followed_place"><li> 还没个关注地点</li></div>
+	<%end%>
+</ul>
+<h3 id="q" class="inactive">我的关注 -- 问题</h3>
+<ul>
+	<% question_id = user.activities.tagged_question.question_id %>
+	<% if question_id %>
+		<% question_id.each do |p|%>
+		<% f_question = Question.find(p.question_id)%>
+		<li class ="followed_place">> &nbsp<a href="#"><%=f_question.description%></a></li>
+		<%end%>
+	<%else%>
+	<div class="followed_place"><li> 还没个关注问题</li></div>
+	<% end %>
+</ul>
