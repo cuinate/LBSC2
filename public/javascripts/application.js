@@ -241,7 +241,26 @@ var lbsc = function(){
 		$("#place_list").empty().show();
      }
 
-	
+	function place_id_question_nav(nav_tab)
+	{
+		id = $('#place_id_nav').attr("place_id");
+		nav_type = $("#ql_nav_which").attr("nav_type");
+
+		$("#"+ nav_type).attr('class','inactive');
+		$(nav_tab).attr('class','question_list_active');
+
+		q_type= $(nav_tab).attr("id");
+		$("#ql_nav_which").attr("nav_type",q_type);
+
+		$.get(
+			"/showplace.js",
+			{
+				id: id ,
+				type:q_type
+			}
+
+			);
+	}
 	var initializeAdmin = function(){
 		initializeDefaults();
 		$("#search_input").focus(function(){
@@ -251,7 +270,7 @@ var lbsc = function(){
 			this.value = '输入地点名称进行查询：';
 		});
 		$("#search_input").keyup(function(){
-//		$("#search_input").live("change",function(){
+   //		$("#search_input").live("change",function(){
 			var query = $(this).val();
 			add_place_name = query;
 			if (query.length > 0){
@@ -265,63 +284,73 @@ var lbsc = function(){
 				
 			}
 		});
+
+	// place/id view question ajax  --- render partial view 
+	$("#open_question").click(function(){
+		var nav_tab = "#open_question";
+		place_id_question_nav(nav_tab);
+	});
+	$("#new_question").click(function(){
+		var nav_tab = "#new_question";
+		place_id_question_nav(nav_tab);
+	});
 	
-// search place dialog 
-	$('#select_place_dialog').dialog({
-      autoOpen: false,
-      modal: true,
-	  beforeclose: function(event, ui) {
-       		infoWindow.close();
-	 		markers = [];
-			$("#place_list").empty();
-      },
-	  open: function(event, ui) {
-       // $('#search_places_name').val('');
-        // $('#search_places_address').val('');
-        $('.s_result').hide().filter(':first').show();
-		get_new_place_list();
-        initializeMap('search-map');
-      },
-	  buttons:{
-      "OK": function() {
-					$(this).dialog("close");
-        	      }
-	  },
-      width: 720,
-      resizable: false
-    });
+	// search place dialog 
+		$('#select_place_dialog').dialog({
+	      autoOpen: false,
+	      modal: true,
+		  beforeclose: function(event, ui) {
+	       		infoWindow.close();
+		 		markers = [];
+				$("#place_list").empty();
+	      },
+		  open: function(event, ui) {
+	       // $('#search_places_name').val('');
+	        // $('#search_places_address').val('');
+	        $('.s_result').hide().filter(':first').show();
+			get_new_place_list();
+	        initializeMap('search-map');
+	      },
+		  buttons:{
+	      "OK": function() {
+						$(this).dialog("close");
+	        	      }
+		  },
+	      width: 720,
+	      resizable: false
+	    });
 
-// ask quesiton dialog 
-	$('#ask_question_dialog').dialog({
-      autoOpen: false,
-      modal: true,
-	  buttons:{
-      "OK": function() {
-					// post "question" back to server and save it 
-					place_id = $("#ask_question_place_id").val();
-					description = $("#question_input").val();
-					points = $("#question_points option:selected").text();
-					$.post(
-					'/addquestion', 
-				      {
-						place_id : place_id,
-						description: description,
-						points :points,
-						authenticity_token: authToken()
-					  },
-					  function(data){
+	// ask quesiton dialog 
+		$('#ask_question_dialog').dialog({
+	      autoOpen: false,
+	      modal: true,
+		  buttons:{
+	      "OK": function() {
+						// post "question" back to server and save it 
+						place_id = $("#ask_question_place_id").val();
+						description = $("#question_input").val();
+						points = $("#question_points option:selected").text();
+						$.post(
+						'/addquestion', 
+					      {
+							place_id : place_id,
+							description: description,
+							points :points,
+							authenticity_token: authToken()
+						  },
+						  function(data){
 
-					   $(this).dialog("close");
-						}
+						   $(this).dialog("close");
+							}
 
-				    );
-					$(this).dialog("close");
-        	      }
-	  },
-      width: 300,
-	  height: 300,
-      resizable: false
-    });
+					    );
+						$(this).dialog("close");
+	        	      }
+		  },
+	      width: 300,
+		  height: 250,
+	      resizable: false
+	    });
 		
 	}
 	

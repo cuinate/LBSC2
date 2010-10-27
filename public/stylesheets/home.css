@@ -337,12 +337,13 @@ Place list page
 	width: 700px;
 	//border: 1px dotted red;
 	padding-top: 20px;
-	padding-left:20px;
+	padding-left:40px;
 	padding-bottom: 15px;
 	float:left;
 	font-size: 1.2em;
 }
-#pl_nav #ql_nav a:hover {text-decoration: none;}
+#pl_nav a:hover {text-decoration: none;}
+#ql_nav a:hover {text-decoration: none;}
 /*---- place/id page ----- */
 #pl_header {
 	width: 700px;
@@ -400,8 +401,19 @@ Place list page
 	padding-bottom: 15px;
 	//background-color: yellow;
 }
+#pl_items div:hover{
+	background-color :#e6f3f6;
+}
+#question_items div:hover{
+	background-color :#e6f3f6;
+}
 #pl_nav span{
 	font-size: 1.3em;
+	font-weight: bold;
+	margin-left: 20px;
+	}
+#ql_nav span{
+	font-size: 1.2em;
 	font-weight: bold;
 	margin-left: 20px;
 	}
@@ -459,7 +471,8 @@ span#place_list_active {
 	padding-right: 8px;
 	padding-bottom: 15px;
 }
-span#question_list_active {
+
+.question_list_active {
 	color: #592068;
 	background: url(../images/question_list_active_bottom.png) bottom repeat-x;
 	padding-left: 8px;
@@ -609,6 +622,7 @@ border-bottom: 1px dotted #999;
 .answered-accepted strong{color:#E1E818;}
 .unanswered {background: #9A4444;color: white;}
 .question-summary {border-bottom: 0px dotted #999;float: left;overflow: hidden;padding: 11px 0px 5px 50px;width: 680px;}
+
 .votes {color: #555;padding: 0px 0px 7px;text-align: center;}
 
 .mini-counts {font-size: 130%;font-weight: bold;height: 25px;}

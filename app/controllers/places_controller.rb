@@ -1,13 +1,48 @@
 class PlacesController < ApplicationController
   
-  
+      def show 
+        @place = Place.find(params[:id])
+        @questions =  @place.questions.order("created_at DESC")
+        
+          logger.info("====== questions #{@questions}")
+        
+         respond_to do |format|
+          format.html # show.html.erb
+        end
+      end
 #SP3-2.1 
 # { Type: 1~4, paras: name or blank}
-      def show
-        @place = Place.find(params[:id])
+
+      def show_place
+        id = params[:id]
+        type = params[:type]
+        # type 
+        # 1: newest questions
+        # 2: open questions
+        # 3: hot questions
+        # 4: place activites
+        case type 
+          when "new_question"
+             @place = Place.find(id)
+             @questions =  @place.questions.order("created_at DESC")
+          when "open_question"
+             @place = Place.find(id)
+             @questions =  @place.questions.unanswered.order("created_at DESC")
+              logger.info("====== question type====> #{type}")
+              logger.info("====== questions #{@questions}")
+          when "3"
+          when "place_activities"
+             @place = Place.find(id)
+             @activites =  @place.activities.order("created_at DESC")
+          else
+             @place = Place.find(id)
+             @questions =  @place.questions.order("created_at DESC")
+        end 
+       
         respond_to do |format|
           format.html # show.html.erb
           format.json { render :json => @place}
+          format.js
         end
        
       end 

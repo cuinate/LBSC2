@@ -1,0 +1,3 @@
+$('#question_items').empty();
+$('#question_items').append("<%= escape_javascript(render :partial =>"question", :collection =>@questions)%>");
+
