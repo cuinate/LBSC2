@@ -29,7 +29,9 @@ Lbsc2::Application.routes.draw do
   resources :users
   
   resources :places
-  
+
+#activities
+  match 'action' =>'activities#create'
   
 
   # The priority is based upon order of creation:

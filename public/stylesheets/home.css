@@ -401,12 +401,13 @@ Place list page
 	padding-bottom: 15px;
 	//background-color: yellow;
 }
+/*
 #pl_items div:hover{
-	background-color :#e6f3f6;
+	background-color :#f7f7f7;
 }
 #question_items div:hover{
-	background-color :#e6f3f6;
-}
+	background-color :#f7f7f7;
+}*/
 #pl_nav span{
 	font-size: 1.3em;
 	font-weight: bold;
@@ -603,7 +604,8 @@ div#selected_place{
 padding: 11px 0px 11px 20px;
 width:700px;
 float:left;
-border-bottom: 1px dotted #999;
+border: 1px dotted #999;
+background-color: #E8F2FF;
 }
 .summary h3{font-size:120%;}
 .started-link,.started-link:visited{color:#999;}
