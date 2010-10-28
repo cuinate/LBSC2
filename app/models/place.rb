@@ -1,6 +1,8 @@
 class Place < ActiveRecord::Base
   has_many :questions
   has_many :activities
+  has_many :followships
+  has_many :users, :through => :followships
   scope :name_address, select("name,address")
   scope :place_id, select("id")
   

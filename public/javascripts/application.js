@@ -296,7 +296,7 @@ var lbsc = function(){
 	});
 	
 	// following place/question dialog 
-	$('#follow_place').click(function(){
+	$('#add_followship').click(function(){
 		place_id = $('#place_id_nav').attr("place_id");
 		user_id  = $('#user_id_nav').attr("user_id");
 		$.get(
@@ -306,9 +306,20 @@ var lbsc = function(){
 				place_id: place_id,
 				action_id: 5
 			});
-		$('#follow_place_link').replaceWith('<div id="followed_place" class="followed_place"></div>');
-		
-	
+		$('#follow_place_link').replaceWith('<a href="javascript:void(0)" id = "follow_place_link" ><div id="remove_followship" class="followed_place" title ="取消关注"></div></a>');
+	});
+	// remove followship 
+	$('#remove_followship').click(function(){
+		place_id = $('#place_id_nav').attr("place_id");
+		user_id  = $('#user_id_nav').attr("user_id");
+		$.get(
+			"/action.json",
+			{
+				user_id: user_id,
+				place_id: place_id,
+				action_id: 7
+			});
+		$('#follow_place_link').replaceWith('<a href="javascript:void(0)" id = "follow_place_link" ><div id="add_followship" class="follow_place" title="添加关注"></div></a>');
 	});
 	// search place dialog 
 		$('#select_place_dialog').dialog({
