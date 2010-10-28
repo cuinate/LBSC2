@@ -4,6 +4,7 @@ class ActivitiesController < ApplicationController
 # ajax post to create activity
 # action_id meanings:
 # 0 :: checkin ; 1:: ask question ;2:: answer 3:: vote up ; 4:: vote down ; 5::follow place 6::follow question 
+# 7 :: remove followship to question for place
 # 1:: 
   def create 
     user_id     = params[:user_id]
@@ -75,7 +76,22 @@ class ActivitiesController < ApplicationController
             answer = Answer.find(answer_id)
             answer.down_counts = answer.down_counts + 1
             answer.save
-       end  # follow .....
+          when "5" # follow places/questions
+            if place_id
+              @followship = current_user.followships.build(:place_id => place_id)
+            else 
+              @followship = current_user.followships.build(:question_id => question_id)
+            end
+            @followship.save
+        #  when "6" # follow questions
+          when "7" # remove followship 
+            if place_id # remove place followship
+              @followship = current_user.followships.find_by_place_id(place_id)
+            else  # remove quesiton followship
+              @followship = current_user.followships.find_by_question_id(question_id)
+            end
+            Followship.destroy(@followship.id)
+       end  # save those acivities into activity table
           if @activity.save!
             result = 1
           else 

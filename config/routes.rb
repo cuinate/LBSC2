@@ -29,11 +29,12 @@ Lbsc2::Application.routes.draw do
   resources :users
   
   resources :places
-
+ 
 #activities
   match 'action' =>'activities#create'
   
-
+# followships
+  resources :followships
   # The priority is based upon order of creation:
   # first created -> highest priority.
   

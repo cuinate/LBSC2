@@ -11,11 +11,15 @@
 				<div class="list_item_desc"><%=@place.address%></div>
 			</div>
 			 <span id="user_id_nav" user_id ="<%=session[:user_id]%>" style="display:none;"></span>
-			  <% if Activity.one_user(session[:user_id]).tagged_place.place_id.find_by_place_id(@place.id) %>
-				<div id="followed_place" class="followed_place" title="已关注"></div>
+			 <% if current_user %>
+			  <% if current_user.followships.find_by_place_id(@place.id) %>
+				<a href="javascript:void(0)" id = "follow_place_link" ><div id="remove_followship" class="followed_place" title 
+				="取消关注"></div></a>
 			 <%else%>
-			    <a href="javascript:void(0)" id = "follow_place_link" title="关注此地点"><div id="follow_place" class="follow_place"></div></a>
+			    <a href="javascript:void(0)" id = "follow_place_link" ><div id="add_followship" 	  
+				class="follow_place" title="添加关注"></div></a>
 			 <%end%>
+			 <% end %>
 
 		</div> <!--place/id header end -->
 		

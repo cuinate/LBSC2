@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101021115839) do
+ActiveRecord::Schema.define(:version => 20101028091354) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(:version => 20101021115839) do
   end
 
   add_index "answers", ["question_id"], :name => "answers_question_id_fk"
+
+  create_table "followships", :force => true do |t|
+    t.integer  "place_id",    :default => 0
+    t.integer  "question_id", :default => 0
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "places", :force => true do |t|
     t.string   "name"
