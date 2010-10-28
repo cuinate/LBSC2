@@ -228,8 +228,11 @@ h3.inactive {
 .item_status_num{
 	width: 42px;
 	float: left;
+	font-weight: bold;
 	//margin-top: 6px;
 	height: 28px;
+	text-align: bottom;
+	color:#999;
 	//background-color: red;
 }
 
@@ -273,12 +276,14 @@ h3.inactive {
 	float: left;
 }
 .near_by_item {
-	background: url(../images/map_ico.png) no-repeat top left;
+//	background: url(../images/map_ico.png) no-repeat top left;
 	margin-bottom: 14px;
 	margin-left: 12px;
+
 }
 .near_by_item span{
-	margin-left: 24px;
+	margin-left: 5px;
+	font-size:12px; color: #999;
 }	
 /*
 ============================================

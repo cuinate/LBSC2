@@ -1,7 +1,7 @@
 
 <h3 class="inactive">我的关注 -- 地点</h3>
 <ul id="p">
-	<% place_id = user.activities.tagged_place.place_id %>
+	<% place_id = current_user.followships.place_id %>
 	<% if place_id %>
 	<% place_id.each do |p|%>
 	<% f_place = Place.find(p.place_id)%>
