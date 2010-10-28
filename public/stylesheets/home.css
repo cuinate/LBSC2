@@ -228,11 +228,12 @@ h3.inactive {
 .item_status_num{
 	width: 42px;
 	float: left;
-	font-weight: bold;
-	//margin-top: 6px;
-	height: 28px;
-	text-align: bottom;
-	color:#999;
+	font-weight: bold;	
+//	margin-top: 6px;
+	height: 18px;
+	padding-top:5px;
+	text-align: right center;
+	color:#005481;
 	//background-color: red;
 }
 
@@ -283,7 +284,8 @@ h3.inactive {
 }
 .near_by_item span{
 	margin-left: 5px;
-	font-size:12px; color: #999;
+	font-size:12px; 
+	color: #999;
 }	
 /*
 ============================================
