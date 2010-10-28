@@ -201,7 +201,85 @@ Footer
 	float: right;
 	margin-top: 13px;
 	}
-	
+
+/*
+============================================
+#content_sub_right
+============================================
+*/
+h3.inactive {
+	//float: left;
+	margin-bottom: 20px;
+	display: block;
+}
+.items_status{
+	width: 228px;
+	margin-left: 6px;
+	margin-bottom: 35px;
+	//margin-top: 20px;
+	float: left;
+
+}
+.item_status{
+	margin-left: 10px;
+	float: left;	
+	margin-bottom: 2px;
+}
+.item_status_num{
+	width: 42px;
+	float: left;
+	//margin-top: 6px;
+	height: 28px;
+	//background-color: red;
+}
+
+.item_status_txt{
+	width: 86px;
+	float: left;
+	color: #ffffff;
+}
+.item_status_txt_q {		
+	background-color: #5d1670;
+	height: 28px;
+	border-bottom: 1px solid gray;
+
+}
+.item_status_txt_a {		
+	background-color: #75845c;
+	height: 28px;
+	width: 51px;
+	float: right;
+	border-bottom: 1px solid gray;
+
+}
+.item_status_txt_p {		
+	background-color: #de741d;
+	height: 28px;
+	width: 51px;
+	float: left;
+	border-bottom: 1px solid gray;
+
+}
+.item_status_txt span {
+	margin-left: 8px;	
+	margin-top: 6px;
+	float: left;
+}
+.near_by {
+	//width: 200px;
+	//height: 100px;
+	margin-left: 6px;
+	//background-color: red;
+	float: left;
+}
+.near_by_item {
+	background: url(../images/map_ico.png) no-repeat top left;
+	margin-bottom: 14px;
+	margin-left: 12px;
+}
+.near_by_item span{
+	margin-left: 24px;
+}	
 /*
 ============================================
 Home
@@ -348,7 +426,9 @@ Place list page
 	padding-top: 15px;
 	padding-bottom: 15px;
 	float :left;
+	background: url(../images/pl_header_promo.png) no-repeat top left;
 }
+/*Not used!
 #pl_header_promo{
 
 	width: 60px;
@@ -357,7 +437,7 @@ Place list page
 	padding-top: 0px;
 	padding-bottom: 15px;
 	float :left;
-}
+}*/
 #pl_header #place_icon{
 	width: 50px;
 	height:70px;
@@ -543,9 +623,11 @@ div#selected_place{
 	border: 1px solid #d0d0d0;
 }
 .avatars{
-	margin-top: 20px;
+	//margin-top: 20px;
 	width: 262px;
-	height: 400px;
+	float: left;
+	margin-bottom: 35px;
+	//height: 400px;
 	margin-left: 4px;
 	//background-color: red;
 }

@@ -37,10 +37,26 @@
 
 
 	<div id="content_sub_right">
+	<h3 class="inactive">关注者</h3>
+		<div class="avatars">
+<%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%>
+		</div>
+	<h3 class="inactive">地点状态</h3>
+	<div class="items_status">
+		<div class="item_status"><div class="item_status_num">30</div><div class="item_status_txt"><div class="item_status_txt_q"><span>问题</spa></div></div></div>
+		<div class="item_status"><div class="item_status_num">100</div><div class="item_status_txt"><div class="item_status_txt_a"><span>回答</spa></div></div></div>
+		<div class="item_status"><div class="item_status_num">3</div><div class="item_status_txt"><div class="item_status_txt_p"><span>活动</spa></div></div></div>
+	</div>	<div class="clear"> </div>
+	<h3 class="inactive">附近地点</h3>
+	<div class="near_by">
+	<div class="near_by_item"><span>欧美汇</span></div>
+	<div class="near_by_item"><span>中关村购物广场</span></div>
+	</div>
+<!--
 	<%if current_user %>
 		 <%= render :partial =>"/shared/sub_right_content", :locals =>{:user => current_user}%>
-	<% end %>	
+	<% end %>-->	
 	</div>
-	<div class="clear"> 
+	<div class="clear"> </div>
 	</div> <!--content right end -->
 </div><!-- content sub end -->
