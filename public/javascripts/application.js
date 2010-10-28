@@ -295,6 +295,21 @@ var lbsc = function(){
 		place_id_question_nav(nav_tab);
 	});
 	
+	// following place/question dialog 
+	$('#follow_place').click(function(){
+		place_id = $('#place_id_nav').attr("place_id");
+		user_id  = $('#user_id_nav').attr("user_id");
+		$.get(
+			"/action.json",
+			{
+				user_id: user_id,
+				place_id: place_id,
+				action_id: 5
+			});
+		$('#follow_place_link').replaceWith('<div id="followed_place" class="followed_place"></div>');
+		
+	
+	});
 	// search place dialog 
 		$('#select_place_dialog').dialog({
 	      autoOpen: false,

@@ -9,5 +9,8 @@ class Activity < ActiveRecord::Base
   scope :place_id, select("place_id")
   scope :question_id, select("question_id")
   scope :user_id, select("user_id")
+
+  
+  
 end
 
