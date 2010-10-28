@@ -295,32 +295,34 @@ var lbsc = function(){
 		place_id_question_nav(nav_tab);
 	});
 	
-	// following place/question dialog 
-	$('#add_followship').click(function(){
-		place_id = $('#place_id_nav').attr("place_id");
-		user_id  = $('#user_id_nav').attr("user_id");
+	// following:unfollow place/question ajax handling (reused in place/question page view)
+	$('#followship_link').click(function(){
+	 	 var	place_id = $('#place_id_nav').attr("place_id");
+		 var	user_id  = $('#user_id_nav').attr("user_id");
+		 var	followship = $('#followship_place').attr("class");
+		// qustion_id for question page 
+		// question_id = 
+		 var    action_id;
+		if (followship == "followed_on")
+			{
+				$('#followship_place').attr("class","followed_off");
+				action_id = 7 ; // remove the followship
+			}
+		else
+			{
+				$('#followship_place').attr("class","followed_on");
+				action_id = 5; // add the followship
+			}
 		$.get(
 			"/action.json",
 			{
 				user_id: user_id,
 				place_id: place_id,
-				action_id: 5
+				action_id: action_id
 			});
-		$('#follow_place_link').replaceWith('<a href="javascript:void(0)" id = "follow_place_link" ><div id="remove_followship" class="followed_place" title ="取消关注"></div></a>');
+	
 	});
-	// remove followship 
-	$('#remove_followship').click(function(){
-		place_id = $('#place_id_nav').attr("place_id");
-		user_id  = $('#user_id_nav').attr("user_id");
-		$.get(
-			"/action.json",
-			{
-				user_id: user_id,
-				place_id: place_id,
-				action_id: 7
-			});
-		$('#follow_place_link').replaceWith('<a href="javascript:void(0)" id = "follow_place_link" ><div id="add_followship" class="follow_place" title="添加关注"></div></a>');
-	});
+	
 	// search place dialog 
 		$('#select_place_dialog').dialog({
 	      autoOpen: false,

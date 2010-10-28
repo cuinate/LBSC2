@@ -458,7 +458,7 @@ Place list page
 	float: left;
 	}
 
-#pl_header .follow_place {
+#pl_header .followed_off{
 	width: 20px;
 	background: url(../images/follow_pl_icon.png) right no-repeat;
 	//border: 1px dotted red;
@@ -467,7 +467,7 @@ Place list page
 	padding-bottom: 15px;
 	float:left;
 }
-#pl_header .followed_place {
+#pl_header .followed_on {
 	width: 20px;
 	background: url(../images/followed_pl_icon.png) right no-repeat;
 	//border: 1px dotted red;

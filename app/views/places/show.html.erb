@@ -13,11 +13,11 @@
 			 <span id="user_id_nav" user_id ="<%=session[:user_id]%>" style="display:none;"></span>
 			 <% if current_user %>
 			  <% if current_user.followships.find_by_place_id(@place.id) %>
-				<a href="javascript:void(0)" id = "follow_place_link" ><div id="remove_followship" class="followed_place" title 
+				<a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" class="followed_on" title 
 				="取消关注"></div></a>
 			 <%else%>
-			    <a href="javascript:void(0)" id = "follow_place_link" ><div id="add_followship" 	  
-				class="follow_place" title="添加关注"></div></a>
+			    <a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" 	  
+				class="followed_off" title="添加关注"></div></a>
 			 <%end%>
 			 <% end %>
 
