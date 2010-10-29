@@ -23,6 +23,11 @@
 		<script>
 		$(document).ready(function(){
 			lbsc.initializeAdmin();
+			var right_height = $('#content_sub_right').height();
+			var left_height = $('#content_sub_left').height();
+			content_height = Math.max(right_height,left_height);
+			$('#content_sub_right').height(content_height);
+			$('#content_sub_left').height(content_height);	
 		
 		 });
 		 function authToken(){
