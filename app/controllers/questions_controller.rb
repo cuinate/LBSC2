@@ -72,7 +72,7 @@ class QuestionsController < ApplicationController
           question_hash["description"] = q.description
           question_hash["question_id"] = q.id
           question_hash["answers_count"] = q.answers_count
-          question_hash["votes_sum"] = q.answers.votes_sum.first.votes_sum 
+          question_hash["votes_sum"] = q.answers.votes_sum.first.votes_sum.to_i
           
           questions[j] = question_hash
           j = j + 1

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :require_user, :current_user, :current_user=, :logged_in?, :authorized?
   
   # Scrub sensitive parameters from your log
-  filter_parameter_logging :password, :password_confirmation
+  # filter_parameter_logging :password, :password_confirmation
   
   def logged_in?
     !!current_user

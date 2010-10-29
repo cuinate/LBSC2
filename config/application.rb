@@ -37,6 +37,7 @@ module Lbsc2
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
+    #filter_parameter_logging :password, :password_confirmation
     config.filter_parameters += [:password]
   end
 end

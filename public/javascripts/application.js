@@ -366,6 +366,11 @@ var lbsc = function(){
 		place_id_question_nav(nav_tab);
 	});
 	
+	$("#hot_question").click(function(){
+		var nav_tab = "#hot_question";
+		place_id_question_nav(nav_tab);
+	});
+	
 	// following:unfollow place/question ajax handling (reused in place/question page view)
 	$('#followship_link').click(function(){
 	 	 var	place_id = $('#place_id_nav').attr("place_id");

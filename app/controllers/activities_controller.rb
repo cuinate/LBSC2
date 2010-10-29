@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   protect_from_forgery :except =>[:create]
+#  before_filter :require_user
   
 # ajax post to create activity
 # action_id meanings:

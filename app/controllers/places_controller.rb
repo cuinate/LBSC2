@@ -30,7 +30,9 @@ class PlacesController < ApplicationController
              @questions =  @place.questions.unanswered.order("created_at DESC")
               logger.info("====== question type====> #{type}")
               logger.info("====== questions #{@questions}")
-          when "3"
+          when "hot_question"
+             @place = Place.find(id)
+             @questions =  @place.questions.order("answers_count DESC")
           when "place_activities"
              @place = Place.find(id)
              @activites =  @place.activities.order("created_at DESC")
@@ -38,10 +40,17 @@ class PlacesController < ApplicationController
              @place = Place.find(id)
              @questions =  @place.questions.order("created_at DESC")
         end 
-       
+        # convert question to json
+        if @questions
+          q_hash_array = Array.new
+          question_to_hash(q_hash_array,@questions)
+        else 
+          q_hash_arry = 0
+        end
+          
         respond_to do |format|
           format.html # show.html.erb
-          format.json { render :json => @place}
+          format.json { render :json => q_hash_array}
           format.js
         end
        
@@ -124,6 +133,20 @@ class PlacesController < ApplicationController
            i = i + 1
            end
       end
+#SP11－3 place-questions view (question to hash)
+def question_to_hash(hash_array,question)
+    i = 0 
+     question.each do |q|
+         question_hash = Hash.new
+         question_hash["description"] = q.description
+         question_hash["question_id"] = q.id
+         question_hash["answers_count"] = q.answers_count
+         question_hash["votes_sum"] = q.answers.votes_sum.first.votes_sum.to_i
+         
+         hash_array[i] = question_hash
+     i = i + 1
+     end
+end
 
 #SP10-2.1 find nearby place 
       def nearby
