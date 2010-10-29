@@ -466,22 +466,25 @@ Place list page
 	}
 
 #pl_header .followed_off{
-	width: 20px;
-	background: url(../images/follow_pl_icon.png) right no-repeat;
+	width: 40px;
+	background: url(../images/follow_pl_icon.png) left no-repeat;
 	//border: 1px dotted red;
 	padding-left:20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	float:left;
+	font-size:12px;
 }
 #pl_header .followed_on {
-	width: 20px;
-	background: url(../images/followed_pl_icon.png) right no-repeat;
+	width: 40px;
+	background: url(../images/followed_pl_icon.png) left no-repeat;
 	//border: 1px dotted red;
 	padding-left:20px;
+	margin-right:10px;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	float:left;
+	font-size:12px;
 }
 
 
@@ -691,7 +694,7 @@ div#selected_place{
 }
 /* 
 =========================================
-   question list 
+   question list  css
 =========================================
 */
 
@@ -734,4 +737,37 @@ float: right;
 height: 13px;
 margin-top: 12px;
 width: 7px;
+}
+/*
+=========================================
+   flash message css
+=========================================
+*/
+
+.flash_msg.success {
+background: #de741d;
+border-bottom: 1px solid #de741d;
+}
+.flash_msg {
+-webkit-font-smoothing: antialiased;
+background: #de741d;
+height: 55px;
+left: 0px;
+line-height: 55px;
+position: absolute;
+top: 0px;
+width: 100%;
+z-index: 1;
+}
+.flash_msg.success p {
+background: transparent url(../images/flash-check.png) no-repeat 0px 23px;
+padding-left: 18px;
+}
+.flash_msg p {
+color: white;
+display: block;
+font-size: 16px;
+font-weight: bold;
+margin: 0px auto;
+width: 950px;
 }

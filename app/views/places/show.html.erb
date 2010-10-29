@@ -14,10 +14,10 @@
 			 <% if current_user %>
 			  <% if current_user.followships.find_by_place_id(@place.id) %>
 				<a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" class="followed_on" title 
-				="取消关注"></div></a>
+				="取消关注"><p>已关注</p></div></a>
 			 <%else%>
 			    <a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" 	  
-				class="followed_off" title="添加关注"></div></a>
+				class="followed_off" title="添加关注">添加关注</div></a>
 			 <%end%>
 			 <% end %>
 

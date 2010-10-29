@@ -1,5 +1,76 @@
 // Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+// This file is automatically included by javascript_include_tag :default
+
+//------------------------------------------------//
+//          LBSC V2 module
+//------------------------------------------------//
+var Lbsc2 = {
+	
+	flashDialog: function(status, title, body) {
+		  		if (status === 'fail') status = 'error';
+				  Lbsc2.Flash.add(status, body);
+		}
+}
+
+//------------------------------------------------//
+//          flash message
+//------------------------------------------------//
+Lbsc2.Flash = (function() {
+
+  var DISPLAY_DURATION   = 5000;
+  var ANIMATION_DURATION = 400;
+
+  function slideUp(element) {
+    $(element).slideUp(ANIMATION_DURATION);
+  }
+
+  function deferredSlideUp(element) {
+    return function() {
+      slideUp(element);
+    }
+  }
+
+  Jaml.register('new_flash_dialog', function(data) {
+    with(this) {
+      div({ cls: 'flash_msg ' + data.type },
+        p(data.message)
+      );
+    }
+  });
+
+  return {
+    setup: function() {
+      $('div.flash_msg').each( function(i, el) {
+        window.setTimeout(deferredSlideUp(el), DISPLAY_DURATION);
+      });
+    },
+
+    add: function(type, message) {
+      var data = {
+        type: type || 'success',
+        message: message || ''
+      };
+
+      var $msg = $( Jaml.render('new_flash_dialog', data) );
+      $msg.hide().prependTo(document.body).slideDown(ANIMATION_DURATION);
+
+      window.scrollTo(0, 0);
+      window.setTimeout(deferredSlideUp($msg[0]), DISPLAY_DURATION);
+    },
+
+    success: function(message) {
+      this.add('success', message);
+    },
+
+    error: function(message) {
+      this.add('error', message);
+    }
+  }
+})();
+
+/*---------------------------------------------------------------------*/
+/*        			lbsc V2 function moudle         				   */
+/*---------------------------------------------------------------------*/
 var lbsc = function(){
 	
   var defaultLatLng;
@@ -307,11 +378,14 @@ var lbsc = function(){
 			{
 				$('#followship_place').attr("class","followed_off");
 				action_id = 7 ; // remove the followship
+				Lbsc2.flashDialog('success', 'Success!', '你已成功移除此地点的关注！');
 			}
 		else
 			{
 				$('#followship_place').attr("class","followed_on");
 				action_id = 5; // add the followship
+				Lbsc2.flashDialog('success', 'Success!', '你已成功关注此地点！.');
+
 			}
 		$.get(
 			"/action.json",
