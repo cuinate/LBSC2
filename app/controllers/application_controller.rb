@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
   
   def store_location
-    session[:return_to] = request.request_uri
+    session[:return_to] = request.fullpath
   end
 
   def redirect_back_or_default(default)
@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
   
   #SP1-6.4.4 authorize request from mobile client
   def login_from_client
-    uid = params[:uid]
+    uid = params[:user_id]
     m_token = params[:m_token]
     self.current_user = User.m_authenticate(uid,m_token)
   end

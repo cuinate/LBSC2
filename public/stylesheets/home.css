@@ -158,7 +158,8 @@ right:0px;
 left:14px;
 top:45px;
 display: none;
-
+-webkit-box-shadow: #838383 0px 4px 8px;
+-moz-box-shadow:  #838383 0px 4px 8px;
 }
 .search_result_new_place{
 background-color: #535758;

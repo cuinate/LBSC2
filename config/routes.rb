@@ -19,7 +19,7 @@ Lbsc2::Application.routes.draw do
   match 'place/hot' =>'places#hot'
   match 'place/nearby' =>'places#nearby'
   match 'place/like'   =>'places#like'
-  match 'place/tagged' =>'places#tagged'
+  match 'place/followed' =>'places#followed'
   
 # Questions
   match 'question/hot' =>'questions#hot'
