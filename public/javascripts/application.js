@@ -383,22 +383,33 @@ var lbsc = function(){
 			{
 				$('#followship_place').attr("class","followed_off");
 				action_id = 7 ; // remove the followship
-				Lbsc2.flashDialog('success', 'Success!', '你已成功移除此地点的关注！');
+				$.get(
+					"/action.json",
+					{
+						user_id: user_id,
+						place_id: place_id,
+						action_id: action_id
+					},
+					function(data){
+							Lbsc2.flashDialog('success', 'Success!', '你已成功移除此地点的关注！');
+					});			
 			}
 		else
 			{
 				$('#followship_place').attr("class","followed_on");
 				action_id = 5; // add the followship
-				Lbsc2.flashDialog('success', 'Success!', '你已成功关注此地点！.');
-
+				$.get(
+					"/action.json",
+					{
+						user_id: user_id,
+						place_id: place_id,
+						action_id: action_id
+					},
+					function(data){
+							Lbsc2.flashDialog('success', 'Success!', '你已成功添加此地点的关注！');
+					});
+			
 			}
-		$.get(
-			"/action.json",
-			{
-				user_id: user_id,
-				place_id: place_id,
-				action_id: action_id
-			});
 	
 	});
 	

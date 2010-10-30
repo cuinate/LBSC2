@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
         handle_remember_cookie! new_cookie_flag
 
         flash[:notice] = "Logged in successfully."
-#        session[:user_id] = user.id
-       # redirect_back_or_default(dashboard_url)
-        redirect_to "/"
+ #       session[:user_id] = current_user.id
+       redirect_back_or_default("/")
+#        redirect_to "/"
    else
         logout_killing_session!
         flash.now[:error] = "Invalid login or password."

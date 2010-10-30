@@ -11,7 +11,7 @@
 				<div class="list_item_desc"><%=@place.address%></div>
 			</div>
 			 <span id="user_id_nav" user_id ="<%=session[:user_id]%>" style="display:none;"></span>
-			 <% if current_user %>
+			 <%if current_user%>
 			  <% if current_user.followships.find_by_place_id(@place.id) %>
 				<a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" class="followed_on" title 
 				="取消关注"><p>已关注</p></div></a>
@@ -19,7 +19,8 @@
 			    <a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" 	  
 				class="followed_off" title="添加关注">添加关注</div></a>
 			 <%end%>
-			 <% end %>
+			 <%end%>
+
 
 		</div> <!--place/id header end -->
 		

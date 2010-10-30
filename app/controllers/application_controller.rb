@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
-    @current_user ||= (login_from_session || login_from_client || login_from_basic_auth || login_from_cookie) unless @current_user == false
+    @current_user ||= (login_from_session || login_from_client || login_from_cookie) unless @current_user == false
   end
   
   # Store the given user id in the session.
@@ -35,19 +35,19 @@ class ApplicationController < ActionController::Base
   
   def access_denied
     respond_to do |format|
-      format.html do
+ #     format.html do
         store_location
         flash[:notice] = "You must be logged in to view this page"
         redirect_to new_session_url
-      end
+#      end
       
       # format.any doesn't work in rails version < http://dev.rubyonrails.org/changeset/8987
       # Add any other API formats here. (Some browsers, notably IE6, send Accept: */* and trigger
       # the 'format.any' block incorrectly. See http://bit.ly/ie6_borken or http://bit.ly/ie6_borken2
       # for a workaround.)
-      format.any(:json, :xml) do
-        request_basic_http_authentication 'Web Password'
-      end
+#      format.any(:json, :xml) do
+#        request_basic_http_authentication 'Web Password'
+#      end
     end
   end
   

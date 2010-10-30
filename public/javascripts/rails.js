@@ -38,6 +38,7 @@ jQuery(function ($) {
                         dataType: dataType,
                         type: method.toUpperCase(),
                         beforeSend: function (xhr) {
+							xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, */*");
                             el.trigger('ajax:loading', xhr);
                         },
                         success: function (data, status, xhr) {
