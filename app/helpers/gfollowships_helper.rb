@@ -1,0 +1,2 @@
+module GfollowshipsHelper
+end

@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   
   has_many :activities
   has_many :followships
+  has_many :qfollowships
   has_many :places, :through => :followships
+  has_many :questions, :through => :qfollowships
   
   # new columns need to be added here to be writable through mass assignment
   attr_accessible :name, :e_mail, :password, :password_confirmation, :salt

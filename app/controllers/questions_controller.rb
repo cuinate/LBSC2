@@ -44,6 +44,7 @@ class QuestionsController < ApplicationController
   
 #SP10-2.1 convert place result into hash array
   def question_to_hash(hash_array,question)
+        
         i = 0  # hash_arry index
         j = 0  # questions hash arry index
         place_id = question.first.place_id

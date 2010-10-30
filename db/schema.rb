@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101028091354) do
+ActiveRecord::Schema.define(:version => 20101030155055) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -36,8 +36,7 @@ ActiveRecord::Schema.define(:version => 20101028091354) do
   add_index "answers", ["question_id"], :name => "answers_question_id_fk"
 
   create_table "followships", :force => true do |t|
-    t.integer  "place_id",    :default => 0
-    t.integer  "question_id", :default => 0
+    t.integer  "place_id",   :default => 0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -56,6 +55,13 @@ ActiveRecord::Schema.define(:version => 20101028091354) do
     t.datetime "updated_at"
     t.integer  "questions_count",                                :default => 0
     t.integer  "activities_count",                               :default => 0
+  end
+
+  create_table "qfollowships", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "questions", :force => true do |t|

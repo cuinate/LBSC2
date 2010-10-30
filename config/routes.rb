@@ -35,6 +35,7 @@ Lbsc2::Application.routes.draw do
   
 # followships
   resources :followships
+  resources :qfollowships
   # The priority is based upon order of creation:
   # first created -> highest priority.
   

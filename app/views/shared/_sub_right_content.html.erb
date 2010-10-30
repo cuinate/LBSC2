@@ -13,7 +13,7 @@
 </ul>
 <h3 id="q" class="inactive">我的关注 -- 问题</h3>
 <ul>
-	<% question_id = user.activities.tagged_question.question_id %>
+	<% question_id = current_user.qfollowships.question_id %>
 	<% if question_id %>
 		<% question_id.each do |p|%>
 		<% f_question = Question.find(p.question_id)%>
