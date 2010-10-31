@@ -3,10 +3,10 @@
 .s_result {
   background-color: #fffced; 
   border: 1px solid #fceebc;
-  font-size: 77%;
-  margin-top: 10px;
-  text-shadow: 1px 1px 0 #FFF;
+  font-size: 90%;
+  margin-top: 3px;
   width: 662px;
+  color: #000;
 }
 
 .s_result p {
@@ -63,37 +63,72 @@
 .callout_wrap div {
   font-size:93%;
   margin:0px;
-  color:#666666;
+  color:#999;
 }
 .callout_wrap {
   display: block;
   float: left;
-  border:8px solid #d5e9ed;
-  border-radius: 4px;
+  border:1px solid #999;
+  border-radius: 1px;
   top:10px;
   margin: 0 0 10px 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
+//  -webkit-border-radius: 4px;
+//  -moz-border-radius: 4px;
 }
 .place_list{ 
 top:10px;
 float:left;
 display: block;
-width: 180px;
-height: 350px	;
-border:8px solid #d5e9ed;
-border-radius: 4px;
+width: 185px;
+height: 350px;
+border:1px solid #999;
+border-radius: 1px;
 margin: 0 0 10px 0;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
+padding: 6px;
+//-webkit-border-radius: 4px;
+//-moz-border-radius: 4px;
 } 
-
+.place_result{
+width:175px;
+padding-top:3px;
+font-size: 15px;
+}
+.search_place_list{
+width:175px;
+padding-top:10px;
+padding-bottom:3px;
+cursor: pointer;
+}
+.search_place_list:hover {
+	text-decoration: underline; color: #de741d;
+	cursor: pointer;
+}
 .search_btn, .centermap_btn {
   width: 145px;
   height: 38px;
   margin-top: 27px;
 }
-
+.infowindow_text{
+	font-size:15px;
+}
+.gmnoprint .add_place_button{
+	clear:both;
+	background-color:#008cb1;
+	border:none;
+	color:#fff;
+	cursor: pointer;
+	font-weight: normal;
+	font-size: 12px;
+	overflow: visible;
+	padding: 6px 20px;
+	text-align: center;
+	margin:0,auto;
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+}
 #place_zip { width: 140px !important; }
 #place_zip input { width: 98% !important; }
 
@@ -110,9 +145,10 @@ margin: 0 0 10px 0;
   .centermap_btn:hover, .centermap_btn:focus { background: url(../imag/hb_challenges_center_sprite.png) 0 -38px; }
   .centermap_btn:active { background: url(../img/hb_challenges_center_sprite.png) 0 -75px; }
 
-html #gmap_wrap { height: 350px; margin-top: 0px; width: 450px; }
+#gmap_wrap {background:white; height: 350px; padding: 6px; width: 450px; }
 
-#save_map, #search-map { height: 350px !important; }
+#save_map, #search-map {border:1px solid #999;
+  border-radius: 1px; background-color: #E5E3DF; height: 350px !important; }
 
 .save_place {
   padding: 15px 0px 0px 86px;
@@ -155,7 +191,7 @@ html #gmap_wrap { height: 350px; margin-top: 0px; width: 450px; }
 
 #save_place_dialog .callout_wrap {margin: 0 0 8px 10px !important; width: 450px !important;}
 
-#save_place_dialog em { color: #999; margin-bottom: 5px; }
+//#save_place_dialog em { color: #999; margin-bottom: 5px; }
 
 .options { width: 412px; }
 

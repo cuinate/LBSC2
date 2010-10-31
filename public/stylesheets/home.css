@@ -118,6 +118,19 @@ Header
 	top:8px;
 	bottom:11px;
 }
+#header #search_loading{
+	border-style: none;
+	position: absolute;
+	height:16px;
+	width:16px;
+	background: url(../images/ajax-loader.gif);
+//	right:106px;
+	left:290px;
+	display:none;
+	top:15px;
+	bottom:8px;
+	z-index:1;
+}
 #header #search_str{
 	color:#ffffff;
 	position: absolute;

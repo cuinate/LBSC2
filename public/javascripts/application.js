@@ -9,7 +9,14 @@ var Lbsc2 = {
 	flashDialog: function(status, title, body) {
 		  		if (status === 'fail') status = 'error';
 				  Lbsc2.Flash.add(status, body);
-		}
+		},
+	check_login:function(){
+		 var log_in_sign = $('#login_sign').attr("user");
+		 if (log_in_sign == "yes")
+		   return true;
+		 else
+          return false;
+	}
 }
 
 //------------------------------------------------//
@@ -18,7 +25,7 @@ var Lbsc2 = {
 Lbsc2.Flash = (function() {
 
   var DISPLAY_DURATION   = 5000;
-  var ANIMATION_DURATION = 400;
+  var ANIMATION_DURATION = 200;
 
   function slideUp(element) {
     $(element).slideUp(ANIMATION_DURATION);
@@ -174,12 +181,13 @@ var lbsc = function(){
 	
 	  // 3. generate dynamic content 
 	        var place_index = p + 1;
-	        var text_result = "结果" + place_index  + ":" + place_list["name"];
+	        var text_result = place_index  + ": " + place_list["name"];
 	 		var content = $('<div/>')
 	         .append($('<span/>', {
 			  'class':'infowindow_text',
 	           text: text_result
 	         }))
+			 .append("<br><br>")
 			 .append($('<a/>', {
 			 'class':'add_place_button',
 	           click: function() {
@@ -270,25 +278,31 @@ var lbsc = function(){
 	}
 // search box callback function 
 	function search_place_callback(data){
+		
 		var timer;
 		var search_result = $("#search_result").empty().show();
+		$("#search_loading").css("display","none");
 		if (data.length > 0){
 			$.each(data, function(p, place) {
-			var place_name = place.place["address"];
+			var place_name = place.place["name"];
+			var place_address = place.place["address"];
+			var place_link = "/places/" + place.place["id"];
 			place_name = "地点：" + place_name ;
 			 search_result.append($('<li/>', {
 				 'class':'search_place_have_result',
 				// 'id': place.place["id"],
 		           click: function() {
-		           // alert("got you!" + place.place["id"] + place_name);
-		 			$("#ask_question_place_name").append(place.place["name"]);
-					$("#ask_question_place_id").attr("value",place.place["id"]);
-					$("#ask_question_dialog").dialog("open");
+					window.location.replace(place_link);
+		           //alert("got you!" + place_link);
+		 			//$("#ask_question_place_name").append(place.place["name"]);
+					//$("#ask_question_place_id").attr("value",place.place["id"]);
+					//$("#ask_question_dialog").dialog("open");
 		           },
-				   text: place_name
+				   text: place_name,
+				   title: place_address
 		         }));
 			});
-	//	setTimeout(hide_search_result,5000);
+		//setTimeout(hide_search_result,5000);
 		}
 		else{
 		// showing no place found and tell user to add the place
@@ -296,7 +310,15 @@ var lbsc = function(){
 		setTimeout(hide_search_result,5000);
 		$("#search_add_new_place").click(function(){
 		  //	alert("got tyou");
+		   if (Lbsc2.check_login())
 			search_add_new_place();
+		   else
+			{
+				Lbsc2.flashDialog('success', 'Success!', '你还没有登录！现在转向登录页面！');
+			//	setTimeout(window.location.replace("/login"),2*10000);
+				window.location.replace("/login");
+			//	window.location ="/login";
+	    	}
 		});
 		}
 	
@@ -340,11 +362,12 @@ var lbsc = function(){
 		$("#search_input").focusout(function(){
 			this.value = '输入地点名称进行查询：';
 		});
-		$("#search_input").keyup(function(){
-   //		$("#search_input").live("change",function(){
+		$("#search_input").keyup(function(e){		
+   //		$("#search_input").live("change",function(){	
 			var query = $(this).val();
 			add_place_name = query;
 			if (query.length > 0){
+		//		$("#search_loading").css("display","block");
 				$.getJSON(
 					'/place/like.json',
 					{
@@ -353,7 +376,8 @@ var lbsc = function(){
 					search_place_callback
 					);
 				
-			}
+			
+		}	
 		});
 
 	// place/id view question ajax  --- render partial view 
@@ -430,7 +454,7 @@ var lbsc = function(){
 	        initializeMap('search-map');
 	      },
 		  buttons:{
-	      "OK": function() {
+	      "取消": function() {
 						$(this).dialog("close");
 	        	      }
 		  },
