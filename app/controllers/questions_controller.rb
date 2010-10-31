@@ -41,6 +41,22 @@ class QuestionsController < ApplicationController
     end
     
   end
+
+#SP3-2.1 
+# { Type: 1~4, paras: name or blank}
+
+      def show_place
+        id = params[:id]
+        @question = Question.find(id)
+        @answers =  @question.answers.order("created_at DESC")
+        # convert question to json    
+        respond_to do |format|
+          format.html # show.html.erb
+          #format.json { render :json => q_hash_array}
+          #format.js
+        end
+       
+      end 
   
 #SP10-2.1 convert place result into hash array
   def question_to_hash(hash_array,question)
