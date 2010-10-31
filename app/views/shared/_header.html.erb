@@ -4,12 +4,14 @@
 		                          :id => "logo" %>
 		</a>
 		<div id="search_box">
-		<input id="search_input"  value="输入地点名称进行查询"><div id="search_str">搜索</div>
+		<input id="search_input"  value="输入地点名称进行查询"><div id ="search_loading"></div><div id="search_str">搜索</div>
 		<ul id="search_result"> </ul>
 		</div>
 		<%if !current_user %>
-		<div id="login_str"><a href="/login"> 登录</a></div>
+		<div id="login_str" user="login"><a href="/login"> 登录</a></div>
+		<div id="login_sign" user="not" style="display:none;"></div>
 		<%else%>
+		<div id="login_sign" user="yes" style="display:none;"></div>
 		<div id="user_str"><a href="#"><%= current_user.name%></a> </div>
 		<div id="logout_str"><a href="/logout"> 登出</a></div>
 		<%end%>

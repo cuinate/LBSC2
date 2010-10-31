@@ -9,53 +9,28 @@
 	  	<span style="-moz-user-select: none;" unselectable="on" class="ui-icon ui-icon-closethick">
 	  	close</span></a>
 	  	</div>
-	  	<div class="ui-dialog-content ui-widget-content" id="select_place_dialog" Title = "select a place for challenge" style="">
-	<form action="javascript:void(0)" id="search_places" method="post">
-		<div style="margin: 0pt; padding: 0pt; display: inline;">
-			<input name="authenticity_token" value="te9hH9D7s/FYAvGqVCjU+hmyVlGa8+JckBL+lQiRDeM=" type="hidden">
-
-		</div>    
-		<div class="form_item">
-	      <label for="search_places_name">Name</label>
-	      <input id="search_places_name" name="search_places_name" type="text">
-	    </div>
-	    <div class="form_item">
-	      <label for="search_places_address">Address</label>
-	      <input id="search_places_address" name="search_places_address" type="text">
-	    </div>
-	    <input class="search_btn" name="commit" value="" type="submit">
-	</form>
+	  	<div class="ui-dialog-content ui-widget-content" id="select_place_dialog" Title = "查找地点：" style="">
 	  <div class="s_result">
 	    <p>Enter a name and an address above. Hit search. Then select a result from the map below.</p>
 	  </div>
-
 	  <div class="s_result searching">
-	    <p>Searching...</p>
+	    <p>查找中...</p>
 	  </div>
-
 	  <div class="s_result error">
-	    <p><strong>No places found.</strong> Perhaps add a new place?</p>
+	    <p><strong>没有找到.</strong> 重新校正下名称?</p>
 	  </div>
-
 	  <div class="s_result success" >
-	    <p><strong><span>&nbsp;</span> places found.</strong> Select the correct one from below.</p>
+	    <p><strong><span>&nbsp;</span> 找到了！</strong> 从列表或者点击图标选择一个吧！.</p>
 	  </div>
-	<div id="search_erea" style="float:left">
-
+	 <div id="search_erea" style="float:left">
 	  <div id="gmap_wrap" class="callout_wrap clear">
-	    <div class="gray">
 	      <div id="search-map"></div>
-	    </div>
 	  </div>
-	<div class="place_list">
-		<ul id = "place_result" style ="width:130px;">
-
-		</ul>
-	 </div>
+    	<div class="place_list">
+			<ul id = "place_result" class ="place_result">
+			</ul>
+		 </div>
 	</div>
-	<div class="save_place clear"> 
-	    <a class="add_place_open" href="javascript:void(0)"></a> 
-	  </div>  
 
 	</div>
 <!--- ask question dialog -->
