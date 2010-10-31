@@ -5,6 +5,7 @@
 	</div>
 	<div id="question_items">
 		<% @hot_questions.each do |p|%>
+		<% if !p[:result]%>
 		<div class = "ques_place_header" id = "place_header">
 			<span class = "list_item_desc" style="font-size:120%;"> <%= p["place_name"]%> </span>
 		</div>
@@ -33,6 +34,7 @@
 	            <div>投票</div>
 	        </div>
 		</div>
+		<% end %>
 		<% end %>
 	
 		<% end %>

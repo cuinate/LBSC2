@@ -20,6 +20,7 @@ class ActivitiesController < ApplicationController
     question    = params[:question] 
     points      = params[:points]
     
+    result      = Array.new
     @activity = Activity.new
     @activity.user_id = user_id
     @activity.place_id = place_id
@@ -36,14 +37,19 @@ class ActivitiesController < ApplicationController
       @activity.answer_id = answer.id
       
        if @activity.save!
-         result ={
-           :result => 1,
-           :answer_id => answer.id
+         result_hash = {
+           :result => 1
            }
+         result.push(result_hash)
+         result_hash = {
+            :answer_id => answer.id
+            }
+        result.push(result_hash)
        else 
-          result ={
-               :result => 0
-             }
+         result_hash = {
+            :result => 0
+            }
+          result.push(result_hash)
        end
    # ----- ask one question
     when "1"
@@ -59,14 +65,20 @@ class ActivitiesController < ApplicationController
        @activity.question_id = question.id
        
        if @activity.save!
-         result ={
-            :result => 1,
-            :question_id => question.id
-            }
+            result_hash = {
+              :result => 1
+              }
+            result.push(result_hash)
+            result_hash = {
+               :question_id => question.id
+               }
+           result.push(result_hash)
         else
-          result ={
-              :result => 0
-            }
+          result_hash = {
+             :result => 0
+             }
+           result.push(result_hash)
+ 
         end
           
   # ---- other actions :vote, follow
@@ -97,15 +109,19 @@ class ActivitiesController < ApplicationController
            
        end  # save those acivities into activity table
           if @activity.save!
-             result ={
-                  :result => 1
-                }
+            result_hash = {
+               :result => 1
+               }
+             result.push(result_hash)
+            
           else 
-             result ={
-                  :result => 0
+             result_hash = {
+                :result => 0
                 }
+              result.push(result_hash)
+              
           end
-   end  
+   end 
     render :json => result
   end 
 end

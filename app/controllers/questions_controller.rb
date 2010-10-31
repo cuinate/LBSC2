@@ -44,8 +44,12 @@ class QuestionsController < ApplicationController
   
 #SP10-2.1 convert place result into hash array
   def question_to_hash(hash_array,question)
+         m_result ={
+           :result => 1
+           }
+        hash_array[0] = m_result
         
-        i = 0  # hash_arry index
+        i = 1  # hash_arry index
         j = 0  # questions hash arry index
         place_id = question.first.place_id
          

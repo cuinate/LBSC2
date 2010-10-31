@@ -88,7 +88,7 @@ class PlacesController < ApplicationController
 
       
       end
-#SP10-2.1 Tagged places by user
+#SP10-2.1 followed places by user
       def followed
        
 #        user_id = params[:user_id]
@@ -114,9 +114,12 @@ class PlacesController < ApplicationController
         if tagged_place_hash.size() 
           render :json => tagged_place_hash
         else
-           m_result = Hash.new
-           m_result["result"] = 1
-          render :json => m_result
+            result = Array.new
+            result_hash = {
+              :result => 0
+              }
+            result.push(result_hash)
+          render :json => result
         end
            
       end 
