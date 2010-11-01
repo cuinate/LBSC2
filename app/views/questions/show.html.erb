@@ -7,13 +7,13 @@
 				<div class="list_item_title"><%=@question.description%></div>
 				<div class="list_item_desc"><%=@question.place.address%></div>
 			</div>
-			 <span id="user_id_nav" user_id ="<%=session[:user_id]%>" style="display:none;"></span>
+			<span id="question_page_id" question_id ="<%=@question.id%>" style="display:none;"></span>
 			 <%if current_user%>
-			  <% if current_user.followships.find_by_place_id(@quesiton.id) %>
-				<a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" class="followed_on" title 
+			  <% if current_user.qfollowships.find_by_question_id(@question.id) %>
+				<a href="javascript:void(0)" id = "qfollowship_link" ><div id="followship_quesition" class="followed_on" title 
 				="取消关注"><p>已关注</p></div></a>
 			 <%else%>
-			    <a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" 	  
+			    <a href="javascript:void(0)" id = "qfollowship_link" ><div id="followship_quesition" 	  
 				class="followed_off" title="添加关注">添加关注</div></a>
 			 <%end%>
 			 <%end%>
@@ -31,7 +31,7 @@
 
 
 	<div id="content_sub_right">
-	
+			 <%= render :partial =>"/shared/sub_right_question", :locals =>{:question => @question}%>
 	</div>
 	<div class="clear"> </div>
 	</div> <!--content right end -->

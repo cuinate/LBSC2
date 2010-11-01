@@ -451,7 +451,46 @@ var lbsc = function(){
 			place_id_question_nav(nav_tab);
 		});
 	
-		// following:unfollow place/question ajax handling (reused in place/question page view)
+	    // follow question handling 
+    	$('#qfollowship_link').click(function(){
+		 	 var	question_id = $('#question_page_id').attr("question_id");
+			 var	user_id  = $('#user_id_nav').attr("user_id");
+			 var	qfollowship = $('#followship_quesition').attr("class");
+			 var    action_id;
+			if (qfollowship == "followed_on")
+				{
+					$('#followship_quesition').attr("class","followed_off");
+					action_id = 8 ; // remove the followship
+					$.get(
+						"/action.json",
+						{
+							user_id: user_id,
+							question_id: question_id,
+							action_id: action_id
+						},
+						function(data){
+								Lbsc2.flashDialog('success', 'Success!', '你已经成功移除此问题的关注！');
+						});			
+				}
+			else
+				{
+					$('#followship_quesition').attr("class","followed_on");
+					action_id = 6; // add the followship
+					$.get(
+						"/action.json",
+						{
+							user_id: user_id,
+							question_id: question_id,
+							action_id: action_id
+						},
+						function(data){
+								Lbsc2.flashDialog('success', 'Success!', '你已成功地添加此问题的关注！');
+						});
+
+				}
+
+		});
+		// following:unfollow place ajax handling 
 		$('#followship_link').click(function(){
 		 	 var	place_id = $('#place_id_nav').attr("place_id");
 			 var	user_id  = $('#user_id_nav').attr("user_id");

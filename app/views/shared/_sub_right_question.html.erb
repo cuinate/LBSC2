@@ -1,0 +1,18 @@
+<h3 class="inactive">关注者</h3>
+	<div class="avatars">
+<%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a1.png", :alt => "avatar", :class => "avatar"%><%= image_tag "a2.png", :alt => "avatar", :class => "avatar"%>
+	</div>
+<h3 class="inactive">问题状态</h3>
+<div class="items_status">
+	<div class="item_status"><div class="item_status_num"><%=question.answers.size%></div><div class="item_status_txt"><div class="item_status_txt_a"><span>回答</spa></div></div></div>
+</div>	<div class="clear"> </div>
+<h3 class="inactive">其他问题</h3>
+<% place = Place.find(question.place_id)%>
+<% questions = place.questions.limit(5)%>
+<% if questions%>
+<% questions.each do |q|%>
+<div class="near_by">
+<div class="near_by_item"><span>><a href="/questions/<%=q.id%>"><%=q.description%></a></span><br></div>
+</div>
+<% end %>
+<% end %>

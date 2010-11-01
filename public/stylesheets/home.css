@@ -802,6 +802,14 @@ height: 25px;
 margin: 0px auto;
 width: 41px;
 }
+.vote-up-off:hover {
+	background: url(../images/vote_up_on.png) no-repeat;
+//	margin-top:-3px;
+
+}
+.vote-down-off:hover {
+	background: url(../images/vote_down_on.png) no-repeat;
+}
 .vote-count-post {
 display: block;
 font-size: 240%;
