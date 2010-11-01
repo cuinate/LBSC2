@@ -1,4 +1,38 @@
-<%= debug(@question) %>
-<%= debug(@answers) %>
+<div id="content_sub">
+	<div id="content_sub_left">
+		
+		<div id="pl_header">		
+		
+			<div class="place_header_summary">
+				<div class="list_item_title"><%=@question.description%></div>
+				<div class="list_item_desc"><%=@question.place.address%></div>
+			</div>
+			 <span id="user_id_nav" user_id ="<%=session[:user_id]%>" style="display:none;"></span>
+			 <%if current_user%>
+			  <% if current_user.followships.find_by_place_id(@quesiton.id) %>
+				<a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" class="followed_on" title 
+				="取消关注"><p>已关注</p></div></a>
+			 <%else%>
+			    <a href="javascript:void(0)" id = "followship_link" ><div id="followship_place" 	  
+				class="followed_off" title="添加关注">添加关注</div></a>
+			 <%end%>
+			 <%end%>
 
-ahahha
+
+		</div> <!--place/id header end -->
+		
+		<div class="spacer"></div>
+		
+	
+		<div id= "answer_items">
+	    <%= render :partial =>"answer", :collection =>@answers%>
+		</div><!---question item end -->
+</div> <!--- sub left end -->
+
+
+	<div id="content_sub_right">
+	
+	</div>
+	<div class="clear"> </div>
+	</div> <!--content right end -->
+</div><!-- content sub end -->

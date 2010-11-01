@@ -451,7 +451,7 @@ Place list page
 	padding-top: 15px;
 	padding-bottom: 15px;
 	float :left;
-	background: url(../images/pl_header_promo.png) no-repeat top left;
+//	background: url(../images/pl_header_promo.png) no-repeat top left;
 }
 /*Not used!
 #pl_header_promo{
@@ -507,7 +507,7 @@ Place list page
 
 
 
-#pl_items #question_items{
+#pl_items #question_items #answer_items{
 	width: 650px;
 	//border: 1px dotted blue;
 	padding-top: 15px;
@@ -749,12 +749,67 @@ float:left;
 /* new added */
 .statscontainer {float: left;margin-right: 8px;width: 86px;}
 .stats {background: #EEE;margin: 0px 0px 0px 7px;padding: 4px 7px 6px;width: 58px;}
-.statsarrow {
-background-position: 0px -435px;
-float: right;
-height: 13px;
-margin-top: 12px;
-width: 7px;
+/*
+========================================
+   answer list 
+========================================
+*/
+div.answer_spacer{
+	float:left;
+	width: 600px;
+	height: 1px;
+	margin-left: 40px;
+	background-color: #f1f1f1;
+}
+.answer_summary{
+padding-top:20px;
+//border-bottom: 1px dotted #999;
+float:left;width:350px;
+}
+.vote {
+width:60px;vertical-align:top;
+text-align: center;
+//border:1px solid red;
+float:left;
+padding-right:40px;
+}
+.vote span {
+color: #808185;
+display: block;
+font-weight: bold;
+
+}
+.vote-up-off, .vote-down-off, .vote-accepted-off, .star-off, .comment-up-off, .flag-off {
+cursor: pointer;
+}
+.vote-up-off{
+background: url(../images/vote_up.png) no-repeat;
+display: block;
+height: 25px;
+margin: 0px auto;
+width: 41px;
+}
+.vote-down-off{
+background: url(../images/vote_down.png) no-repeat;
+display: block;
+height: 25px;
+margin: 0px auto;
+width: 41px;
+}
+.vote-count-post {
+display: block;
+font-size: 240%;
+padding-right:14px;
+}
+.vote-accepted-on {
+background: url(../images/vote_down.png);
+}
+.vote-accepted-off, .vote-accepted-on, .vote-accepted-bounty {
+background: url(../images/vote_down_on.png) no-repeat;
+display: block;
+height: 40px;
+margin: 0px auto;
+width: 39px;
 }
 /*
 =========================================
