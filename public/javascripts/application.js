@@ -515,7 +515,9 @@ var lbsc = function(){
 							action_id: action_id
 						},
 						function(data){
+								$("#followship_place span").text('添加关注');
 								Lbsc2.flashDialog('success', 'Success!', '你已成功移除此地点的关注！');
+								
 						});			
 				}
 			else
@@ -530,7 +532,9 @@ var lbsc = function(){
 							action_id: action_id
 						},
 						function(data){
+								$("#followship_place span").text('已关注');
 								Lbsc2.flashDialog('success', 'Success!', '你已成功添加此地点的关注！');
+								
 						});
 			
 				}
