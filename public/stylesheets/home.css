@@ -194,6 +194,10 @@ cursor: pointer;
 	background-color: #535758;	
 	color:#fff;
 }
+.search_result_item_hover{
+background-color: #535758;	
+color:#fff;
+}
 /*
 ============================================
 Footer

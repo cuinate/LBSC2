@@ -91,6 +91,7 @@ var lbsc = function(){
   var place_lists = new Array();
   var maxZoom = 15;
   var add_place_name;
+  var searchResultSelection = 0;
 	
 /*---------------------------------------------------------------------*/
 /*        			google map 										   */
@@ -299,7 +300,8 @@ var lbsc = function(){
 					//$("#ask_question_dialog").dialog("open");
 		           },
 				   text: place_name,
-				   title: place_address
+				   title: place_address,
+				   url:place_link
 		         }));
 			});
 		//setTimeout(hide_search_result,5000);
@@ -334,6 +336,29 @@ var lbsc = function(){
 		$("#place_list").empty().show();
      }
 
+
+    
+   /* ------- search box result function   -----------------*/
+   function search_navigate(direction){
+	$("#search_input").trigger("focusout");
+//	$("#search_result").trigger("keydown");
+	 if($("#search_result li .search_result_item_hover").size == 0){
+		searchResultSelection == -1;
+	}
+	 if(direction == 'up' && searchResultSelection != -1){
+		if(searchResultSelection !=0)
+			searchResultSelection--;
+	}
+	else if(direction == 'down'){
+		if(searchResultSelection != $("#search_result li").size() - 1){
+			searchResultSelection++;
+		}
+	}
+	$("#search_result li").removeClass("search_result_item_hover");
+	$("#search_result li").eq(searchResultSelection).addClass("search_result_item_hover");
+	
+   }
+   /* ------- place/id page question navigation switching function   -----------------*/
 	function place_id_question_nav(nav_tab)
 	{
 		id = $('#place_id_nav').attr("place_id");
@@ -354,147 +379,178 @@ var lbsc = function(){
 
 			);
 	}
+  /* ------- initialization function   -----------------*/
 	var initializeAdmin = function(){
 		initializeDefaults();
 		$("#search_input").focus(function(){
 			this.value = '';
+	/*		$("#search_input").bind('keypress',function(e){
+				if(e.keyCode == 40)
+				 {
+				  search_navigate('down');
+				 }
+			});*/
+			$("#search_input").bind('keyup',function(e){
+				var query = $(this).val();
+				add_place_name = query;
+				if (query.length > 0){
+			//		$("#search_loading").css("display","block");
+					$.getJSON(
+						'/place/like.json',
+						{
+							paras:  query
+						},
+						search_place_callback
+						);
+			 		if(e.keyCode == 40)
+					 {
+					 // search_navigate('down');
+					 }
+			}
+			});
 		});
+		
+		/*------ search input focus out ---------*/
 		$("#search_input").focusout(function(){
+			$("#search_input").unbind("keyup");
 			this.value = '输入地点名称进行查询：';
 		});
-		$("#search_input").keyup(function(e){		
-   //		$("#search_input").live("change",function(){	
-			var query = $(this).val();
-			add_place_name = query;
-			if (query.length > 0){
-		//		$("#search_loading").css("display","block");
-				$.getJSON(
-					'/place/like.json',
-					{
-						paras:  query
-					},
-					search_place_callback
-					);
-				
-			
-		}	
+
+		$("#search_result").keydown(function(e) {
+		      switch(e.keyCode) { 
+		         // User pressed "up" arrow
+		         case 38:
+		            search_navigate('up');
+		         break;
+		         // User pressed "down" arrow
+		         case 40:
+		            search_navigate('down');
+		         break;
+		         // User pressed "enter"
+		         case 13:
+					currentUrl = $("#search_result li").eq(searchResultSelection).attr("url");
+		            if(currentUrl != '') {
+		               window.location = currentUrl;
+		            }
+		         break;
+		      }
 		});
 
-	// place/id view question ajax  --- render partial view 
-	$("#open_question").click(function(){
-		var nav_tab = "#open_question";
-		place_id_question_nav(nav_tab);
-	});
-	$("#new_question").click(function(){
-		var nav_tab = "#new_question";
-		place_id_question_nav(nav_tab);
-	});
+		// place/id view question ajax  --- render partial view 
+		$("#open_question").click(function(){
+			var nav_tab = "#open_question";
+			place_id_question_nav(nav_tab);
+		});
+		$("#new_question").click(function(){
+			var nav_tab = "#new_question";
+			place_id_question_nav(nav_tab);
+		});
 	
-	$("#hot_question").click(function(){
-		var nav_tab = "#hot_question";
-		place_id_question_nav(nav_tab);
-	});
+		$("#hot_question").click(function(){
+			var nav_tab = "#hot_question";
+			place_id_question_nav(nav_tab);
+		});
 	
-	// following:unfollow place/question ajax handling (reused in place/question page view)
-	$('#followship_link').click(function(){
-	 	 var	place_id = $('#place_id_nav').attr("place_id");
-		 var	user_id  = $('#user_id_nav').attr("user_id");
-		 var	followship = $('#followship_place').attr("class");
-		// qustion_id for question page 
-		// question_id = 
-		 var    action_id;
-		if (followship == "followed_on")
-			{
-				$('#followship_place').attr("class","followed_off");
-				action_id = 7 ; // remove the followship
-				$.get(
-					"/action.json",
-					{
-						user_id: user_id,
-						place_id: place_id,
-						action_id: action_id
-					},
-					function(data){
-							Lbsc2.flashDialog('success', 'Success!', '你已成功移除此地点的关注！');
-					});			
-			}
-		else
-			{
-				$('#followship_place').attr("class","followed_on");
-				action_id = 5; // add the followship
-				$.get(
-					"/action.json",
-					{
-						user_id: user_id,
-						place_id: place_id,
-						action_id: action_id
-					},
-					function(data){
-							Lbsc2.flashDialog('success', 'Success!', '你已成功添加此地点的关注！');
-					});
+		// following:unfollow place/question ajax handling (reused in place/question page view)
+		$('#followship_link').click(function(){
+		 	 var	place_id = $('#place_id_nav').attr("place_id");
+			 var	user_id  = $('#user_id_nav').attr("user_id");
+			 var	followship = $('#followship_place').attr("class");
+			// qustion_id for question page 
+			// question_id = 
+			 var    action_id;
+			if (followship == "followed_on")
+				{
+					$('#followship_place').attr("class","followed_off");
+					action_id = 7 ; // remove the followship
+					$.get(
+						"/action.json",
+						{
+							user_id: user_id,
+							place_id: place_id,
+							action_id: action_id
+						},
+						function(data){
+								Lbsc2.flashDialog('success', 'Success!', '你已成功移除此地点的关注！');
+						});			
+				}
+			else
+				{
+					$('#followship_place').attr("class","followed_on");
+					action_id = 5; // add the followship
+					$.get(
+						"/action.json",
+						{
+							user_id: user_id,
+							place_id: place_id,
+							action_id: action_id
+						},
+						function(data){
+								Lbsc2.flashDialog('success', 'Success!', '你已成功添加此地点的关注！');
+						});
 			
-			}
+				}
 	
-	});
+		});
 	
-	// search place dialog 
-		$('#select_place_dialog').dialog({
-	      autoOpen: false,
-	      modal: true,
-		  beforeclose: function(event, ui) {
-	       		infoWindow.close();
-		 		markers = [];
-				$("#place_list").empty();
-	      },
-		  open: function(event, ui) {
-	       // $('#search_places_name').val('');
-	        // $('#search_places_address').val('');
-	        $('.s_result').hide().filter(':first').show();
-			get_new_place_list();
-	        initializeMap('search-map');
-	      },
-		  buttons:{
-	      "取消": function() {
-						$(this).dialog("close");
-	        	      }
-		  },
-	      width: 720,
-	      resizable: false
-	    });
+		// search place dialog 
+			$('#select_place_dialog').dialog({
+		      autoOpen: false,
+		      modal: true,
+			  beforeclose: function(event, ui) {
+		       		infoWindow.close();
+			 		markers = [];
+					$("#place_list").empty();
+		      },
+			  open: function(event, ui) {
+		       // $('#search_places_name').val('');
+		        // $('#search_places_address').val('');
+		        $('.s_result').hide().filter(':first').show();
+				get_new_place_list();
+		        initializeMap('search-map');
+		      },
+			  buttons:{
+		      "取消": function() {
+							$(this).dialog("close");
+		        	      }
+			  },
+		      width: 720,
+		      resizable: false
+		    });
 
-	// ask quesiton dialog 
-		$('#ask_question_dialog').dialog({
-	      autoOpen: false,
-	      modal: true,
-		  buttons:{
-	      "OK": function() {
-						// post "question" back to server and save it 
-						place_id = $("#ask_question_place_id").val();
-						description = $("#question_input").val();
-						points = $("#question_points option:selected").text();
-						$.post(
-						'/addquestion', 
-					      {
-							place_id : place_id,
-							description: description,
-							points :points,
-							authenticity_token: authToken()
-						  },
-						  function(data){
+		// ask quesiton dialog 
+			$('#ask_question_dialog').dialog({
+		      autoOpen: false,
+		      modal: true,
+			  buttons:{
+		      "OK": function() {
+							// post "question" back to server and save it 
+							place_id = $("#ask_question_place_id").val();
+							description = $("#question_input").val();
+							points = $("#question_points option:selected").text();
+							$.post(
+							'/addquestion', 
+						      {
+								place_id : place_id,
+								description: description,
+								points :points,
+								authenticity_token: authToken()
+							  },
+							  function(data){
 
-						   $(this).dialog("close");
-							}
+							   $(this).dialog("close");
+								}
 
-					    );
-						$(this).dialog("close");
-	        	      }
-		  },
-	      width: 300,
-		  height: 250,
-	      resizable: false
-	    });
+						    );
+							$(this).dialog("close");
+		        	      }
+			  },
+		      width: 300,
+			  height: 250,
+		      resizable: false
+		    });
 		
-	}
+		}
 	
 	
 	
