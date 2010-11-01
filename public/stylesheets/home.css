@@ -715,7 +715,13 @@ div#selected_place{
    question list  css
 =========================================
 */
-
+div.question_spacer{
+	float:left;
+	width: 600px;
+	height: 1px;
+	margin-left: 60px;
+	background-color: #f1f1f1;
+}
 .ques_place_header{
 padding: 11px 0px 11px 20px;
 width:700px;
