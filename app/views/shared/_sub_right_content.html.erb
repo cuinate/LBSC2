@@ -17,7 +17,7 @@
 	<% if question_id %>
 		<% question_id.each do |p|%>
 		<% f_question = Question.find(p.question_id)%>
-		<li class ="followed_place">> &nbsp<a href="#"><%=f_question.description%></a></li>
+		<li class ="followed_place">> &nbsp<a href="/questions/<%=f_question.id%>"><%=f_question.description%></a></li>
 		<%end%>
 	<%else%>
 	<div class="followed_place"><li> 还没个关注问题</li></div>

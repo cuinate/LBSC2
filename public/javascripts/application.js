@@ -450,7 +450,12 @@ var lbsc = function(){
 			var nav_tab = "#hot_question";
 			place_id_question_nav(nav_tab);
 		});
-	
+		
+		$("#place_activities").click(function(){
+			var nav_tab = "#place_activities";
+			place_id_question_nav(nav_tab);
+		});
+
 	    // follow question handling 
     	$('#qfollowship_link').click(function(){
 		 	 var	question_id = $('#question_page_id').attr("question_id");

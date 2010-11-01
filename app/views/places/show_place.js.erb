@@ -1,3 +1,9 @@
 $('#question_items').empty();
-$('#question_items').append("<%= escape_javascript(render :partial =>"question", :collection =>@questions)%>");
-
+var nav_type = $("#ql_nav_which").attr("nav_type");
+//alert(nav_type);
+if (nav_type == "place_activities"){
+	$('#question_items').append("<%= escape_javascript(render :partial =>"activity", :locals =>{:place => @place})%>");
+}
+else{
+	$('#question_items').append("<%= escape_javascript(render :partial =>"question", :collection =>@questions)%>");
+}	

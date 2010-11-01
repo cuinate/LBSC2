@@ -11,10 +11,10 @@
 			 <%if current_user%>
 			  <% if current_user.qfollowships.find_by_question_id(@question.id) %>
 				<a href="javascript:void(0)" id = "qfollowship_link" ><div id="followship_quesition" class="followed_on" title 
-				="取消关注"><p>已关注</p></div></a>
+				="取消关注"><span style="padding-left:10px;"> 已关注</span></div></a>
 			 <%else%>
 			    <a href="javascript:void(0)" id = "qfollowship_link" ><div id="followship_quesition" 	  
-				class="followed_off" title="添加关注">添加关注</div></a>
+				class="followed_off" title="添加关注"><span style="padding-left:10px;"> 添加关注</span></div></a>
 			 <%end%>
 			 <%end%>
 

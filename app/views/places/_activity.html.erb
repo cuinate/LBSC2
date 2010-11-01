@@ -1,0 +1,37 @@
+<% ask_questions = place.activities.ask_question%>
+<br>
+<br>
+<br>
+<div class="status-tweet-ask">
+<h3 style="color:#008cb1; padding-bottom:10px;">提问</h3>
+<%if ask_questions %>
+<% ask_questions.limit(5).each do |a|%>
+
+<div class="status-message-body-user">
+	<a href="＃" class="status-username"><%=User.find(a.user_id).name%></a>
+   	<a href="＃" class="item-timestamp">问道： about 22 hrs, 3 mins ago</a>
+    <div class="status-message first">
+        <div class="status-message-tweet"><%=Question.find(a.question_id).description%></div>
+         
+    </div>
+</div>
+<%end%>
+<%end%>
+</div>
+<% answer_questions = place.activities.answer_question%>
+<div class="status-tweet">
+<h3>回答</h3>
+<%if answer_questions %>
+<% answer_questions.limit(5).each do |a|%>
+
+<div class="status-message-body-user">
+	<a href="＃" class="status-username"><%=User.find(a.user_id).name%></a>
+   	<a href="＃" class="item-timestamp">回答说：：<%=Answer.find(a.answer_id).description%></a>
+    <div class="status-message first">
+        <div class="status-message-tweet"><%=Question.find(a.question_id).description%></div>
+         
+    </div>
+</div>
+<%end%>
+<%end%>
+</div>

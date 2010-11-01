@@ -63,6 +63,7 @@ body	{
 	//border: 4px solid;
 	width: 730px;
 	float: left;
+//	border-right: 1px dotted  #f1f1f1;
 	background: url(../images/content_sub_right.png) right repeat-y;	
 	//height: 1010px;
 
@@ -484,7 +485,7 @@ Place list page
 	}
 
 #pl_header .followed_off{
-	width: 40px;
+	width: 60px;
 	background: url(../images/follow_pl_icon.png) left no-repeat;
 	//border: 1px dotted red;
 	padding-left:20px;
@@ -494,7 +495,7 @@ Place list page
 	font-size:12px;
 }
 #pl_header .followed_on {
-	width: 40px;
+	width: 60px;
 	background: url(../images/followed_pl_icon.png) left no-repeat;
 	//border: 1px dotted red;
 	padding-left:20px;
@@ -513,6 +514,7 @@ Place list page
 	padding-top: 15px;
 	padding-bottom: 15px;
 	//background-color: yellow;
+	vertical-align:top;
 }
 /*
 #pl_items div:hover{
@@ -614,6 +616,13 @@ div.spacer{
 	height: 1px;
 	margin-left: 15px;
 	background-color: #999;
+}
+div.hot_q_spacer{
+	float:left;
+	width: 670px;
+	height: 1px;
+	margin-left: 15px;
+	background-color: #f1f1f1;
 }
 div#selected_place{
 	margin-left: 15px;
@@ -857,4 +866,83 @@ font-size: 16px;
 font-weight: bold;
 margin: 0px auto;
 width: 950px;
+}
+/*
+==================================
+	activity
+==================================
+*/
+.status-tweet {
+margin: 0px 0px 10px 70px;
+float:left;
+}
+.status-tweet-ask{
+margin:5px 0px 20px 70px;
+padding-bottom:10px;
+float:left;
+}
+.status-tweet h3 {
+font-size: 18px;
+font-weight: bold;
+letter-spacing: -0.5px;
+margin: 0px 0px 3px;
+text-transform: capitalize;
+}
+.status-message-body-user {
+background: #edf5f7 none repeat scroll 0px 0px;
+border-bottom: 1px solid #ccc;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+color: #333;
+font-size: 16px;
+margin: 0px 0px 0px 12px;
+overflow: hidden;
+padding: 15px 10px;
+position: relative;
+width:550px;
+}
+.status-username {
+background: #edf5f7;
+font-size: 15px;
+font-weight: bold;
+text-decoration: none;
+color: #222;
+}
+.item-timestamp {
+color: #999;
+font-size: 12px;
+font-weight: normal;
+}
+a.item-timestamp {
+color: #999;
+padding: 2px 5px;
+}
+.status-message {
+font-size: 16px;
+font-weight: normal;
+line-height: 24px;
+overflow: hidden;
+}
+.item-tweet-options-bottom {
+bottom: 3px;
+color: #4083A9;
+float: right;
+font-size: 11px;
+line-height: 12px;
+position: absolute;
+right: 8px;
+visibility: hidden;
+}
+a.tweet-reply {
+background: #edf5f7 url(http://fflick.com/img/icon-reply.png) no-repeat scroll 0px 2px;
+display: inline;
+padding: 0px 0px 0px 10px;
+}
+a.tweet-retweet {
+background: #edf5f7 url(http://fflick.com/img/icon-retweet.png) no-repeat scroll 0px 3px;
+border-bottom: ;
+display: inline;
+padding: 0px 0px 0px 14px;
 }

@@ -36,7 +36,7 @@ class PlacesController < ApplicationController
              @questions =  @place.questions.order("answers_count DESC")
           when "place_activities"
              @place = Place.find(id)
-             @activites =  @place.activities.order("created_at DESC")
+            # @activites =  @place.activities.order("created_at DESC")
           else
              @place = Place.find(id)
              @questions =  @place.questions.order("created_at DESC")
