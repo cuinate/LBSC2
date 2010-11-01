@@ -24,17 +24,17 @@ Lbsc2::Application.routes.draw do
 # Questions
   match 'question/hot' =>'questions#hot'
   match 'addquestion' => 'questions#create', :as => :addquestion
-  match 'question' => 'questions#show', :as => :showquestion
-  resources :sessions
-
-  resources :users
-  
-  resources :places
+#  match 'question' => 'questions#show', :as => :showquestion
+ 
  
 #activities
   match 'action' =>'activities#create'
   
 # followships
+  resources :sessions
+  resources :questions
+  resources :users
+  resources :places
   resources :followships
   resources :qfollowships
   # The priority is based upon order of creation:
