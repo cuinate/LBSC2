@@ -3,6 +3,20 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+     respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+  
+  def show_user
+    @user = User.find(params[:id])
+     respond_to do |format|
+#      format.html # show.html.erb
+      format.js
+    end
+  end
   def create
     @user = User.new(params[:user])
     if @user.save

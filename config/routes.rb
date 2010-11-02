@@ -26,7 +26,8 @@ Lbsc2::Application.routes.draw do
   match 'addquestion' => 'questions#create', :as => :addquestion
 #  match 'question' => 'questions#show', :as => :showquestion
  
- 
+# users
+  match 'showuser' => 'users#show_user',  :as => :showuser
 #activities
   match 'action' =>'activities#create'
   

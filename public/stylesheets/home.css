@@ -946,3 +946,17 @@ border-bottom: ;
 display: inline;
 padding: 0px 0px 0px 14px;
 }
+/*
+====================================
+		user page
+		
+====================================
+*/
+.user-summary {border-bottom: 0px dotted #999;float: left;overflow: hidden;padding: 11px 0px 5px 10px;width: 680px;}
+.user_list_item{width: 670px;
+height: 70px;
+margin-left: 0px;
+//border: 1px dotted yellow;
+padding-top: 15px;
+padding-bottom: 15px;
+}

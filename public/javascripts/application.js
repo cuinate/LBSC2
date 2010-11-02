@@ -379,6 +379,26 @@ var lbsc = function(){
 
 			);
 	}
+  /* ------- user/id page question navigation switching function   -----------------*/
+	function user_id_page_nav(nav_tab)
+	{
+		id = $('#user_id_nav').attr("user_id");
+		nav_type = $("#user_nav_which").attr("nav_type");
+
+		$("#"+ nav_type).attr('class','inactive');
+		$(nav_tab).attr('class','question_list_active');
+
+		q_type= $(nav_tab).attr("id");
+		$("#ql_nav_which").attr("nav_type",q_type);
+
+		$.get(
+			"/showuser.js",
+			{
+				id: id,
+			}
+
+			);
+	}
   /* ------- initialization function   -----------------*/
 	var initializeAdmin = function(){
 		initializeDefaults();
@@ -455,7 +475,11 @@ var lbsc = function(){
 			var nav_tab = "#place_activities";
 			place_id_question_nav(nav_tab);
 		});
-
+        // user/id view ajax handling 
+		$("#followed_question").click(function(){
+			var nav_tab = "#followed_question";
+			user_id_page_nav(nav_tab);
+		});
 	    // follow question handling 
     	$('#qfollowship_link').click(function(){
 		 	 var	question_id = $('#question_page_id').attr("question_id");

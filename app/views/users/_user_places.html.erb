@@ -1,0 +1,22 @@
+<% followships = user.followships.place_id%>
+<div class="user-summary narrow" id="question-summary">
+	<%if followships%>
+	<% followships.each do |p|%>
+	<% place = Place.find(p.place_id)%>
+	<div class="user_list_item">
+		<div class="list_item_summary">
+		<div class="list_item_title"><a href="/places/<%=p.id%>"><%=place.name%></a></div>
+		<div class="list_item_desc"><%=place.address%></div>
+		</div>
+		<div class="place_item_summary">
+		 <table><tr>
+			<td><%=place.questions.unanswered.size()%></td>
+			<td><%= place.questions.size()%></td></tr><tr>
+			<td>未回答</td><td>问题</td></tr></table>
+		</div>
+	</div>
+	<% end %>
+	<% end %>
+
+
+</div><!-- place list items end -->

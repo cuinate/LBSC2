@@ -1,0 +1,37 @@
+<div id="content_sub">
+	<div id="content_sub_left">
+		
+		<div id="pl_header">		
+			<div id = "place_icon">
+				<%= image_tag "pl_ico.png", :alt => "logo",
+				                            :id => "logo"%>
+			</div>
+			<div class="place_header_summary">
+				<div class="list_item_title"><%=@user.name%></div>
+				<div class="list_item_desc"></div>
+			</div>
+			 <span id="user_id_nav" user_id ="<%=session[:user_id]%>" style="display:none;"></span>
+		
+
+
+		</div> <!--place/id header end -->
+		
+		<div class="spacer"></div>
+		
+		<div id="ql_nav">
+			<span id="user_nav_which" nav_type ="followed_place" style="display:none;"></span>
+			<a href="javascript:void(0)"><span id ="followed_place" class="question_list_active">关注地点</span></a>
+			<a href="javascript:void(0)"><span id = "followed_question"  class="inactive">关注问题</span></a>
+			<a href="javascript:void(0)"><span id = "user_activities"  class="inactive">动态</span></a>
+			
+		</div>
+		<div id= "question_items">
+	    <%= render :partial =>"user_places", :locals =>{:user => @user}%>
+		</div><!---question item end -->
+</div> <!--- sub left end -->
+
+
+	
+	<div class="clear"> </div>
+	</div> <!--content right end -->
+</div><!-- content sub end -->
