@@ -1,1 +1,10 @@
-alert("gotyou!");
+$('#question_items').empty();
+var nav_type = $("#user_nav_which").attr("nav_type");
+//alert(nav_type);
+if (nav_type == "followed_question"){
+	$('#question_items').append("<%= escape_javascript(render :partial =>"user_question", :locals =>{:user => @user})%>");
+}
+else{
+	$('#question_items').append("<%= escape_javascript(render :partial =>"user_question", :locals =>{:user => @user})%>");
+}	
+Lbsc2.check_height();

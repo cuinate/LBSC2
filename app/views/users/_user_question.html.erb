@@ -1,0 +1,17 @@
+<% questions = Question.where(:user_id => user.id).order("place_id")%>
+<% if questions %>
+<% user_questions = Array.new%>
+<% question_to_hash(user_questions, questions)%>
+	 <%= render :partial =>"/shared/user_profile_ques", :locals =>{:user_questions => user_questions}%>
+
+<%end%>
+<!-- end for user asked questions-->
+<div class="spacer"></div>
+
+<% followed_q = user.questions.order("place_id")%>
+<% if followed_q %>
+<% user_follow_questions = Array.new%>
+<% question_to_hash(user_follow_questions, followed_q)%>
+	 <%= render :partial =>"/shared/user_profile_ques", :locals =>{:user_questions => user_follow_questions}%>
+
+<%end%>

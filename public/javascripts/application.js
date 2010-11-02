@@ -16,6 +16,14 @@ var Lbsc2 = {
 		   return true;
 		 else
           return false;
+	},
+	check_height:function(){
+		var user_question_height = $('#question_items').height();
+		var right_height = $('#content_sub_right').height();
+		var left_height = $('#content_sub_left').height();
+		content_height = Math.max(right_height,left_height);
+		$('#content_sub_right').height(content_height);
+		$('#content_sub_left').height(content_height);
 	}
 }
 
@@ -304,24 +312,26 @@ var lbsc = function(){
 				   url:place_link
 		         }));
 			});
+		    $("#search_result").focus();
+			//search_navigate('up');
 		//setTimeout(hide_search_result,5000);
 		}
 		else{
 		// showing no place found and tell user to add the place
-		search_result.append('<li class = "search_result_new_place" id="search_add_new_place"> 没有发现地点，新增一个吧！</li>')
-		setTimeout(hide_search_result,5000);
-		$("#search_add_new_place").click(function(){
-		  //	alert("got tyou");
-		   if (Lbsc2.check_login())
-			search_add_new_place();
-		   else
-			{
-				Lbsc2.flashDialog('success', 'Success!', '你还没有登录！现在转向登录页面！');
-			//	setTimeout(window.location.replace("/login"),2*10000);
-				window.location.replace("/login");
-			//	window.location ="/login";
-	    	}
-		});
+			search_result.append('<li class = "search_result_new_place" id="search_add_new_place"> 没有发现地点，新增一个吧！</li>')
+			setTimeout(hide_search_result,5000);
+			$("#search_add_new_place").click(function(){
+			  //	alert("got tyou");
+			   if (Lbsc2.check_login())
+				search_add_new_place();
+			   else
+				{
+					Lbsc2.flashDialog('success', 'Success!', '你还没有登录！现在转向登录页面！');
+				//	setTimeout(window.location.replace("/login"),2*10000);
+					window.location.replace("/login");
+				//	window.location ="/login";
+		    	}
+			});
 		}
 	
 	}
@@ -340,7 +350,7 @@ var lbsc = function(){
     
    /* ------- search box result function   -----------------*/
    function search_navigate(direction){
-	$("#search_input").trigger("focusout");
+//	$("#search_input").trigger("focusout");
 //	$("#search_result").trigger("keydown");
 	 if($("#search_result li .search_result_item_hover").size == 0){
 		searchResultSelection == -1;
@@ -410,8 +420,9 @@ var lbsc = function(){
 				  search_navigate('down');
 				 }
 			});*/
-			$("#search_input").bind('keyup',function(e){
+			$("#search_input").bind('keydown',function(e){
 				var query = $(this).val();
+				
 				add_place_name = query;
 				if (query.length > 0){
 			//		$("#search_loading").css("display","block");
@@ -422,20 +433,32 @@ var lbsc = function(){
 						},
 						search_place_callback
 						);
-			 		if(e.keyCode == 40)
-					 {
-					 // search_navigate('down');
-					 }
-			}
+			     }
+			
+		  if(e.keyCode == 40)
+			 {
+			 	$('#search_result').focus();
+				e = jQuery.Event("keydown");
+				e.keyCode = 40; 
+			    $('#search_result').trigger(e);
+			    return false;
+			 }
+			
 			});
 		});
-		
+		// just this ajax event to search box .. 
+		$("#search_box").ajaxComplete(function() {
+		  	 // test if can get this triggered 
+	//		   Lbsc2.check_height();
+		});
 		/*------ search input focus out ---------*/
 		$("#search_input").focusout(function(){
-			$("#search_input").unbind("keyup");
+		 //	$("#search_input").unbind("keyup");
 			this.value = '输入地点名称进行查询：';
 		});
-
+		
+		$('#search_result').focus(function() {
+		 // alert('Handler for .focus() called.');
 		$("#search_result").keydown(function(e) {
 		      switch(e.keyCode) { 
 		         // User pressed "up" arrow
@@ -454,7 +477,11 @@ var lbsc = function(){
 		            }
 		         break;
 		      }
+			 return false;
 		});
+		});
+		
+		
 
 		// place/id view question ajax  --- render partial view 
 		$("#open_question").click(function(){

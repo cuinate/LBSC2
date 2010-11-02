@@ -46,6 +46,8 @@ jQuery(function ($) {
                         },
                         complete: function (xhr) {
                             el.trigger('ajax:complete', xhr);
+						
+						
                         },
                         error: function (xhr, status, error) {
                             el.trigger('ajax:failure', [xhr, status, error]);

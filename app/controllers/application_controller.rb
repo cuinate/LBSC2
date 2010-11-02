@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  helper_method :require_user, :current_user, :current_user=, :logged_in?, :authorized?
+  helper_method :require_user, :current_user, :current_user=, :logged_in?, :authorized?,:question_to_hash
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password, :password_confirmation
@@ -143,4 +143,56 @@ class ApplicationController < ActionController::Base
       :value => @current_user.remember_token,
     :expires => @current_user.remember_token_expires_at }
   end
+  
+  # -----------------------------------------------------#
+  #     questions list to hash                           #
+  # -----------------------------------------------------#
+  def question_to_hash(hash_array,question)
+         m_result ={
+           :result => 1
+           }
+        hash_array[0] = m_result
+        
+        i = 1  # hash_arry index
+        j = 0  # questions hash arry index
+        place_id = question.first.place_id
+         
+        questions = Array.new
+        result_hash = Hash.new
+       
+       question.each do |q|
+          
+          if (place_id != q.place_id)
+            result_hash["place_id"] = place_id
+            place_id = q.place_id
+            
+            result_hash["questions"] = questions
+            hash_array[i] = result_hash       
+           
+            i = i + 1   
+            j = 0
+            result_hash = Hash.new
+            questions = Array.new
+          end
+          
+          result_hash["place_name"] = q.place.name
+          
+          question_hash = Hash.new
+          question_hash["description"] = q.description
+          question_hash["question_id"] = q.id
+          question_hash["answers_count"] = q.answers_count
+          question_hash["votes_sum"] = q.answers.votes_sum.first.votes_sum.to_i
+          
+          questions[j] = question_hash
+          j = j + 1
+          
+          if (question.last)
+            result_hash["place_id"] = place_id
+            result_hash["questions"] = questions
+            hash_array[i] = result_hash
+          end
+         
+     end
+  end
+  
 end

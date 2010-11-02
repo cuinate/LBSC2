@@ -65,7 +65,7 @@ body	{
 	float: left;
 //	border-right: 1px dotted  #f1f1f1;
 	background: url(../images/content_sub_right.png) right repeat-y;	
-	//height: 1010px;
+	height: auto;
 
 }
 #content_sub_right {
@@ -163,6 +163,7 @@ Header
 	font-weight: bold;
 }
 #search_result{
+display:block;
 position: absolute;
 border :1px solid gray;
 border-top :0;
@@ -515,6 +516,7 @@ Place list page
 	padding-bottom: 15px;
 	//background-color: yellow;
 	vertical-align:top;
+	height:auto;
 }
 /*
 #pl_items div:hover{

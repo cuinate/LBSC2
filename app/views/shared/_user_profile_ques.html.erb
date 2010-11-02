@@ -1,0 +1,34 @@
+<% user_questions.each do |p|%>
+<% if !p[:result]%>
+<div class = "ques_place_header" id = "place_header">
+	<span class = "list_item_desc" style="font-size:120%;"> <%= p["place_name"]%> </span>
+</div>
+<div class="hot_q_spacer"></div>
+<% p["questions"].each do |q|%>
+<div class="question-summary narrow" id="question-summary-8472">
+
+    <div class="summary">
+        <h3><a href="/questions/<%=q["question_id"]%>" class="question-hyperlink" title="# "><%= q["description"]%></a></h3>
+
+        <div class="started">
+            <a href="" class="started-link"><span title="2010-10-26 01:29:43Z" 
+	        class="relativetime">9s ago</span></a>
+            <a href="#">提问者</a> 
+        </div>
+    </div> <!--sumary end -->
+	<% if (q["answers_count"] == 0)%>
+	<div class="status unanswered" title="#">
+	<% else%>
+    <div class="status answered-accepted" title="#">
+	<% end %>
+        <div class="mini-counts"><%= q["answers_count"] %></div>
+        <div>回答</div>
+    </div>
+    <div class="votes">
+        <div class="mini-counts"><%= q["votes_sum"]%></div>
+        <div>投票</div>
+    </div>
+</div>
+<% end %>
+<% end %>
+<% end %>
