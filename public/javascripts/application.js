@@ -390,19 +390,19 @@ var lbsc = function(){
   /* ------- user/id page question navigation switching function   -----------------*/
 	function user_id_page_nav(nav_tab)
 	{
-		id = $('#user_id_nav').attr("user_id");
-		nav_type = $("#user_nav_which").attr("nav_type");
+		user_id = $('#user_id_nav').attr("user_id");
+		nav_which = $("#user_nav_which").attr("nav_which");
 
-		$("#"+ nav_type).attr('class','inactive');
+		$("#"+ nav_which).attr('class','inactive');
 		$(nav_tab).attr('class','question_list_active');
 
 		q_type= $(nav_tab).attr("id");
-		$("#ql_nav_which").attr("nav_type",q_type);
+		$("#user_nav_which").attr("nav_which",q_type);
 
 		$.get(
 			"/showuser.js",
 			{
-				id: id,
+				id: user_id,
 			});
 	}
   /* ------- initialization function   -----------------*/
@@ -435,6 +435,9 @@ var lbsc = function(){
 						else 
 						{	search_add_new_place();}
 			         break;
+					 case 27:
+						hide_search_result();
+					 break;
 				     default:
 					//		$("#search_loading").css("display","block");
 							$.getJSON(
@@ -478,6 +481,12 @@ var lbsc = function(){
 			var nav_tab = "#followed_question";
 			user_id_page_nav(nav_tab);
 		});
+		
+		$("#followed_place").click(function(){
+			var nav_tab = "#followed_place";
+			user_id_page_nav(nav_tab);
+		});
+		
 	    // follow question handling 
     	$('#qfollowship_link').click(function(){
 		 	 var	question_id = $('#question_page_id').attr("question_id");

@@ -66,6 +66,7 @@ body	{
 //	border-right: 1px dotted  #f1f1f1;
 	background: url(../images/content_sub_right.png) right repeat-y;	
 	height: auto;
+//	overflow: auto;
 
 }
 #content_sub_right {

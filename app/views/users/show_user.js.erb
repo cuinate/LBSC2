@@ -1,10 +1,12 @@
 $('#question_items').empty();
-var nav_type = $("#user_nav_which").attr("nav_type");
-//alert(nav_type);
-if (nav_type == "followed_question"){
-	$('#question_items').append("<%= escape_javascript(render :partial =>"user_question", :locals =>{:user => @user})%>");
+var nav_which = $("#user_nav_which").attr("nav_which");
+if (nav_which == "followed_question"){
+	$('#question_items').html("<%= escape_javascript(render :partial =>"user_question", :locals =>{:user => @user})%>");
+	//$('#question_items').append("<%= escape_javascript(render :partial =>"user_question", :locals =>{:user => @user})%>");
 }
 else{
-	$('#question_items').append("<%= escape_javascript(render :partial =>"user_question", :locals =>{:user => @user})%>");
+	$('#question_items').append("<%= escape_javascript(render :partial =>"user_places", :locals =>{:user => @user})%>");
+	
 }	
-Lbsc2.check_height();
+$(document).ready(function(){ Lbsc2.check_height();});
+
