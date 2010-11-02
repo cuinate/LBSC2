@@ -303,7 +303,7 @@ var lbsc = function(){
 				 'class':'search_place_have_result',
 				// 'id': place.place["id"],
 		           click: function() {
-					window.location.replace(place_link);
+					window.location = place_link ;
 		           //alert("got you!" + place_link);
 		 			//$("#ask_question_place_name").append(place.place["name"]);
 					//$("#ask_question_place_id").attr("value",place.place["id"]);
@@ -311,15 +311,15 @@ var lbsc = function(){
 		           },
 				   text: place_name,
 				   title: place_address,
-				   url:place_link
+				   url  : place_link
 		         }));
 			});
-			//setTimeout(hide_search_result,2*5000);
+			setTimeout(hide_search_result,2*5000);
 		}
 		else{
 		// showing no place found and tell user to add the place
 			search_result.append('<li class = "search_result_new_place" id="search_add_new_place"> 没有发现地点，新增一个吧！</li>');
-			//setTimeout(hide_search_result,5000);
+			setTimeout(hide_search_result,5000);
 			$("#search_add_new_place").click(function(){
 			  //	alert("got tyou");
 			  	search_add_new_place();
@@ -454,7 +454,7 @@ var lbsc = function(){
 		$("#search_input").focusout(function(){
 		 //	$("#search_input").unbind("keyup");
 			this.value = '输入地点名称进行查询：';
-			hide_search_result();
+			//hide_search_result();
 		});
 		
 		// place/id view question ajax  --- render partial view 
