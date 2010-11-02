@@ -13,6 +13,32 @@ class QuestionsController < ApplicationController
     
   end
   
+  def show_question
+     @question = Question.find(params[:id])
+     @answers =  @question.answers.order("created_at DESC").limit(20)
+     result = Array.new
+     if !@answers.size
+       m_result = Hash.new
+       m_result[:result] = 1
+       result.push(m_result)
+      @answers.each do |a|
+        answer_hash = Hash.new
+        answer_hash["description"] = a.description
+        answer_hash["answer_id"] = a.id
+        answer_hash["question_id"] = a.question_id
+        answer_hash["up_counts"] = a.up_counts
+        answer_hash["down_counts"] = a.down_counts
+        answer_hash["user_id"] = a.user_id
+        result.push(answer_hash)
+      end
+    
+    else
+        m_result = Hash.new
+        m_result[:result] = 0
+        result.push(m_result)
+     end
+     render :json =>result
+  end
   def create
 
       @question = Question.new

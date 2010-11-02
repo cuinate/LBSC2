@@ -24,6 +24,7 @@ Lbsc2::Application.routes.draw do
 # Questions
   match 'question/hot' =>'questions#hot'
   match 'addquestion' => 'questions#create', :as => :addquestion
+  match 'showquestion' => 'questions#show_question', :as  =>:showquestion
 #  match 'question' => 'questions#show', :as => :showquestion
  
 # users
