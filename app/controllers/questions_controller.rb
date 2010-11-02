@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
      @question = Question.find(params[:id])
      @answers =  @question.answers.order("created_at DESC").limit(20)
      result = Array.new
-     if !@answers.size
+     if (@answers.size > 0)
        m_result = Hash.new
        m_result[:result] = 1
        result.push(m_result)
