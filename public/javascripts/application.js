@@ -100,6 +100,7 @@ var lbsc = function(){
   var maxZoom = 15;
   var add_place_name;
   var searchResultSelection = 0;
+  var search_found_places = 0;
 	
 /*---------------------------------------------------------------------*/
 /*        			google map 										   */
@@ -292,6 +293,7 @@ var lbsc = function(){
 		var search_result = $("#search_result").empty().show();
 		$("#search_loading").css("display","none");
 		if (data.length > 0){
+			search_found_places = 1
 			$.each(data, function(p, place) {
 			var place_name = place.place["name"];
 			var place_address = place.place["address"];
@@ -312,34 +314,33 @@ var lbsc = function(){
 				   url:place_link
 		         }));
 			});
-		    $("#search_result").focus();
-			//search_navigate('up');
-		//setTimeout(hide_search_result,5000);
+			//setTimeout(hide_search_result,2*5000);
 		}
 		else{
 		// showing no place found and tell user to add the place
-			search_result.append('<li class = "search_result_new_place" id="search_add_new_place"> 没有发现地点，新增一个吧！</li>')
-			setTimeout(hide_search_result,5000);
+			search_result.append('<li class = "search_result_new_place" id="search_add_new_place"> 没有发现地点，新增一个吧！</li>');
+			//setTimeout(hide_search_result,5000);
 			$("#search_add_new_place").click(function(){
 			  //	alert("got tyou");
-			   if (Lbsc2.check_login())
-				search_add_new_place();
-			   else
-				{
-					Lbsc2.flashDialog('success', 'Success!', '你还没有登录！现在转向登录页面！');
-				//	setTimeout(window.location.replace("/login"),2*10000);
-					window.location.replace("/login");
-				//	window.location ="/login";
-		    	}
+			  	search_add_new_place();
 			});
 		}
 	
 	}
 	
+	
 	function search_add_new_place(){
-		 $("#select_place_dialog").dialog("open");
-		return false;
+		 if (Lbsc2.check_login()){
+			 $("#select_place_dialog").dialog("open");
+			return false;
+	    	}
+		 else
+			{
+				Lbsc2.flashDialog('success', 'Success!', '你还没有登录！现在转向登录页面！');
+				window.location.replace("/login");
+	    	}
 	}
+	
     function clear_dialog() {
 		infoWindow.close();
  		markers = [];
@@ -350,23 +351,22 @@ var lbsc = function(){
     
    /* ------- search box result function   -----------------*/
    function search_navigate(direction){
-//	$("#search_input").trigger("focusout");
-//	$("#search_result").trigger("keydown");
-	 if($("#search_result li .search_result_item_hover").size == 0){
-		searchResultSelection == -1;
-	}
-	 if(direction == 'up' && searchResultSelection != -1){
-		if(searchResultSelection !=0)
-			searchResultSelection--;
-	}
-	else if(direction == 'down'){
-		if(searchResultSelection != $("#search_result li").size() - 1){
-			searchResultSelection++;
+     if ( $("#search_result li").size() > 0){
+		 if($("#search_result li .search_result_item_hover").size == 0){
+			searchResultSelection == -1;
+		    }
+		 if(direction == 'up' && searchResultSelection != -1){
+			if(searchResultSelection !=0)
+				searchResultSelection--;
+			}
+		else if(direction == 'down'){
+			if(searchResultSelection != $("#search_result li").size() - 1){
+				searchResultSelection++;
+				}
 		}
+		$("#search_result li").removeClass("search_result_item_hover");
+		$("#search_result li").eq(searchResultSelection).addClass("search_result_item_hover");
 	}
-	$("#search_result li").removeClass("search_result_item_hover");
-	$("#search_result li").eq(searchResultSelection).addClass("search_result_item_hover");
-	
    }
    /* ------- place/id page question navigation switching function   -----------------*/
 	function place_id_question_nav(nav_tab)
@@ -385,9 +385,7 @@ var lbsc = function(){
 			{
 				id: id ,
 				type:q_type
-			}
-
-			);
+			});
 	}
   /* ------- user/id page question navigation switching function   -----------------*/
 	function user_id_page_nav(nav_tab)
@@ -405,84 +403,57 @@ var lbsc = function(){
 			"/showuser.js",
 			{
 				id: id,
-			}
-
-			);
+			});
 	}
   /* ------- initialization function   -----------------*/
 	var initializeAdmin = function(){
 		initializeDefaults();
 		$("#search_input").focus(function(){
 			this.value = '';
-	/*		$("#search_input").bind('keypress',function(e){
-				if(e.keyCode == 40)
-				 {
-				  search_navigate('down');
-				 }
-			});*/
-			$("#search_input").bind('keydown',function(e){
-				var query = $(this).val();
-				
-				add_place_name = query;
-				if (query.length > 0){
-			//		$("#search_loading").css("display","block");
-					$.getJSON(
-						'/place/like.json',
-						{
-							paras:  query
-						},
-						search_place_callback
-						);
-			     }
-			
-		  if(e.keyCode == 40)
-			 {
-			 	$('#search_result').focus();
-				e = jQuery.Event("keydown");
-				e.keyCode = 40; 
-			    $('#search_result').trigger(e);
-			    return false;
-			 }
-			
-			});
 		});
 		// just this ajax event to search box .. 
-		$("#search_box").ajaxComplete(function() {
-		  	 // test if can get this triggered 
-	//		   Lbsc2.check_height();
+		$("#search_input").keyup(function(e){
+			var query = $(this).val();
+			add_place_name = query;
+			if (query.length > 0)
+			{
+				switch(e.keyCode) { 
+			         // User pressed "up" arrow
+			         case 38:
+			            search_navigate('up');
+			         break;
+			         // User pressed "down" arrow
+			         case 40:
+			            search_navigate('down');
+			         break;
+			         // User pressed "enter"
+			         case 13:
+						currentUrl = $("#search_result li").eq(searchResultSelection).attr("url");
+			            if(currentUrl) {
+			               window.location = currentUrl;
+			            }
+						else 
+						{	search_add_new_place();}
+			         break;
+				     default:
+					//		$("#search_loading").css("display","block");
+							$.getJSON(
+								'/place/like.json',
+								{
+									paras:  query
+								},
+								search_place_callback
+								);
+					}
+			}
 		});
 		/*------ search input focus out ---------*/
 		$("#search_input").focusout(function(){
 		 //	$("#search_input").unbind("keyup");
 			this.value = '输入地点名称进行查询：';
+			hide_search_result();
 		});
 		
-		$('#search_result').focus(function() {
-		 // alert('Handler for .focus() called.');
-		$("#search_result").keydown(function(e) {
-		      switch(e.keyCode) { 
-		         // User pressed "up" arrow
-		         case 38:
-		            search_navigate('up');
-		         break;
-		         // User pressed "down" arrow
-		         case 40:
-		            search_navigate('down');
-		         break;
-		         // User pressed "enter"
-		         case 13:
-					currentUrl = $("#search_result li").eq(searchResultSelection).attr("url");
-		            if(currentUrl != '') {
-		               window.location = currentUrl;
-		            }
-		         break;
-		      }
-			 return false;
-		});
-		});
-		
-		
-
 		// place/id view question ajax  --- render partial view 
 		$("#open_question").click(function(){
 			var nav_tab = "#open_question";
