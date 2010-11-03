@@ -84,6 +84,7 @@ class PlacesController < ApplicationController
             respond_to do |format|
               format.html # hot.html.erb
               format.json { render :json => hot_place}
+              format.mobi #hot.mobi.erb
             end
 
       

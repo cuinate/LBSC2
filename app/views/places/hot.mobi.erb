@@ -1,0 +1,43 @@
+<!-- Start of first page -->
+<div data-role="page" id="place" class="ui-page ui-body-c ">
+
+	<div data-role="header" class="ui-bar-a ui-header" role="banner" data-theme="b" >
+		<a href="#" class="ui-btn-left ui-btn ui-btn-up-b ui-btn-icon-left ui-btn-corner-all ui-shadow" data-icon="arrow-l" ><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span><span class="ui-btn-text">返回</span></span></a>
+			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">地点</h1>
+		</div>
+
+	<div data-role="content" class="ui-content" role="main">
+		<h1 style="color:#008cb1">那个地方讨论最多？</h1>
+		   
+		
+			<ul data-role="listview" class="ui-listview" role="listbox">
+			<% @place_hot.each do |p|%>
+			<li role="option" tabindex="0" class="ui-li " data-theme="c">
+				
+			
+					<span class="ui-icon ui-icon-arrow-r"></span>
+					<%= image_tag "map_ico.png", :alt => "icon",:id => "icon",:class =>"ui-li-icon ui-li-thumb" %>
+					<a href="index.html" class="ui-link-inherit"><%=p.name%></a> 
+					<p class="ui-li-desc" style="padding-top:10px;"><%=p.address%></p>
+			
+			
+			</li>
+			<%end%>
+		  </ul>
+	</div>  <!-- /content-->
+
+   	<div data-id="footer" data-role="footer" data-theme="a">
+	      <div data-role="navbar">
+	            <ul>
+	                  <li><a href="#tab1" data-transition="slideup" class="ui-btn-active">热门</a></li>
+	                  <li><a href="#tab2" data-transition="slideup">附近</a></li>
+	                  <li><a href="#tab3" data-transition="slideup">关注</a></li>
+	                  
+	            </ul>
+	      </div>
+	</div> <!-- /content -->
+
+
+</div><!-- /page -->
+
+

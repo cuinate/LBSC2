@@ -1,0 +1,34 @@
+/*  -------------------------------------------------*/
+/*           use for mobile device browse            */
+/*  -------------------------------------------------*/
+
+
+a { color: #005481; margin: 0; padding: 0; text-decoration: none; }  
+a:hover {text-decoration: none; cursor:pointer;color: #de741d;}
+
+body { background-color: #fff;font-family: Verdana, Helvetica, Arial;font-size: 14px;}
+#mcontent{
+width:300px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 35px;
+height:auto;
+border: 1px solid red;
+float:left;
+}
+#m_logo{
+margin-top:5px;
+margin-bottom:80px;
+//background: url(../images/m_logo.png) no-repeat;
+}
+.m_button_container{
+margin-top:10px;
+margin-left:5px;
+margin-bottom:10px;
+}
+.m_button_icon{
+margin-left:10px;
+margin-right:10px;
+margin-bottom:10px;
+float:left;
+}

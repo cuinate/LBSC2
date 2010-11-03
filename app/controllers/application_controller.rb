@@ -2,10 +2,11 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  before_filter :set_mobi_format
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  helper_method :require_user, :current_user, :current_user=, :logged_in?, :authorized?,:question_to_hash
+  helper_method :require_user, :current_user, :current_user=, :logged_in?, :authorized?,:question_to_hash,:is_mobile_request?
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password, :password_confirmation
@@ -193,6 +194,19 @@ class ApplicationController < ActionController::Base
           end
          
      end
+  end
+  # -----------------------------------------------------#
+  #     mbile site related                               #
+  # -----------------------------------------------------#
+
+
+  def set_mobi_format
+    if is_mobile_request?
+      request.format = :mobi
+    end
+  end
+  def is_mobile_request?
+      request.user_agent =~ /(Mobile)/
   end
   
 end

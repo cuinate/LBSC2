@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html style="height: 100%;" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>LBS@C</title>
+<!-- meta tags -->
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta content="LBS@c" name="lbs@C">
+<meta content="particle, profile, video, status, avatar" name="keywords">
+<meta content="global" name="distribution">
+
+<!-- iphone tags -->
+<meta name="apple-mobile-web-app-capable" content="YES"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width = device-width, user-scalable = no">
+<head>
+
+   <%= stylesheet_link_tag "mobile" %>
+   <%= csrf_meta_tag %>
+</head>
+<body>
+	<div id="content">
+		<div id="m_logo"> 	<%= image_tag "m/m_logo.png", :alt => "home",
+			                           :id => "home" %></div> <!--m logo -->
+		<div id="button1" class="m_button_container">
+			<div id="place_b" class="m_button_icon">
+				<a href="/place/hot">
+				<%= image_tag "m/b_place.png", :alt => "place",
+				                           :id => "place" %>
+				</a>
+			</div>
+			<div id="question_b" class="m_button_icon" >
+					<a href="/place/hot">
+				<%= image_tag "m/b_question.png", :alt => "question",
+				                          :id => "question" %>
+				</a>
+			</div>
+			
+		</div>
+		<div id="button2" class="m_button_container">
+			<div id="me_b" class="m_button_icon" >
+					<a href="/place/hot">
+				<%= image_tag "m/b_me.png", :alt => "me",
+				                          :id => "me" %>
+				</a>
+			</div>
+			<div id="setting_b" class="m_button_icon">
+					<a href="/place/hot">
+				<%= image_tag "m/b_setting.png", :alt => "setting",
+				                          :id => "setting" %>
+				   </a>
+			</div>
+			
+		</div>
+		
+	</div> <!-- mobile content end -->
+</body>
+
+</html>
