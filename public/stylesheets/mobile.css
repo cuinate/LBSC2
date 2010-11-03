@@ -1,7 +1,15 @@
 /*  -------------------------------------------------*/
 /*           use for mobile device browse            */
 /*  -------------------------------------------------*/
+html, body, p, ul, ol, dl, li, h1, h2, h3, h4, img{
+	margin: 0;
+	padding: 0;
+}
 
+
+img	{
+	border: 0;
+}
 
 a { color: #005481; margin: 0; padding: 0; text-decoration: none; }  
 a:hover {text-decoration: none; cursor:pointer;color: #de741d;}

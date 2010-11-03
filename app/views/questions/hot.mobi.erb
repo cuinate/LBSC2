@@ -2,29 +2,28 @@
 <div data-role="page" id="place" class="ui-page ui-body-c ">
 
 	<div data-role="header" class="ui-bar-a ui-header"  data-position="fixed" role="banner" data-theme="b">
-		<a href="/" rel="external" data-icon="arrow-l" data-theme="b" data-position="inline" >主页</a>
-		<h1>地点</h1>
-		<a href="/question/hot" rel="external" data-icon="arrow-r" data-theme="a">问题</a>
+		<a href="/" rel="external" data-transition="slide" data-icon="arrow-l" data-theme="b" data-position="inline" >主页</a>
+		<h1>问题</h1>
+		<a href="/place/hot" data-transition="slide" rel="external" data-icon="arrow-r" data-theme="a">地点</a>
 	</div>
     <!--header end -->
 
 
 	<div data-role="content" class="ui-content" role="main">
-		<h1 style="color:#008cb1">那个地方讨论最多？</h1>
-		   
-		
-			<ul data-role="listview" class="ui-listview" role="listbox">
-			<% @place_hot.each do |p|%>
+		<h1 style="color:#008cb1">大家都在讨论什么？</h1>
+		   	<ul data-role="listview" class="ui-listview" role="listbox">
+				<% @hot_questions.each do |p|%>
+				<% if !p[:result]%>
+		<li data-role="list-divider" role="heading" tabindex="0" class="ui-li ui-li-divider ui-btn ui-bar-b"> <%= p["place_name"]%></li>
+					<% p["questions"].each do |q|%>
 			<li role="option" tabindex="0" class="ui-li " data-theme="c">
-				
-			
 					<span class="ui-icon ui-icon-arrow-r"></span>
-					<%= image_tag "map_ico.png", :alt => "icon",:id => "icon",:class =>"ui-li-icon ui-li-thumb" %>
-					<a href="index.html" class="ui-link-inherit"><%=p.name%></a> 
-					<p class="ui-li-desc" style="padding-top:10px;"><%=p.address%></p>
-			
+					<a href="index.html" class="ui-link-inherit"><%= q["description"]%></a> 
+					<p class="ui-li-desc" style="padding-top:10px;">提问者</p>
 			
 			</li>
+			<%end%>
+			<%end%>
 			<%end%>
 		  </ul>
 	</div>  <!-- /content-->
